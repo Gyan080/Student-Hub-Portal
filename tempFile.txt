@@ -1,1 +1,2 @@
 This is test file fo git commit from command.
+    This line is write after committing first time.
