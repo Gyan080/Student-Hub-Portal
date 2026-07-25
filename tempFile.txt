@@ -1,6 +1,0 @@
-This is test file fo git commit from command.
-    This line is write after committing first time.
-
-This line is writed befre understanding diff command.
-
-before learning how to remove file from repo.
