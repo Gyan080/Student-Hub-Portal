@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Student Registration</title>
+    </head>
+    <body bgcolor="#f9fbff">
+  <table>
+    <tr>
+    <td><header>
+    <a href="index.html"> <img src="c:\Users\gyang\OneDrive\Desktop\wallpaper\Screenshot 2026-07-14 215638.png"
+                        alt="Portal Logo" width="100" height="100"></a>
+            <a href="about.html" target="_blank">About</a>
+        <a href="faqs.html" target="_blank">FAQs</a>
+        <a href="contact.html" target="_blank">Contact</a>
+        <a href="index.html" target="_blank">Login</a>
+        </header>
+</td>
+</tr>
+</table>
+        <h1 align="center">Student Registration</h1>
+        <form>
+            <table border="1" cellpadding="8" cellspacing="0" width="70%" align="center" bgcolor="#ffffff">
+                <tr>
+                    <th colspan="2" align="center">Student Details</th>
+                </tr>
+                <tr>
+                    <td><label>First Name :</label></td>
+                    <td><input type="text" name="f_name"></td>
+                </tr>
+                <tr>
+                    <td><label>Middle Name :</label></td>
+                    <td><input type="text" name="m_name"></td>
+                </tr>
+                <tr>
+                    <td><label>Last Name :</label></td>
+                    <td><input type="text" name="L_name"></td>
+                </tr>
+                <tr>
+                    <td><label>Enrollment ID :</label></td>
+                    <td><input type="text" name="college_id" maxlength="8" minlength="5"></td>
+                </tr>
+                <tr>
+                    <td><label>Date of Birth :</label></td>
+                    <td><input type="date" name="dob"></td>
+                </tr>
+                <tr>
+                    <td><label>Gender :</label></td>
+                    <td>
+                        <input type="radio" name="gender" value="male"> Male
+                        <input type="radio" name="gender" value="female"> Female
+                        <input type="radio" name="gender" value="other"> Other
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Email :</label></td>
+                    <td><input type="email" name="email"></td>
+                </tr>
+                <tr>
+                    <td><label>Phone :</label></td>
+                    <td><input type="tel" name="phone" maxlength="10"></td>
+                </tr>
+                <tr>
+                    <td><label>Address :</label></td>
+                    <td><input type="text" name="address" size="40"></td>
+                </tr>
+                <tr>
+                    <td><label>Course :</label></td>
+                    <td>
+                        <select name="course">
+                            <option value="CSE">Computer Science</option>
+                            <option value="CE">Computer Engineering</option>
+                            <option value="IT">IT</option>
+                            <option value="AI-ML">AI-ML</option>
+                            <option value="CIVIL">Civil</option>
+                            <option value="MECH">Mechanical</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Year of Study :</label></td>
+                    <td>
+                        <select name="year">
+                            <option value="1">1st Year</option>
+                            <option value="2">2nd Year</option>
+                            <option value="3">3rd Year</option>
+                            <option value="4">4th Year</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <div align="center" style="margin-top:10px;">
+                <button type="submit">Submit</button>
+                <button type="reset">Cancel</button>
+            </div>
+        </form>
+    </body>
+</html>
