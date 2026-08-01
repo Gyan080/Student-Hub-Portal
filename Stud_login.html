@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head><title>Student Registration</title></head>
+<body>
+    <header>
+        <table>
+        <tr>
+        <td>
+    <a href="index.html">
+    <img src="c:\Users\gyang\OneDrive\Desktop\wallpaper\Screenshot 2026-07-14 215638.png"
+        alt="Portal Logo" width="100" height="100"></a>
+        </td>
+        <td>
+            <h1>Student Portal</h1>
+        </td>
+        <td>
+            <nav>
+                <a href="about.html">About</a> |
+                <a href="faqs.html">FAQs</a> |
+                <a href="contact.html">Contact</a>
+            </nav>
+        </td>
+        </tr>
+        </table>
+    </header>
+
+    <hr>
+    <main>
+        <h1 align="center">STUDENT REGISTRATION</h1>
+        <form>
+        <table border="1" cellpadding="10" cellspacing="0" width="80%" align="center">
+                <tr>
+                    <td>
+                        <label><b>Full Name</b></label><br><br>
+                        <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" size="40">
+                    </td>
+                    <td>
+                        <label><b>Student ID / Roll Number</b></label><br><br>
+                        <input type="text" id="student_id" name="student_id" placeholder="e.g. 25dcs080" size="40">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    <label><b>College Email Address</b></label><br><br>
+                    <input type="email" id="email" name="email" placeholder="e.g. 25dcs080@charusat.edu.in" size="40">
+                    </td>
+                    <td>
+                        <label><b>Department / Course</b></label><br><br>
+                        <select id="department" name="department">
+                            <option value="" disabled selected>Select your department</option>
+                            <option value="CSE">Computer Science</option>
+                            <option value="CE">Computer Engineering</option>
+                            <option value="IT">Information Technology</option>
+                            <option value="AI-ML">AI-ML</option>
+                            <option value="CIVIL">Civil</option>
+                            <option value="MECH">Mechanical</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label><b>Password</b></label><br><br>
+                        <input type="password" id="password" name="password" size="40"><br>
+                        <small>Minimum 8 characters</small>
+                    </td>
+                    <td>
+                <label><b>Confirm Password</b></label><br><br>
+                <input type="password" id="confirm_password" name="confirm_password" size="40">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <br>
+                        <input type="checkbox" id="terms" name="terms">
+                        <label><i>I agree to the Terms and Conditions</i></label>
+                        <br><br>
+
+                        <button type="submit"><b>Login</b></button>
+                        <br><br>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </main>
+    <br>
+    <footer>
+        <p align="center"><small>&copy; All Rights Reserved</small></p>
+    </footer>
+</body>
+</html>

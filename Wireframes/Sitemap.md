@@ -14,24 +14,24 @@ Student Portal (Site Structure)
 │
 │               <!-- Registration for new user -->
 │
-├── Register Page (if new user)     (Student Registration - Public)
+├── Register Page (if new user)     (Registration Choice - Public)
+│   ├── Student Registration Page   (Student Registration - Public)
+│   └── Admin Registration Page     (Admin Registration - Public)
 │
 │               <!-- Login Page of Student -->
 │
 ├── Login Page                            (User Login - Public)<!--DONE-->
-│   │     └── Forgot Password             (only Student)
+│   ├── Student Login Page                (Student Login - Student)
+│   │   └── Student Dashboard Page        (Student Dashboard - Student)
+│   │       ├── Profile Page              (Profile Management (Editable) - Student)
+│   │       ├── Events Page               (Event Directory - Student)
+│   │       ├── Calendar                  (For Students to schedule events)
+│   │       ├── Attendance Tracker        (View attendance records - Student)
+│   │       ├── Fee Information           (View fee status, dues, payment history - Student)
+│   │       ├── Exam Result               (View exam results/marksheets - Student)
+│   │       └── Logout
 │   │
-│   ├── Student Dashboard Page            (Student Dashboard - Student)
-│   │   ├── Student_Login                 (Student Login - Student)
-│   │   ├── Profile Page                  (Profile Management (Editable) - Student)
-│   │   ├── Events Page                   (Event Directory - Student)    register , --> dashboard , calendar
-│   │   ├── Calendar                      (For Students to schedule events)
-│   │   ├── Attendance Tracker            (View attendance records - Student)
-│   │   ├── Fee Information               (View fee status, dues, payment history - Student)
-│   │   ├── Exam Result                   (View exam results/marksheets - Student)
-│   │   └── Logout 
-│   │
-│   └── Admin Login Page                  (Admin Login - Admin)<!--DONE-->
+│   └── Admin Login Page                  (Admin Login - Admin)
 │       └── Admin Dashboard Page          (Admin Dashboard - Admin)
 │           ├── Manage Events             (Create, edit, delete, and track all events - Admin)
 │           ├── Manage Students           (View, update, and manage student data - Admin)
