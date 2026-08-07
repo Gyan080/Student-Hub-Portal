@@ -8,15 +8,15 @@ Student Portal (Site Structure)
 │       ├── Campus                  (Campus overview - everyone)<!--DONE-->
 │       └── Academics               (Placement data, Offered Courses)<!--DONE-->
 │
-├── FAQ Page                        (FAQ Page - Public)
+├── FAQ Page                        (FAQ Page - Public)<!--DONE-->
 │
-├── Contact Page                    (For Every User - Public)
+├── Contact Page                    (For Every User - Public)<!--DONE-->
 │
 │               <!-- Registration for new user -->
 │
-├── Register Page (if new user)     (Registration Choice - Public)
-│   ├── Student Registration Page   (Student Registration - Public)
-│   └── Admin Registration Page     (Admin Registration - Public)
+├── Register Page (if new user)     (Registration Choice - Public)<!--DONE-->
+│   ├── Student Registration Page   (Student Registration - Public)<!--DONE-->
+│   └── Admin Registration Page     (Admin Registration - Public)<!--DONE-->
 │
 │               <!-- Login Page of Student -->
 │
@@ -31,7 +31,7 @@ Student Portal (Site Structure)
 │   │       ├── Exam Result               (View exam results/marksheets - Student)
 │   │       └── Logout
 │   │
-│   └── Admin Login Page                  (Admin Login - Admin)
+│   └── Admin Login Page                  (Admin Login - Admin)<!--DONE-->
 │       └── Admin Dashboard Page          (Admin Dashboard - Admin)
 │           ├── Manage Events             (Create, edit, delete, and track all events - Admin)
 │           ├── Manage Students           (View, update, and manage student data - Admin)

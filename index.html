@@ -1,61 +1,58 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Student Portal</title>
+  <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
-  <div>
-    <header>
-      <table>
-        <tr>
-          <td>
-            <a href="index.html"><img src="c:\\Users\\gyang\\OneDrive\\Desktop\\wallpaper\\Screenshot 2026-07-14 215638.png" alt="Portal Logo" width="100" height="100"></a>
-          </td>
-          <td>
-            <h1>Student Portal</h1>
-          </td>
-          <td>
-            <nav>
-              <a href="about.html">About</a> |
-              <a href="faqs.html">FAQs</a> |
-              <a href="contact.html">Contact</a> |
-              <a href="login.html">Login</a>
-            </nav>
-          </td>
-        </tr>
-      </table>
+  <div class="page-wrapper">
+    <header class="header-bar">
+      <div class="header-brand">
+        <a href="index.html" class="brand-link">
+          <img src="c:\Users\gyang\OneDrive\Desktop\wallpaper\Screenshot 2026-07-14 215638.png" alt="Portal Logo"
+            class="brand-logo">
+          <span class="brand-name">Student Portal</span>
+        </a>
+      </div>
+      <nav class="nav-links">
+        <a href="about.html">About</a>
+        <a href="faqs.html">FAQs</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Login</a>
+      </nav>
     </header>
 
-    <main>
-      <section>
-        <table width="100%" cellpadding="20">
-          <tr>
-            <td>
-              <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=400&q=80" alt="Students" width="240" height="160">
-              <h2>Register as Student</h2>
-              <p>Access your courses, view grades, track academic progress, and manage schedule assignments in your portal.</p>
-              <p><a href="regis_stud.html">Register</a></p>
-            </td>
-            <td>
-              <img src="C:\\Users\\gyang\\OneDrive\\Desktop\\wallpaper\\images.jpg" alt="Admin Desk" width="240" height="160">
-              <h2>Register as Admin</h2>
-              <p>Manage faculty permissions, system records, course catalogs, and admin operations across campus.</p>
-              <p><a href="regis_admin.html">Register</a></p>
-            </td>
-          </tr>
-        </table>
+    <main class="main-content">
+      <section class="section-row">
+        <article class="card card-student">
+          <img src="Images/3087394_e2ed_2.webp" alt="Students" class="card-image">
+          <div class="card-text">
+            <h2 class="card-title">Register as Student</h2>
+            <p class="card-description">Join the student portal to view your courses, check grades, and stay updated
+              with campus news.</p>
+            <a href="regis_stud.html" class="button-link">Register</a>
+          </div>
+        </article>
+
+        <article class="card card-admin">
+          <img src="Images/1769105180873.jpg" alt="Admin Desk" class="card-image">
+          <div class="card-text">
+            <h2 class="card-title">Register as Admin</h2>
+            <p class="card-description">Create an admin account to manage student data, schedules, and portal settings
+              with ease.</p>
+            <a href="regis_admin.html" class="button-link">Register</a>
+          </div>
+        </article>
       </section>
     </main>
 
-    <footer>
-      <table width="100%">
-        <tr>
-          <td>&copy; 2026 Student Portal System. All Rights Reserved.</td>
-          <td>Contact us: xxxxx xxxxx</td>
-        </tr>
-      </table>
+    <footer class="footer-bar">
+      <p class="footer-note">&copy; 2026 Student Portal System. All Rights Reserved.</p>
+      <p class="footer-note">Contact us: xxxxx xxxxx</p>
     </footer>
   </div>
-
 </body>
+
 </html>

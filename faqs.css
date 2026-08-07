@@ -1,0 +1,160 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #eef2f6;
+    color: #2a3a4d;
+}
+
+.page-wrapper {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+.header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1f3b54;
+    color: #ffffff;
+    padding: 16px 20px;
+    border-radius: 15px;
+    margin-bottom: 24px;
+}
+
+.header-brand {
+    display: flex;
+    align-items: center;
+}
+
+.brand-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.brand-logo {
+    width: 68px;
+    height: 68px;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 2px solid rgba(255, 255, 255, 0.16);
+}
+
+.brand-name {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    color: #dfe9f3;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.main-content {
+    margin-bottom: 28px;
+}
+
+.faq-card {
+    background-color: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 14px 28px rgba(38, 65, 100, 0.12);
+    border: 1px solid rgba(34, 59, 83, 0.08);
+    padding: 24px;
+}
+
+.faq-title {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 1.7rem;
+    color: #1d3348;
+}
+
+.faq-text {
+    margin: 0 0 20px;
+    line-height: 1.7;
+    color: #556979;
+}
+
+.faq-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.faq-table th,
+.faq-table td {
+    border: 1px solid #d3dce7;
+    padding: 14px 16px;
+    text-align: left;
+    vertical-align: top;
+}
+
+.faq-table th {
+    background-color: #f5f8fc;
+    color: #1d3348;
+    font-weight: 700;
+}
+
+.faq-table tr:nth-child(even) {
+    background-color: #fbfdff;
+}
+
+.faq-table td {
+    color: #435a72;
+}
+
+.footer-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    background-color: #1f3b54;
+    border-radius: 15px;
+    padding: 16px 20px;
+    color: #e4edf8;
+}
+
+.footer-note {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 820px) {
+    .faq-table th,
+    .faq-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .faq-table tr {
+        margin-bottom: 16px;
+        display: block;
+    }
+}
+
+@media (max-width: 620px) {
+    .header-bar,
+    .footer-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+}

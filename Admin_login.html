@@ -1,98 +1,82 @@
 <!DOCTYPE html>
 <html>
-<head><title>Admin Login</title></head>
+<head>
+    <title>Student Portal - Admin Login</title>
+    <link rel="stylesheet" href="Admin_login.css">
+</head>
 <body>
-    <header>
-        <table>
-            <tr>
-            <td>
-            <a href="index.html">
-            <img src="c:\Users\gyang\OneDrive\Desktop\wallpaper\Screenshot 2026-07-14 215638.png" alt="Portal Logo" width="100" height="100"></a>
-            </td>
-            <td>
-                    <h1>Student Portal</h1>
-                </td>
-                <td>
-                    <nav>
-                        <a href="about.html">About</a> |
-                        <a href="faqs.html">FAQs</a> |
-                        <a href="contact.html">Contact</a>
-                    </nav>
-                </td>
-            </tr>
-        </table>
-    </header>
-    <hr>
-    <main>
-<h1 align="center">ADMIN Login</h1>
-    <form>
-    <table border="1" cellpadding="10" cellspacing="0" width="80%" align="center">
-    <tr>
-        <td>
-            <label><b>Full Name</b></label><br><br>
-            <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" size="40">
-                    </td>
-                    <td>
-                        <label><b>Select Your Campus Role</b></label><br><br>
-                        <select id="campus_role" name="campus_role">
-                            <option value="" disabled selected>Select your role</option>
-                            <option value="faculty">Faculty Member</option>
-                            <option value="club_lead">Club Lead / Executive</option>
-                            <option value="event_coord">Event Coordinator</option>
-                            <option value="admin">Department Administrator</option>
-                        </select>
-                    </td>
-                </tr>
+    <div class="page-wrapper">
+        <header class="header-bar">
+            <div class="header-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="c:\Users\gyang\OneDrive\Desktop\wallpaper\Screenshot 2026-07-14 215638.png" alt="Portal Logo" class="brand-logo">
+                    <span class="brand-name">Student Portal</span>
+                </a>
+            </div>
+            <nav class="nav-links">
+                <a href="about.html">About</a>
+                <a href="faqs.html">FAQs</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </header>
 
-                <tr>
-                    <td>
-                        <label><b>Official University Email</b></label><br><br>
-                        <input type="email" id="email" name="email" placeholder="name@charusat.edu.in" size="40">
-                    </td>
-                    <td>
-                        <label><b>Department</b></label><br><br>
-                        <input type="text" id="dept" name="dept" placeholder="e.g., Computer Science" size="40">
-                    </td>
-                </tr>
+        <main class="main-content">
+            <section class="form-card">
+                <h1 class="page-title">Admin Login</h1>
+                <p class="form-description">Fill out this form to log in as an admin and manage portal operations.</p>
+                <form>
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label for="fullname">Full Name</label>
+                            <input type="text" id="fullname" name="fullname" placeholder="Enter your full name">
+                        </div>
+                        <div class="form-field">
+                            <label for="campus_role">Select Your Campus Role</label>
+                            <select id="campus_role" name="campus_role">
+                                <option value="" disabled selected>Select your role</option>
+                                <option value="faculty">Faculty Member</option>
+                                <option value="club_lead">Club Lead / Executive</option>
+                                <option value="event_coord">Event Coordinator</option>
+                                <option value="admin">Department Administrator</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label for="email">Official University Email</label>
+                            <input type="email" id="email" name="email" placeholder="name@charusat.edu.in">
+                        </div>
+                        <div class="form-field">
+                            <label for="dept">Department</label>
+                            <input type="text" id="dept" name="dept" placeholder="e.g., Computer Science">
+                        </div>
+                        <div class="form-field">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" placeholder="Enter a secure password">
+                        </div>
+                        <div class="form-field">
+                            <label for="confirm_password">Confirm Password</label>
+                            <input type="password" id="confirm_password" name="confirm_password" placeholder="Re-enter password">
+                        </div>
+                    </div>
 
-                <tr>
-                    <td>
-                        <label><b>Password</b></label><br><br>
-                        <input type="password" id="password" name="password" size="40">
-                    </td>
-                    <td>
-                    <label><b>Confirm Password</b></label><br><br>
-                    <input type="password" id="confirm_password" name="confirm_password" size="40">
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <label for="affiliation_proof"><b>Proof of Affiliation</b></label><br><br>
+                    <div class="form-field">
+                        <label for="affiliation_proof">Proof of Affiliation</label>
                         <input type="file" id="affiliation_proof" name="affiliation_proof">
-                        <br><br>
-                        <small>Upload ID or proof Screenshot</small>
-                    </td>
-                </tr>
+                        <small>Upload ID or proof screenshot</small>
+                    </div>
 
-                <tr>
-                    <td colspan="2" align="center">
-                        <br>
+                    <div class="checkbox-field">
                         <input type="checkbox" id="guidelines" name="guidelines">
                         <label for="guidelines"><i>I agree to the Community Guidelines & Code of Conduct</i></label>
-                        <br><br>
+                    </div>
 
-                        <button type="submit"><b>Login</b></button>
-                        <br><br>
+                    <button type="submit" class="form-button">Login</button>
+                </form>
+            </section>
+        </main>
 
-                    </td>
-                </tr>
-            </table>
-        </form>
-    </main>
-    <br>
-<footer>
-    <p align="center"><small>&copy; All Rights Reserved</small></p>
-</footer>
+        <footer class="footer-bar">
+            <p class="footer-note">&copy; 2026 Student Portal System. All Rights Reserved.</p>
+        </footer>
+    </div>
 </body>
 </html>

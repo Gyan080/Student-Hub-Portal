@@ -2,84 +2,72 @@
 <html>
 <head>
   <title>About Us</title>
+  <link rel="stylesheet" href="about.css">
 </head>
 <body>
-  <header>
-      <table>
-        <tr>
-          <td>
-            <a href="index.html"><img src="c:\\Users\\gyang\\OneDrive\\Desktop\\wallpaper\\Screenshot 2026-07-14 215638.png" alt="Portal Logo" width="100" height="100"></a>
-          </td>
-          <td>
-            <h1>Student Portal</h1>
-          </td>
-          <td>
-            <nav>
-              <a href="faqs.html">FAQs</a> |
-              <a href="contact.html">Contact</a> |
-              <a href="login.html">Login</a>
-            </nav>
-          </td>
-        </tr>
-      </table>
+  <div class="page-wrapper">
+    <header class="header-bar">
+      <div class="header-brand">
+        <a href="index.html" class="brand-link">
+          <img src="c:\Users\gyang\OneDrive\Desktop\wallpaper\Screenshot 2026-07-14 215638.png" alt="Portal Logo" class="brand-logo">
+          <span class="brand-name">Student Portal</span>
+        </a>
+      </div>
+      <nav class="nav-links">
+        <a href="faqs.html">FAQs</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Login</a>
+      </nav>
     </header>
 
-  <main>
-    <table>
-      <tr>
-        <td colspan="2">
-          <section>
-            <h2>Welcome</h2>
-            <p>We are committed to providing a good learning environment for every student.</p>
-          </section>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <article>
-            <h3>Our Mission</h3>
-            <p>To help students grow with knowledge, discipline, and confidence.</p>
-          </article>
-        </td>
-        <td>
-          <article>
-            <h3>Our Vision</h3>
-            <p>To become a trusted place of learning and excellence.</p>
-          </article>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <aside>
-            <h3>Quick Information</h3>
-            <p>Open daily</p>
-            <p>Supportive staff</p>
-            <p>Modern learning space</p>
-          </aside>
-        </td>
-        <td>
-          <article>
-            <h3>Contact Us</h3>
-            <form>
-              <label>Name</label>
-              <input type="text" name="name">
+    <main class="main-content">
+      <section class="hero-card">
+        <h2 class="hero-title">Welcome to Our Portal</h2>
+        <p class="hero-subtitle">We provide a welcoming learning environment with simple tools for students and staff to stay connected and informed.</p>
+      </section>
 
-              <label>Email</label>
-              <input type="email" name="email">
+      <section class="info-grid">
+        <article class="info-card">
+          <h3>Our Mission</h3>
+          <p>To support every student with reliable access to courses, grades, and campus resources.</p>
+        </article>
+        <article class="info-card">
+          <h3>Our Vision</h3>
+          <p>To become a trusted and easy-to-use portal where learning and campus life come together.</p>
+        </article>
+      </section>
 
-              <label>Message</label>
-              <textarea name="message"></textarea>
+      <section class="info-grid">
+        <aside class="info-card">
+          <h3>Quick Information</h3>
+          <p>Open daily for student support and campus updates.</p>
+          <p>Friendly staff available for help.</p>
+          <p>Safe and simple portal access for everyone.</p>
+        </aside>
+        <article class="form-card">
+          <h3>Contact Us</h3>
+          <form>
+            <div class="form-field">
+              <label for="name">Name</label>
+              <input id="name" type="text" name="name">
+            </div>
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input id="email" type="email" name="email">
+            </div>
+            <div class="form-field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message"></textarea>
+            </div>
+            <button type="submit" class="form-button">Send</button>
+          </form>
+        </article>
+      </section>
+    </main>
 
-              <button type="submit">Send</button>
-            </form>
-          </article>
-        </td>
-      </tr>
-    </table>
-  </main>
-
-  <footer>
-    <p>Copyright 2026</p>
-  </footer>
+    <footer class="footer-bar">
+      <p class="footer-note">Copyright 2026</p>
+    </footer>
+  </div>
 </body>
 </html>

@@ -1,108 +1,88 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Contact Us</title>
+    <link rel="stylesheet" href="contact.css">
 </head>
+
 <body>
-
-    <header>
-      <table>
-        <tr>
-          <td>
-            <a href="index.html"><img src="c:\\Users\\gyang\\OneDrive\\Desktop\\wallpaper\\Screenshot 2026-07-14 215638.png" alt="Portal Logo" width="100" height="100"></a>
-          </td>
-          <td>
-            <h1>Student Portal</h1>
-          </td>
-          <td>
-            <nav>
-              <a href="about.html">About</a> |
-              <a href="faqs.html">FAQs</a> |
-              <a href="login.html">Login</a>
+    <div class="page-wrapper">
+        <header class="header-bar">
+            <div class="header-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="c:\Users\gyang\OneDrive\Desktop\wallpaper\Screenshot 2026-07-14 215638.png"
+                        alt="Portal Logo" class="brand-logo">
+                    <span class="brand-name">Student Portal</span>
+                </a>
+            </div>
+            <nav class="nav-links">
+                <a href="about.html">About</a>
+                <a href="faqs.html">FAQs</a>
+                <a href="login.html">Login</a>
             </nav>
-          </td>
-        </tr>
-      </table>
-    </header>
+        </header>
 
-    <hr>
+        <main class="main-content">
+            <section class="contact-grid">
+                <article class="contact-card">
+                    <h2>Get in Touch</h2>
+                    <p>Please fill out the form below and we will contact you as soon as possible.</p>
+                    <form action="contact.html" method="post">
+                        <div class="contact-field">
+                            <label for="full-name">Full Name:</label>
+                            <input type="text" id="full-name" name="full_name" required>
+                        </div>
+                        <div class="contact-field">
+                            <label for="email-address">Email Address:</label>
+                            <input type="email" id="email-address" name="email_address" required>
+                        </div>
+                        <div class="contact-field">
+                            <label for="subject">Subject:</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="contact-field">
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">Send Message</button>
+                    </form>
+                </article>
 
-    <main>
-        
-        <section>
-            <h2>Get in Touch</h2>
-            <p>Please fill out the form below and we will Contact to you as soon as possible.</p>
+                <aside class="support-card">
+                    <h2>Support & Location</h2>
+                    <img src="Images/images.png"
+                        alt="Office" class="support-image">
+                    <table class="opening-table">
+                        <thead>
+                            <tr>
+                                <th>Day</th>
+                                <th>Opening Hours</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Monday - Friday</td>
+                                <td>09:00 AM - 06:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Saturday</td>
+                                <td>10:00 AM - 04:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Sunday</td>
+                                <td>Closed</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </aside>
+            </section>
+        </main>
 
-            <form action="contact.html" method="post">
-                
-                <div>
-                    <label for="full-name">Full Name:</label><br>
-                    <input type="text" id="full-name" name="full_name" required>
-                </div>
-
-                <br>
-
-                <div>
-                    <label for="email-address">Email Address:</label><br>
-                    <input type="email" id="email-address" name="email_address" required>
-                </div>
-
-                <br>
-
-                <div>
-                    <label for="subject">Subject:</label><br>
-                    <input type="text" id="subject" name="subject" required>
-                </div>
-
-                <br>
-
-                <div>
-                    <label for="message">Message:</label><br>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                </div>
-
-                <br>
-
-                <button type="submit">Send Message</button>
-
-            </form>
-        </section>
-
-        <hr>
-
-        <aside>
-            <h2>Support & Location</h2>
-            
-                <img src="https://www.dreamstime.com/modern-collage-pointing-hand-question-mark-doodle-style-faq-symbol-animation-black-screen-concept-video440874898" alt="Photo of office ">
-    
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Day</th>
-                        <th>Opening Hours</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Monday - Friday</td>
-                        <td>09:00 AM - 06:00 PM</td>
-                    </tr>
-                    <tr>
-                        <td>Saturday</td>
-                        <td>10:00 AM - 04:00 PM</td>
-                    </tr>
-                    <tr>
-                        <td>Sunday</td>
-                        <td>Closed</td>
-                    </tr>
-                </tbody>
-            </table>
-        </aside>
-    </main>
-    <hr>
-    <footer>
-        <p>&copy; 2026 Company Name. All rights reserved.</p>
-    </footer>
-
+        <footer class="footer-bar">
+            <p class="footer-note">&copy; 2026 Student Portal System. All rights reserved.</p>
+        </footer>
+    </div>
 </body>
+
 </html>

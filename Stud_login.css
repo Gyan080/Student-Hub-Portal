@@ -1,0 +1,189 @@
+/* Stylesheet for Stud_login.html */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #eef2f6;
+    color: #2a3a4d;
+}
+
+.page-wrapper {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+.header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1f3b54;
+    color: #ffffff;
+    padding: 16px 20px;
+    border-radius: 15px;
+    margin-bottom: 24px;
+}
+
+.header-brand {
+    display: flex;
+    align-items: center;
+}
+
+.brand-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.brand-logo {
+    width: 68px;
+    height: 68px;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 2px solid rgba(255, 255, 255, 0.16);
+}
+
+.brand-name {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    color: #dfe9f3;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.main-content {
+    margin-bottom: 28px;
+}
+
+.form-card {
+    background-color: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 14px 28px rgba(38, 65, 100, 0.12);
+    border: 1px solid rgba(34, 59, 83, 0.08);
+    padding: 28px;
+}
+
+.page-title {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 1.9rem;
+    color: #1d3348;
+}
+
+.form-description {
+    margin: 0 0 24px;
+    color: #556979;
+    line-height: 1.7;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.form-field label {
+    font-weight: bold;
+    color: #2a3a4d;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    border: 1px solid #c4d1de;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 0.96rem;
+    color: #2a3a4d;
+    background-color: #f6f9fc;
+}
+
+.form-field textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+.checkbox-field {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    color: #556979;
+}
+
+.checkbox-field input {
+    width: auto;
+}
+
+.form-button {
+    display: inline-block;
+    padding: 14px 30px;
+    border-radius: 10px;
+    background-color: #2566d9;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.form-button:hover {
+    background-color: #1b52b1;
+}
+
+.footer-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    background-color: #1f3b54;
+    border-radius: 15px;
+    padding: 16px 20px;
+    color: #e4edf8;
+}
+
+.footer-note {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 860px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 620px) {
+    .header-bar,
+    .footer-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+}
