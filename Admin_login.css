@@ -92,21 +92,15 @@ body {
 }
 
 .form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-}
-
-.form-field {
     display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 18px;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: space-between;
 }
 
-.form-field label {
-    font-weight: bold;
-    color: #2a3a4d;
+.form-grid .form-field {
+    flex: 1 1 320px;
+    min-width: 260px;
 }
 
 .form-field input,
@@ -172,7 +166,7 @@ body {
 
 @media (max-width: 860px) {
     .form-grid {
-        grid-template-columns: 1fr;
+        justify-content: center;
     }
 }
 

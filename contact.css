@@ -71,9 +71,15 @@ body {
 }
 
 .contact-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
     gap: 24px;
+    justify-content: space-between;
+}
+
+.contact-grid>div {
+    flex: 1 1 320px;
+    min-width: 260px;
 }
 
 .contact-card,
@@ -192,11 +198,12 @@ body {
 
 @media (max-width: 880px) {
     .contact-grid {
-        grid-template-columns: 1fr;
+        justify-content: center;
     }
 }
 
 @media (max-width: 620px) {
+
     .header-bar,
     .footer-bar {
         flex-direction: column;

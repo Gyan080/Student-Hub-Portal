@@ -92,9 +92,15 @@ body {
 }
 
 .form-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 24px;
+    justify-content: space-between;
+}
+
+.form-grid .form-field {
+    flex: 1 1 320px;
+    min-width: 260px;
 }
 
 .form-field {
@@ -189,11 +195,12 @@ body {
 
 @media (max-width: 860px) {
     .form-grid {
-        grid-template-columns: 1fr;
+        justify-content: center;
     }
 }
 
 @media (max-width: 620px) {
+
     .header-bar,
     .footer-bar {
         flex-direction: column;
