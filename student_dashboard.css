@@ -6,6 +6,31 @@ body {
     color: #2a3a4d;
 }
 
+.menu-button {
+    display: none;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 14px;
+    background-color: #1f3b54;
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+@media (max-width: 900px) {
+    .menu-button {
+        display: block;
+    }
+
+    .dashboard-layout > aside {
+        display: none;
+    }
+
+    .dashboard-layout.menu-open > aside {
+        display: block;
+    }
+}
+
 .page-wrapper {
     max-width: 1150px;
     margin: 0 auto;
