@@ -49,14 +49,14 @@
           </div>
 
           <div class="profile-header">
-            <div class="profile-avatar">JS</div>
+            <div class="profile-avatar" id="student-initials">ST</div>
             <div class="profile-intro">
-              <h2>Jane A. Student</h2>
-              <p>5th Semester • Bachelor of Computer Science</p>
+              <h2 id="student-profile-name">Loading...</h2>
+              <p id="student-profile-course">Loading...</p>
               <div class="info-row">
                 <div class="mini-card">
                   <span>Student ID</span>
-                  <strong>CS-2048</strong>
+                  <strong id="student-profile-id">Loading...</strong>
                 </div>
                 <div class="mini-card">
                   <span>Batch</span>
@@ -69,7 +69,7 @@
           <div class="profile-grid">
             <div class="detail-box">
               <span class="label">College Email ID</span>
-              <strong>jane.student@portal.edu</strong>
+              <strong id="student-profile-email">Loading...</strong>
             </div>
             <div class="detail-box">
               <span class="label">Institute</span>
@@ -99,5 +99,22 @@
     </footer>
   </div>
   <script src="menu.js"></script>
+  <script>
+    var student = JSON.parse(localStorage.getItem("studentUser") || "null");
+
+    if (student) {
+      var studentName = student.name || "Student";
+      document.getElementById("student-profile-name").textContent = studentName;
+      document.getElementById("student-profile-course").textContent = student.department || "Course not provided";
+      document.getElementById("student-profile-id").textContent = student.studentId || "Not provided";
+      document.getElementById("student-profile-email").textContent = student.email || "Not provided";
+      document.getElementById("student-initials").textContent = studentName
+        .split(" ")
+        .map(function (namePart) { return namePart.charAt(0); })
+        .slice(0, 2)
+        .join("")
+        .toUpperCase();
+    }
+  </script>
 </body>
 </html>

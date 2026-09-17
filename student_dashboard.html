@@ -56,11 +56,11 @@
               <div class="profile-card-row">
                 <div class="profile-card">
                   <span class="profile-label">Name</span>
-                  <strong>Jane A. Student</strong>
+                  <strong id="student-name">Loading...</strong>
                 </div>
                 <div class="profile-card">
-                  <span class="profile-label">Semester</span>
-                  <strong>5th Semester</strong>
+                  <span class="profile-label">Student ID / Roll Number</span>
+                  <strong id="student-id">Loading...</strong>
                 </div>
               </div>
             </div>
@@ -69,11 +69,11 @@
           <div class="profile-grid">
             <div class="profile-box">
               <div class="box-label">College Email ID</div>
-              <div class="box-detail">jane.student@portal.edu</div>
+              <div class="box-detail" id="student-email">Loading...</div>
             </div>
             <div class="profile-box">
               <div class="box-label">Course</div>
-              <div class="box-detail">Bachelor of Computer Science</div>
+              <div class="box-detail" id="student-department">Loading...</div>
             </div>
             <div class="profile-box">
               <div class="box-label">Institute</div>
@@ -97,5 +97,15 @@
     </footer>
   </div>
   <script src="menu.js"></script>
+  <script>
+    var student = JSON.parse(localStorage.getItem("studentUser") || "null");
+
+    if (student) {
+      document.getElementById("student-name").textContent = student.name || "Not provided";
+      document.getElementById("student-id").textContent = student.studentId || "Not provided";
+      document.getElementById("student-email").textContent = student.email || "Not provided";
+      document.getElementById("student-department").textContent = student.department || "Not provided";
+    }
+  </script>
 </body>
 </html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="student_dashboard.css">
+</head>
+<body>
+  <div class="page-wrapper">
+    <header class="header-bar">
+      <div class="header-brand">
+        <a href="index.html" class="brand-link">
+          <img src="Images/Screenshot 2026-07-14 215638.png" alt="Portal Logo" class="brand-logo">
+          <span class="brand-name">Student Portal</span>
+        </a>
+      </div>
+      <nav class="nav-links">
+        <a href="about.html">About</a>
+        <a href="faqs.html">FAQs</a>
+        <a href="contact.html">Contact</a>
+        <a href="Login.html">Login</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="profile">
+        <header>
+          <h2>Admin Dashboard</h2>
+          <p>Current administrator information</p>
+        </header>
+        <article>
+          <div class="profile-grid">
+            <div class="profile-box">
+              <div class="box-label">Name</div>
+              <div class="box-detail" id="admin-name">Loading...</div>
+            </div>
+            <div class="profile-box">
+              <div class="box-label">Campus Role</div>
+              <div class="box-detail" id="admin-role">Loading...</div>
+            </div>
+            <div class="profile-box">
+              <div class="box-label">Official University Email</div>
+              <div class="box-detail" id="admin-email">Loading...</div>
+            </div>
+            <div class="profile-box">
+              <div class="box-label">Department</div>
+              <div class="box-detail" id="admin-department">Loading...</div>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer-bar">
+      <p class="footer-note">Admin Dashboard</p>
+      <p class="footer-note">Contact us: xxxxx xxxxx</p>
+    </footer>
+  </div>
+  <script>
+    var admin = JSON.parse(localStorage.getItem("adminUser") || "null");
+
+    if (admin) {
+      document.getElementById("admin-name").textContent = admin.name || "Not provided";
+      document.getElementById("admin-role").textContent = admin.role || "Not provided";
+      document.getElementById("admin-email").textContent = admin.email || "Not provided";
+      document.getElementById("admin-department").textContent = admin.department || "Not provided";
+    }
+  </script>
+</body>
+</html>
