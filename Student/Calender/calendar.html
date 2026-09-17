@@ -1,136 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Academic Calendar</title>
+  <meta name="description" content="Academic Calendar & Examination Schedule - CHARUSAT Portal.">
+  <title>Academic Calendar - CHARUSAT Portal</title>
   <link rel="stylesheet" href="calendar.css">
 </head>
+
 <body>
   <div class="page-wrapper">
+    <!-- Header Navigation (PDF Unit 2.9 & 2.18) -->
     <header class="header-bar">
       <div class="header-brand">
-        <a href="student_dashboard.html" class="brand-link">
-          <img src="Images/Screenshot 2026-07-14 215638.png" alt="Portal Logo" class="brand-logo">
-          <span class="brand-name">Student Portal</span>
+        <a href="../../index.html" class="brand-link">
+          <img src="../../Images/Screenshot 2026-07-14 215638.png" alt="University Logo" class="brand-logo">
+          <span class="brand-name">STUDENT PORTAL</span>
         </a>
       </div>
       <nav class="nav-links">
-        <a href="about.html">About</a>
-        <a href="faqs.html">FAQs</a>
-        <a href="contact.html">Contact</a>
-        <a href="Login.html">Login</a>
+        <a href="../../index.html" class="nav-link">Home</a>
+        <a href="../../about.html" class="nav-link">About</a>
+        <a href="../../faqs.html" class="nav-link">FAQs</a>
+        <a href="../../contact.html" class="nav-link">Contact</a>
+        <a href="../../Login.html" class="nav-btn logout-btn">Logout &rarr;</a>
       </nav>
     </header>
 
+    <!-- Dashboard Layout Grid (PDF Unit 2.19) -->
     <div class="dashboard-layout">
-      <aside class="side-panel">
-        <nav>
-          <h2>Menu</h2>
-          <ul>
-            <li><a href="profile.html">Profile Page</a></li>
-            <li><a href="event.html">Events Page</a></li>
-            <li class="active"><a href="calendar.html">Calendar</a></li>
-            <li><a href="attendance.html">Attendance Tracker</a></li>
-            <li><a href="fee.html">Fee Information</a></li>
-            <li><a href="student_dashboard.html">Dashboard</a></li>
+      <!-- Sidebar Navigation -->
+      <aside class="dashboard-sidebar">
+        <div class="sidebar-user-card">
+          <div class="user-avatar" id="avatar-initials">ST</div>
+          <div class="user-meta">
+            <strong class="user-name" id="sidebar-user-name">Loading...</strong>
+            <span class="user-role" id="sidebar-user-id">Student ID</span>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <h2 class="sidebar-heading">PORTAL MENU</h2>
+          <ul class="sidebar-menu-list">
+            <li><a href="../DashBoard/student_dashboard.html" class="sidebar-link"><span>📊</span> Overview Dashboard</a></li>
+            <li><a href="../Profile/profile.html" class="sidebar-link"><span>👤</span> Student Profile</a></li>
+            <li><a href="../Attendance/attendance.html" class="sidebar-link"><span>📅</span> Attendance Tracker</a></li>
+            <li><a href="../Exam_Result/exam_result.html" class="sidebar-link"><span>📝</span> Exam Results</a></li>
+            <li><a href="calendar.html" class="sidebar-link active"><span>📆</span> Academic Calendar</a></li>
+            <li><a href="../Event/event.html" class="sidebar-link"><span>🎉</span> Campus Events</a></li>
+            <li><a href="../Fee/fee.html" class="sidebar-link"><span>💳</span> Fee Information</a></li>
           </ul>
         </nav>
+
+        <div class="sidebar-notice">
+          <span class="notice-mini-tag">EXAM NOTICE</span>
+          <p>Mid-Semester theory exams commence from 10th October 2026.</p>
+        </div>
       </aside>
 
-      <main class="content-panel">
-        <section class="panel">
-          <div class="panel-heading">
-            <div>
-              <p class="eyebrow">Schedule View</p>
-              <h1>Academic Calendar</h1>
-            </div>
-            <button class="primary-btn">Month View</button>
+      <!-- Main Content Panel -->
+      <main class="dashboard-main">
+        <!-- Banner Header -->
+        <section class="welcome-banner">
+          <div class="banner-text">
+            <div class="card-header-tag">SCHEDULE & TIMETABLE</div>
+            <h1 class="banner-title">Academic Year Calendar 2026-2027</h1>
+            <p class="banner-subtitle">Semester 3 &bull; Term dates, holidays, and examination schedules</p>
           </div>
-
-          <div class="calendar-wrapper">
-            <div class="calendar-header">
-              <button class="nav-btn">&lt;</button>
-              <h2>August 2026</h2>
-              <button class="nav-btn">&gt;</button>
-            </div>
-
-            <div class="calendar-grid">
-              <span>Sun</span>
-              <span>Mon</span>
-              <span>Tue</span>
-              <span>Wed</span>
-              <span>Thu</span>
-              <span>Fri</span>
-              <span>Sat</span>
-
-              <div class="day muted">26</div>
-              <div class="day muted">27</div>
-              <div class="day muted">28</div>
-              <div class="day muted">29</div>
-              <div class="day muted">30</div>
-              <div class="day muted">31</div>
-              <div class="day">1</div>
-
-              <div class="day">2</div>
-              <div class="day">3</div>
-              <div class="day">4</div>
-              <div class="day">5</div>
-              <div class="day event">6</div>
-              <div class="day">7</div>
-              <div class="day">8</div>
-
-              <div class="day">9</div>
-              <div class="day event">10</div>
-              <div class="day">11</div>
-              <div class="day">12</div>
-              <div class="day">13</div>
-              <div class="day">14</div>
-              <div class="day">15</div>
-
-              <div class="day">16</div>
-              <div class="day">17</div>
-              <div class="day event active">18</div>
-              <div class="day">19</div>
-              <div class="day">20</div>
-              <div class="day">21</div>
-              <div class="day">22</div>
-
-              <div class="day">23</div>
-              <div class="day">24</div>
-              <div class="day">25</div>
-              <div class="day">26</div>
-              <div class="day">27</div>
-              <div class="day">28</div>
-              <div class="day">29</div>
-
-              <div class="day">30</div>
-              <div class="day">31</div>
-              <div class="day muted">1</div>
-              <div class="day muted">2</div>
-              <div class="day muted">3</div>
-              <div class="day muted">4</div>
-              <div class="day muted">5</div>
-            </div>
-          </div>
-
-          <div class="event-summary">
-            <h3>Important Dates</h3>
-            <ul>
-              <li><span>06 Aug</span> Sports Day</li>
-              <li><span>10 Aug</span> Faculty Workshop</li>
-              <li><span>18 Aug</span> Tech Fest</li>
-            </ul>
+          <div class="banner-actions">
+            <button type="button" class="btn btn-primary" onclick="window.print()">Print Calendar &rarr;</button>
           </div>
         </section>
+
+        <!-- Interactive Calendar Grid Panel -->
+        <section class="dashboard-panel">
+          <div class="panel-header-bar">
+            <div class="calendar-controls">
+              <button type="button" class="btn btn-secondary cal-nav-btn" id="prev-month-btn">&larr; Prev</button>
+              <h2 id="calendar-month-title">October 2026</h2>
+              <button type="button" class="btn btn-secondary cal-nav-btn" id="next-month-btn">Next &rarr;</button>
+            </div>
+            <span class="count-tag">Semester Term</span>
+          </div>
+
+          <!-- Calendar Grid (PDF Unit 2.19 Grid) -->
+          <div class="calendar-container">
+            <div class="calendar-weekdays">
+              <div>MON</div>
+              <div>TUE</div>
+              <div>WED</div>
+              <div>THU</div>
+              <div>FRI</div>
+              <div>SAT</div>
+              <div>SUN</div>
+            </div>
+
+            <div class="calendar-days" id="calendar-days-grid">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </section>
+
+        <!-- Upcoming Important Dates & Schedule Table -->
+        <div class="schedule-split-grid">
+          <section class="dashboard-panel">
+            <div class="panel-header-bar">
+              <h2>Upcoming Academic Deadlines</h2>
+              <span class="count-tag gold-tag">Priority</span>
+            </div>
+            <div class="notice-items-stack">
+              <article class="notice-item">
+                <span class="notice-date">05 OCT 2026</span>
+                <h3>Project Phase-1 Submission</h3>
+                <p>ITUE203 Web Development lab project synopsis and GitHub repo link submission on LMS.</p>
+              </article>
+
+              <article class="notice-item">
+                <span class="notice-date">10 OCT &ndash; 17 OCT 2026</span>
+                <h3>Mid-Semester Theory Exams</h3>
+                <p>Theory examinations for all Semester 3 courses. Reporting time: 09:30 AM at Block C.</p>
+              </article>
+
+              <article class="notice-item">
+                <span class="notice-date">28 OCT &ndash; 04 NOV 2026</span>
+                <h3>Diwali & Semester Break</h3>
+                <p>University academic holiday. Campus administrative offices resume on 05 November.</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="dashboard-panel">
+            <div class="panel-header-bar">
+              <h2>Weekly Class Schedule Summary</h2>
+              <span class="count-tag">Classroom 302</span>
+            </div>
+            <div class="table-container">
+              <table class="brutalist-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Time Slot</th>
+                    <th scope="col">Monday - Wednesday</th>
+                    <th scope="col">Thursday - Friday</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>09:00 - 11:00</strong></td>
+                    <td>Web Dev (Lab C2)</td>
+                    <td>Data Structures (Lab C4)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>11:15 - 01:15</strong></td>
+                    <td>Database Systems</td>
+                    <td>Operating Systems</td>
+                  </tr>
+                  <tr>
+                    <td><strong>02:00 - 04:00</strong></td>
+                    <td>Prof. Communication</td>
+                    <td>Self Study / Library</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
       </main>
     </div>
 
+    <!-- Footer Bar -->
     <footer class="footer-bar">
-      <p class="footer-note">Student Portal Dashboard</p>
-      <p class="footer-note">Contact us: xxxxx xxxxx</p>
+      <div class="footer-left">
+        <p class="footer-title"><strong>CHARUSAT Student Hub Portal</strong></p>
+        <p class="footer-note">&copy; 2026 Department of Information Technology. All Rights Reserved.</p>
+      </div>
+      <div class="footer-right">
+        <a href="../../index.html">Home</a>
+        <a href="../../about.html">About</a>
+        <a href="../../faqs.html">FAQs</a>
+        <a href="../../contact.html">Support</a>
+        <a href="../../Login.html">Logout</a>
+      </div>
     </footer>
   </div>
-  <script src="menu.js"></script>
+
+  <script src="../DashBoard/menu.js"></script>
+  <script>
+    // PDF Unit 4 & 5: Interactive Calendar Engine
+    document.addEventListener("DOMContentLoaded", function () {
+      var currentYear = 2026;
+      var currentMonth = 9; // 0-indexed: 9 = October
+
+      var monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+
+      var specialEvents = {
+        "2026-9-5": { title: "Project Due", type: "gold" },
+        "2026-9-10": { title: "Mid-Term", type: "crimson" },
+        "2026-9-12": { title: "Exam IT204", type: "crimson" },
+        "2026-9-15": { title: "Exam IT205", type: "crimson" },
+        "2026-9-17": { title: "Exam IT206", type: "crimson" },
+        "2026-9-28": { title: "Diwali Break", type: "green" },
+        "2026-9-29": { title: "Holiday", type: "green" },
+        "2026-9-30": { title: "Holiday", type: "green" },
+        "2026-9-31": { title: "Holiday", type: "green" }
+      };
+
+      var titleEl = document.getElementById("calendar-month-title");
+      var gridEl = document.getElementById("calendar-days-grid");
+      var prevBtn = document.getElementById("prev-month-btn");
+      var nextBtn = document.getElementById("next-month-btn");
+
+      function renderCalendar() {
+        if (!gridEl || !titleEl) return;
+
+        titleEl.textContent = monthNames[currentMonth] + " " + currentYear;
+        gridEl.innerHTML = "";
+
+        var firstDayIndex = new Date(currentYear, currentMonth, 1).getDay();
+        // Convert Sunday=0 to Monday=0 format
+        var offset = firstDayIndex === 0 ? 6 : firstDayIndex - 1;
+        var totalDays = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+        // Prev month padding
+        var prevMonthDays = new Date(currentYear, currentMonth, 0).getDate();
+        for (var i = offset - 1; i >= 0; i--) {
+          var padCell = document.createElement("div");
+          padCell.className = "cal-day muted";
+          padCell.textContent = prevMonthDays - i;
+          gridEl.appendChild(padCell);
+        }
+
+        // Current month days
+        for (var d = 1; d <= totalDays; d++) {
+          var dayCell = document.createElement("div");
+          dayCell.className = "cal-day";
+
+          var dayNum = document.createElement("span");
+          dayNum.className = "cal-day-number";
+          dayNum.textContent = d;
+          dayCell.appendChild(dayNum);
+
+          var eventKey = currentYear + "-" + currentMonth + "-" + d;
+          if (specialEvents[eventKey]) {
+            var ev = specialEvents[eventKey];
+            var tag = document.createElement("span");
+            tag.className = "cal-event-tag tag-" + ev.type;
+            tag.textContent = ev.title;
+            dayCell.appendChild(tag);
+            dayCell.classList.add("has-event");
+          }
+
+          if (currentYear === 2026 && currentMonth === 9 && d === 17) {
+            dayCell.classList.add("today-cell");
+          }
+
+          gridEl.appendChild(dayCell);
+        }
+      }
+
+      renderCalendar();
+
+      if (prevBtn) {
+        prevBtn.addEventListener("click", function () {
+          currentMonth--;
+          if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+          }
+          renderCalendar();
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener("click", function () {
+          currentMonth++;
+          if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+          }
+          renderCalendar();
+        });
+      }
+    });
+  </script>
 </body>
+
 </html>
+

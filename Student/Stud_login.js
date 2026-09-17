@@ -1,15 +1,39 @@
-var form = document.querySelector("form");
+// ===== Student Sign In Handler (PDF Unit 3.1 & 4.5 & 5.1) =====
+document.addEventListener("DOMContentLoaded", function () {
+  const loginForm = document.getElementById("studentLoginForm");
+  if (!loginForm) return;
 
-form.onsubmit = function (event) {
+  loginForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
-    var student = {
-        name: form.elements.fullname.value.trim(),
-        studentId: form.elements.student_id.value.trim(),
-        email: form.elements.email.value.trim(),
-        department: form.elements.department.value
+    const studentId = document.getElementById("student_id").value.trim();
+    const fullname = document.getElementById("fullname").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const department = document.getElementById("department").value;
+
+    if (!studentId || !fullname || !email || !department) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+
+    // PDF Unit 3.1 Regex testing
+    const idRegex = /^\d{2}[A-Za-z]{3}\d{3}$/i;
+    if (!idRegex.test(studentId)) {
+      alert("Please enter a valid Enrollment ID format (e.g. 25dcs080).");
+      document.getElementById("student_id").focus();
+      return;
+    }
+
+    const studentUser = {
+      name: fullname,
+      studentId: studentId.toUpperCase(),
+      email: email,
+      department: department,
+      role: "Student",
+      loginTime: new Date().toLocaleTimeString()
     };
 
-    localStorage.setItem("studentUser", JSON.stringify(student));
-    window.location.href = "student_dashboard.html";
-};
+    localStorage.setItem("studentUser", JSON.stringify(studentUser));
+    window.location.href = "DashBoard/student_dashboard.html";
+  });
+});

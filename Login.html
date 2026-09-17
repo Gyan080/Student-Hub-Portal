@@ -1,56 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Student Portal - Login</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Select your portal login type - CHARUSAT Student & Faculty Authentication Portal.">
+  <title>Portal Gateway - Select Login</title>
   <link rel="stylesheet" href="login.css">
 </head>
+
 <body>
   <div class="page-wrapper">
+    <!-- Header Navigation -->
     <header class="header-bar">
       <div class="header-brand">
         <a href="index.html" class="brand-link">
-          <img src="Images/Screenshot 2026-07-14 215638.png" alt="Portal Logo" class="brand-logo">
-          <span class="brand-name">Student Portal</span>
+          <img src="Images/Screenshot 2026-07-14 215638.png" alt="University Logo" class="brand-logo">
+          <span class="brand-name">STUDENT PORTAL</span>
         </a>
       </div>
       <nav class="nav-links">
-        <a href="about.html">About</a>
-        <a href="faqs.html">FAQs</a>
-        <a href="contact.html">Contact</a>
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="faqs.html" class="nav-link">FAQs</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="Login.html" class="nav-btn">Portal Login &rarr;</a>
       </nav>
     </header>
 
+    <!-- Main Content -->
     <main class="main-content">
       <section class="login-intro">
-        <h2>Login to Your Account</h2>
-        <p>Select your account type and continue to the appropriate login page.</p>
+        <div class="card-header-tag">AUTHENTICATION GATEWAY</div>
+        <h1 class="login-heading">Choose Your Portal Account</h1>
+        <p class="login-sub">Please select whether you are logging in as an enrolled Student or an Authorized Staff Administrator.</p>
       </section>
 
-      <section class="login-cards">
+      <section class="login-cards-grid">
+        <!-- Student Option Card -->
         <article class="login-card">
-          <img src="Images/pngtree-online-education-edutainment-vector-learning-vector-png-image_9809957.png" alt="Student Login">
+          <div class="role-badge-bar">
+            <span class="role-badge">STUDENT LOGIN</span>
+          </div>
+          <div class="card-img-wrap">
+            <img src="Images/pngtree-online-education-edutainment-vector-learning-vector-png-image_9809957.png" alt="Student online learning illustration">
+          </div>
           <div class="login-card-body">
-            <h3 class="login-card-title">Student Login</h3>
-            <p class="login-card-text">Use this option if you are a student ready to access your classes and portal features.</p>
-            <a href="Stud_login.html" class="login-button">Login</a>
+            <h2 class="login-card-title">Student Account</h2>
+            <p class="login-card-text">Log in to view course lectures, real-time attendance percentage, exam grades, timetable, and campus fees.</p>
+            <div class="action-stack">
+              <a href="Student/Stud_login.html" class="btn btn-primary">Student Sign In &rarr;</a>
+              <a href="Student/regis_stud.html" class="btn btn-secondary">New Student Registration</a>
+            </div>
           </div>
         </article>
 
+        <!-- Admin Option Card -->
         <article class="login-card">
-          <img src="Images/Screenshot 2026-08-02 155746.png">
+          <div class="role-badge-bar">
+            <span class="role-badge badge-admin">FACULTY / ADMIN</span>
+          </div>
+          <div class="card-img-wrap">
+            <img src="Images/Screenshot 2026-08-02 155746.png" alt="Admin operations illustration">
+          </div>
           <div class="login-card-body">
-            <h3 class="login-card-title">Admin Login</h3>
-            <p class="login-card-text">Choose this option if you are an admin managing student records and portal settings.</p>
-            <a href="Admin_login.html" class="login-button">Login</a>
+            <h2 class="login-card-title">Staff / Admin Account</h2>
+            <p class="login-card-text">Manage institutional records, student enrollments, exam result publications, and departmental notifications.</p>
+            <div class="action-stack">
+              <a href="Admin/Admin_login.html" class="btn btn-primary">Admin Sign In &rarr;</a>
+              <a href="Admin/regis_admin.html" class="btn btn-secondary">Admin Registration</a>
+            </div>
           </div>
         </article>
       </section>
     </main>
 
+    <!-- Footer Bar -->
     <footer class="footer-bar">
-      <p class="footer-note">&copy; 2026 Student Portal System. All Rights Reserved.</p>
-      <p class="footer-note">Contact us: xxxxx xxxxx</p>
+      <div class="footer-left">
+        <p class="footer-title"><strong>CHARUSAT Student Hub Portal</strong></p>
+        <p class="footer-note">&copy; 2026 Department of Information Technology. All Rights Reserved.</p>
+      </div>
+      <div class="footer-right">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="faqs.html">FAQs</a>
+        <a href="contact.html">Contact</a>
+      </div>
     </footer>
   </div>
 </body>
+
 </html>

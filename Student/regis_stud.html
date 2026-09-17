@@ -1,110 +1,146 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Student Portal - Student Registration</title>
-    <link rel="stylesheet" href="regis_stud.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Register new student account - CHARUSAT Student Portal.">
+  <title>Student Registration - Student Portal</title>
+  <link rel="stylesheet" href="regis_stud.css">
 </head>
+
 <body>
-    <div class="page-wrapper">
-        <header class="header-bar">
-            <div class="header-brand">
-                <a href="index.html" class="brand-link">
-                    <img src="Images/Screenshot 2026-07-14 215638.png" alt="Portal Logo" class="brand-logo">
-                    <span class="brand-name">Student Portal</span>
-                </a>
+  <div class="page-wrapper">
+    <!-- Header Navigation -->
+    <header class="header-bar">
+      <div class="header-brand">
+        <a href="../index.html" class="brand-link">
+          <img src="../Images/Screenshot 2026-07-14 215638.png" alt="University Logo" class="brand-logo">
+          <span class="brand-name">STUDENT PORTAL</span>
+        </a>
+      </div>
+      <nav class="nav-links">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="../about.html" class="nav-link">About</a>
+        <a href="../faqs.html" class="nav-link">FAQs</a>
+        <a href="../contact.html" class="nav-link">Contact</a>
+        <a href="Stud_login.html" class="nav-btn">Student Login &rarr;</a>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <section class="form-card">
+        <div class="card-header-tag">NEW ENROLLMENT</div>
+        <h1 class="page-title">Student Registration</h1>
+        <p class="form-description">Please fill in your academic and personal information to register your student profile.</p>
+
+        <form id="studentRegForm">
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="firstname">First Name</label>
+              <input type="text" id="firstname" name="f_name" placeholder="e.g. Riya" required>
             </div>
-            <nav class="nav-links">
-                <a href="about.html">About</a>
-                <a href="faqs.html">FAQs</a>
-                <a href="contact.html">Contact</a>
-                <a href="login.html">Login</a>
-            </nav>
-        </header>
 
-        <main class="main-content">
-            <section class="form-card">
-                <h1 class="page-title">Student Registration</h1>
-                <p class="form-description">Fill in your details to create a student account and access portal services.</p>
-                <form>
-                    <div class="form-grid">
-                        <div class="form-field">
-                            <label for="firstname">First Name</label>
-                            <input type="text" id="firstname" name="f_name" placeholder="First name">
-                        </div>
-                        <div class="form-field">
-                            <label for="middlename">Middle Name</label>
-                            <input type="text" id="middlename" name="m_name" placeholder="Middle name">
-                        </div>
-                        <div class="form-field">
-                            <label for="lastname">Last Name</label>
-                            <input type="text" id="lastname" name="L_name" placeholder="Last name">
-                        </div>
-                        <div class="form-field">
-                            <label for="college_id">Enrollment ID</label>
-                            <input type="text" id="college_id" name="college_id" placeholder="e.g. 25dcs080">
-                        </div>
-                        <div class="form-field">
-                            <label for="dob">Date of Birth</label>
-                            <input type="date" id="dob" name="dob">
-                        </div>
-                        <div class="form-field">
-                            <label>Gender</label>
-                            <div>
-                                <input type="radio" id="male" name="gender" value="male">
-                                <label for="male">Male</label>
-                                <input type="radio" id="female" name="gender" value="female" style="margin-left: 16px;">
-                                <label for="female">Female</label>
-                                <input type="radio" id="other" name="gender" value="other" style="margin-left: 16px;">
-                                <label for="other">Other</label>
-                            </div>
-                        </div>
-                        <div class="form-field">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="name@charusat.edu.in">
-                        </div>
-                        <div class="form-field">
-                            <label for="phone">Phone</label>
-                            <input type="tel" id="phone" name="phone" maxlength="10" placeholder="10-digit number">
-                        </div>
-                        <div class="form-field">
-                            <label for="address">Address</label>
-                            <input type="text" id="address" name="address" placeholder="Your address">
-                        </div>
-                        <div class="form-field">
-                            <label for="course">Course</label>
-                            <select id="course" name="course">
-                                <option value="">Select Course</option>
-                                <option value="CSE">Computer Science</option>
-                                <option value="CE">Computer Engineering</option>
-                                <option value="IT">Information Technology</option>
-                                <option value="AI-ML">AI-ML</option>
-                                <option value="CIVIL">Civil</option>
-                                <option value="MECH">Mechanical</option>
-                            </select>
-                        </div>
-                        <div class="form-field">
-                            <label for="year">Year of Study</label>
-                            <select id="year" name="year">
-                                <option value="">Select Year</option>
-                                <option value="1">1st Year</option>
-                                <option value="2">2nd Year</option>
-                                <option value="3">3rd Year</option>
-                                <option value="4">4th Year</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-actions">
-                        <button type="submit" class="form-button">Submit</button>
-                        <button type="reset" class="form-button-secondary">Cancel</button>
-                    </div>
-                </form>
-            </section>
-        </main>
+            <div class="form-field">
+              <label for="middlename">Middle Name</label>
+              <input type="text" id="middlename" name="m_name" placeholder="e.g. Mukeshbhai" required>
+            </div>
 
-        <footer class="footer-bar">
-            <p class="footer-note">&copy; 2026 Student Portal System. All Rights Reserved.</p>
-        </footer>
-    </div>
-    <script src="regis_stud.js"></script>
+            <div class="form-field">
+              <label for="lastname">Last Name</label>
+              <input type="text" id="lastname" name="L_name" placeholder="e.g. Shah" required>
+            </div>
+
+            <div class="form-field">
+              <label for="college_id">Enrollment ID</label>
+              <input type="text" id="college_id" name="college_id" placeholder="e.g. 25dcs080" required>
+              <small class="field-hint">Format: 2 digits, 3 letters, 3 digits</small>
+            </div>
+
+            <div class="form-field">
+              <label for="dob">Date of Birth</label>
+              <input type="date" id="dob" name="dob" required>
+            </div>
+
+            <div class="form-field">
+              <label>Gender</label>
+              <div class="radio-group">
+                <label class="radio-label">
+                  <input type="radio" id="male" name="gender" value="male" checked> Male
+                </label>
+                <label class="radio-label">
+                  <input type="radio" id="female" name="gender" value="female"> Female
+                </label>
+                <label class="radio-label">
+                  <input type="radio" id="other" name="gender" value="other"> Other
+                </label>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="email">University Email</label>
+              <input type="email" id="email" name="email" placeholder="e.g. 25dcs080@charusat.edu.in" required>
+            </div>
+
+            <div class="form-field">
+              <label for="phone">Mobile Phone (10 digits)</label>
+              <input type="tel" id="phone" name="phone" maxlength="10" placeholder="e.g. 9876543210" required>
+            </div>
+
+            <div class="form-field full-width">
+              <label for="address">Residential Address</label>
+              <input type="text" id="address" name="address" placeholder="Hostel / City Address" required>
+            </div>
+
+            <div class="form-field">
+              <label for="course">Program / Department</label>
+              <select id="course" name="course" required>
+                <option value="" disabled selected>Select Course</option>
+                <option value="Information Technology">Information Technology (IT)</option>
+                <option value="Computer Science">Computer Science (CSE)</option>
+                <option value="Computer Engineering">Computer Engineering (CE)</option>
+                <option value="AI & Machine Learning">AI & Machine Learning</option>
+                <option value="Civil Engineering">Civil Engineering</option>
+                <option value="Mechanical Engineering">Mechanical Engineering</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="year">Year of Study</label>
+              <select id="year" name="year" required>
+                <option value="" disabled selected>Select Year</option>
+                <option value="1st Year (Semester 1 & 2)">1st Year</option>
+                <option value="2nd Year (Semester 3 & 4)">2nd Year</option>
+                <option value="3rd Year (Semester 5 & 6)">3rd Year</option>
+                <option value="4th Year (Semester 7 & 8)">4th Year</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Submit Registration &rarr;</button>
+            <button type="reset" class="btn btn-secondary">Reset Form</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <!-- Footer Bar -->
+    <footer class="footer-bar">
+      <div class="footer-left">
+        <p class="footer-title"><strong>CHARUSAT Student Hub Portal</strong></p>
+        <p class="footer-note">&copy; 2026 Department of Information Technology. All Rights Reserved.</p>
+      </div>
+      <div class="footer-right">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="Stud_login.html">Student Login</a>
+        <a href="../contact.html">Contact</a>
+      </div>
+    </footer>
+  </div>
+  <script src="regis_stud.js"></script>
 </body>
+
 </html>

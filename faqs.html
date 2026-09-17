@@ -1,62 +1,109 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-	<title>FAQs</title>
-	<link rel="stylesheet" href="faqs.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Frequently Asked Questions - CHARUSAT Student Portal support and help guide.">
+  <title>Frequently Asked Questions - Student Portal</title>
+  <link rel="stylesheet" href="faqs.css">
 </head>
 
 <body>
-	<div class="page-wrapper">
-		<header class="header-bar">
-			<div class="header-brand">
-				<a href="index.html" class="brand-link">
-					<img src="Images/Screenshot 2026-07-14 215638.png"
-						alt="Portal Logo" class="brand-logo">
-					<span class="brand-name">Student Portal</span>
-				</a>
-			</div>
-			<nav class="nav-links">
-				<a href="about.html">About</a>
-				<a href="contact.html">Contact</a>
-				<a href="login.html">Login</a>
-			</nav>
-		</header>
+  <div class="page-wrapper">
+    <!-- Header Navigation -->
+    <header class="header-bar">
+      <div class="header-brand">
+        <a href="index.html" class="brand-link">
+          <img src="Images/Screenshot 2026-07-14 215638.png" alt="University Logo" class="brand-logo">
+          <span class="brand-name">STUDENT PORTAL</span>
+        </a>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="faqs.html" class="nav-link active">FAQs</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="Login.html" class="nav-btn">Portal Login &rarr;</a>
+      </nav>
+    </header>
 
-		<main class="main-content">
-			<section class="faq-card">
-				<h2 class="faq-title">Frequently Asked Questions</h2>
-				<p class="faq-text">Find quick answers for students and staff. If you need more help, use the Contact
-					page.</p>
-				<div class="faq-item">
-					<button class="faq-question" type="button">How do I register as a student? <span>+</span></button>
-					<p class="faq-answer">You can register by selecting the Register link on the homepage and completing the student form.</p>
-				</div>
-				<div class="faq-item">
-					<button class="faq-question" type="button">How do I reset my password? <span>+</span></button>
-					<p class="faq-answer">Use the Login page and follow the password recovery instructions or contact support for assistance.</p>
-				</div>
-				<div class="faq-item">
-					<button class="faq-question" type="button">Where can I view my courses? <span>+</span></button>
-					<p class="faq-answer">After logging in, your dashboard lists current courses and schedules.</p>
-				</div>
-				<div class="faq-item">
-					<button class="faq-question" type="button">Who do I contact for technical help? <span>+</span></button>
-					<p class="faq-answer">Contact the portal support team via the Contact page for technical assistance.</p>
-				</div>
-				<div class="faq-item">
-					<button class="faq-question" type="button">How do I update my profile information? <span>+</span></button>
-					<p class="faq-answer">Log in and go to your profile settings to update personal and contact details.</p>
-				</div>
-			</section>
-		</main>
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <section class="faq-card">
+        <div class="card-header-tag">HELP & SUPPORT</div>
+        <h1 class="faq-title">Frequently Asked Questions</h1>
+        <p class="faq-text">Everything you need to know about the portal, registration, academic attendance, and semester grade records.</p>
 
-		<footer class="footer-bar">
-			<p class="footer-note">&copy; 2026 Student Portal System. All Rights Reserved.</p>
-			<p class="footer-note">Contact us: xxxxx xxxxx | counselling@portal.edu</p>
-		</footer>
-	</div>
-	<script src="faqs.js"></script>
+        <div class="faq-container" id="faqList">
+          <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>How do I register as a new student?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Navigate to the homepage and select <strong>Register New Student</strong> under Student Access. Fill in your full name, student ID / roll number, university email, and mobile number. Once registered, you can log in directly.</p>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>How is my attendance percentage calculated?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Attendance is tracked per enrolled course subject based on total classes conducted versus classes attended. A minimum of <strong>75% attendance</strong> is mandatory for university examination eligibility.</p>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Where can I download my examination results and marksheets?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Log in to your student account, go to the <strong>Exam Result</strong> section in the dashboard sidebar, and view your semester course marks, GPA, and distinction status.</p>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>How do I pay tuition fees and get payment receipts?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Access the <strong>Fee Information</strong> page from the dashboard menu to see your current tuition fee balance, semester breakdown, and download payment confirmation receipts.</p>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Who should I contact if I encounter login or profile issues?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>You can submit an inquiry through our <a href="contact.html">Contact Us</a> page or email the campus IT Helpdesk at <code>itdesk@charusat.ac.in</code> during office hours (9:00 AM – 5:00 PM).</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Bar -->
+    <footer class="footer-bar">
+      <div class="footer-left">
+        <p class="footer-title"><strong>CHARUSAT Student Hub Portal</strong></p>
+        <p class="footer-note">&copy; 2026 Department of Information Technology. All Rights Reserved.</p>
+      </div>
+      <div class="footer-right">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Support</a>
+        <a href="Login.html">Portal Login</a>
+      </div>
+    </footer>
+  </div>
+  <script src="faqs.js"></script>
 </body>
 
 </html>

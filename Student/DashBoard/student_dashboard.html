@@ -1,111 +1,263 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>Student Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Student Academic Portal Dashboard - CHARUSAT University.">
+  <title>Student Dashboard - CHARUSAT Portal</title>
   <link rel="stylesheet" href="student_dashboard.css">
 </head>
+
 <body>
   <div class="page-wrapper">
+    <!-- Header Navigation (PDF Unit 2.9 & 2.18) -->
     <header class="header-bar">
       <div class="header-brand">
-        <a href="index.html" class="brand-link">
-          <img src="Images/Screenshot 2026-07-14 215638.png" alt="Portal Logo" class="brand-logo">
-          <span class="brand-name">Student Portal</span>
+        <a href="../../index.html" class="brand-link">
+          <img src="../../Images/Screenshot 2026-07-14 215638.png" alt="University Logo" class="brand-logo">
+          <span class="brand-name">STUDENT PORTAL</span>
         </a>
       </div>
       <nav class="nav-links">
-        <a href="about.html">About</a>
-        <a href="faqs.html">FAQs</a>
-        <a href="contact.html">Contact</a>
-        <a href="login.html">Login</a>
+        <a href="../../index.html" class="nav-link">Home</a>
+        <a href="../../about.html" class="nav-link">About</a>
+        <a href="../../faqs.html" class="nav-link">FAQs</a>
+        <a href="../../contact.html" class="nav-link">Contact</a>
+        <a href="../../Login.html" class="nav-btn logout-btn">Logout &rarr;</a>
       </nav>
     </header>
 
+    <!-- Dashboard Layout Grid (PDF Unit 2.19 Fig 2.5) -->
     <div class="dashboard-layout">
-    <aside>
-      <nav>
-        <h2>Menu</h2>
-        <ul>
-          <li><a href="profile.html">Profile Page</a></li>
-          <li><a href="event.html">Events Page</a></li>
-          <li><a href="calendar.html">Calendar</a></li>
-          <li><a href="attendance.html">Attendance Tracker</a></li>
-          <li><a href="fee.html">Fee Information</a></li>
-          <li><a href="exam_result.html">Exam Result</a></li>
-          <li><a href="Login.html">Logout</a></li>
-        </ul>
-      </nav>
-    </aside>
-
-    <main>
-      <section id="profile">
-        <header>
-          <h2>Profile Page</h2>
-          <p>Profile Management</p>
-        </header>
-        <article>
-          <div class="profile-header">
-            <figure class="profile-photo">
-              <img src="Images/images (1).png" alt="Student Photo">
-              <figcaption>Profile Photo</figcaption>
-            </figure>
-            <div class="profile-intro">
-              <h3>Student Profile</h3>
-              <p>View and manage your key student details here.</p>
-              <div class="profile-card-row">
-                <div class="profile-card">
-                  <span class="profile-label">Name</span>
-                  <strong id="student-name">Loading...</strong>
-                </div>
-                <div class="profile-card">
-                  <span class="profile-label">Student ID / Roll Number</span>
-                  <strong id="student-id">Loading...</strong>
-                </div>
-              </div>
-            </div>
+      <!-- Sidebar Navigation -->
+      <aside class="dashboard-sidebar">
+        <div class="sidebar-user-card">
+          <div class="user-avatar" id="avatar-initials">ST</div>
+          <div class="user-meta">
+            <strong class="user-name" id="sidebar-user-name">Loading...</strong>
+            <span class="user-role" id="sidebar-user-id">Student ID</span>
           </div>
+        </div>
 
-          <div class="profile-grid">
-            <div class="profile-box">
-              <div class="box-label">College Email ID</div>
-              <div class="box-detail" id="student-email">Loading...</div>
-            </div>
-            <div class="profile-box">
-              <div class="box-label">Course</div>
-              <div class="box-detail" id="student-department">Loading...</div>
-            </div>
-            <div class="profile-box">
-              <div class="box-label">Institute</div>
-              <div class="box-detail">Charusat University</div>
-            </div>
-            <div class="profile-box">
-              <div class="box-label">Mobile Number</div>
-              <div class="box-detail">+91 98765 43210</div>
-            </div>
+        <nav class="sidebar-nav">
+          <h2 class="sidebar-heading">PORTAL MENU</h2>
+          <ul class="sidebar-menu-list">
+            <li><a href="student_dashboard.html" class="sidebar-link active"><span>📊</span> Overview Dashboard</a></li>
+            <li><a href="../Profile/profile.html" class="sidebar-link"><span>👤</span> Student Profile</a></li>
+            <li><a href="../Attendance/attendance.html" class="sidebar-link"><span>📅</span> Attendance Tracker</a></li>
+            <li><a href="../Exam_Result/exam_result.html" class="sidebar-link"><span>📝</span> Exam Results</a></li>
+            <li><a href="../Calender/calendar.html" class="sidebar-link"><span>📆</span> Academic Calendar</a></li>
+            <li><a href="../Event/event.html" class="sidebar-link"><span>🎉</span> Campus Events</a></li>
+            <li><a href="../Fee/fee.html" class="sidebar-link"><span>💳</span> Fee Information</a></li>
+          </ul>
+        </nav>
+
+        <div class="sidebar-notice">
+          <span class="notice-mini-tag">SEMESTER 3</span>
+          <p>Academic term: 2026-2027. Mid-term examinations commence next month.</p>
+        </div>
+      </aside>
+
+      <!-- Main Dashboard Content -->
+      <main class="dashboard-main">
+        <!-- Welcome Hero Banner -->
+        <section class="welcome-banner">
+          <div class="banner-text">
+            <div class="card-header-tag">ACADEMIC HUB</div>
+            <h1 class="banner-title">Welcome back, <span id="student-name">Student</span>!</h1>
+            <p class="banner-subtitle">Enrolled in <strong id="student-department">Information Technology</strong> &bull; Enrollment ID: <strong id="student-id">25dcs080</strong></p>
           </div>
+          <div class="banner-actions">
+            <a href="../Attendance/attendance.html" class="btn btn-primary">Check Attendance &rarr;</a>
+            <a href="../Exam_Result/exam_result.html" class="btn btn-secondary">View Marksheet</a>
+          </div>
+        </section>
 
-          <p>Keep your profile details accurate to receive the latest campus updates.</p>
-        </article>
-      </section>
-    </main>
+        <!-- KPI Quick Metric Cards (PDF Unit 2.18 & 2.19) -->
+        <section class="metrics-grid">
+          <article class="metric-card">
+            <div class="metric-top">
+              <span class="metric-title">OVERALL ATTENDANCE</span>
+              <span class="kpi-badge green-badge">Eligible (&ge;75%)</span>
+            </div>
+            <div class="metric-main">
+              <span class="metric-number">88.4%</span>
+              <span class="metric-sub">145 / 164 Lectures</span>
+            </div>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar-fill green-fill" style="width: 88.4%;"></div>
+            </div>
+          </article>
+
+          <article class="metric-card">
+            <div class="metric-top">
+              <span class="metric-title">CUMULATIVE CGPA</span>
+              <span class="kpi-badge green-badge">Distinction</span>
+            </div>
+            <div class="metric-main">
+              <span class="metric-number">8.65</span>
+              <span class="metric-sub">Out of 10.00 Scale</span>
+            </div>
+            <p class="metric-hint">Ranked in top 10% of department</p>
+          </article>
+
+          <article class="metric-card">
+            <div class="metric-top">
+              <span class="metric-title">SEMESTER FEE STATUS</span>
+              <span class="kpi-badge green-badge">Clear</span>
+            </div>
+            <div class="metric-main">
+              <span class="metric-number">₹ 0.00</span>
+              <span class="metric-sub">Total Due Outstanding</span>
+            </div>
+            <a href="../Fee/fee.html" class="metric-link">Download Fee Receipt &rarr;</a>
+          </article>
+
+          <article class="metric-card">
+            <div class="metric-top">
+              <span class="metric-title">UPCOMING EXAM</span>
+              <span class="kpi-badge gold-badge">10 Oct</span>
+            </div>
+            <div class="metric-main">
+              <span class="metric-number">ITUE203</span>
+              <span class="metric-sub">Web Dev Frameworks</span>
+            </div>
+            <a href="../Calender/calendar.html" class="metric-link">View Full Timetable &rarr;</a>
+          </article>
+        </section>
+
+        <!-- Enrolled Courses & Notices Grid (PDF Unit 2.6 & 2.9) -->
+        <div class="courses-notices-grid">
+          <!-- Enrolled Courses Table -->
+          <section class="dashboard-panel">
+            <div class="panel-header-bar">
+              <h2>Current Semester Courses</h2>
+              <span class="count-tag">5 Subjects</span>
+            </div>
+            <div class="table-container">
+              <table class="brutalist-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Code</th>
+                    <th scope="col">Subject Title</th>
+                    <th scope="col">Credits</th>
+                    <th scope="col">Attendance</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>ITUE203</strong></td>
+                    <td>Web Development Frameworks</td>
+                    <td>4</td>
+                    <td><span class="tag tag-green">92%</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>ITUE204</strong></td>
+                    <td>Database Management Systems</td>
+                    <td>4</td>
+                    <td><span class="tag tag-green">86%</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>ITUE205</strong></td>
+                    <td>Operating Systems & Linux</td>
+                    <td>4</td>
+                    <td><span class="tag tag-green">84%</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>ITUE206</strong></td>
+                    <td>Data Structures & Algorithms</td>
+                    <td>5</td>
+                    <td><span class="tag tag-green">90%</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>HSUE201</strong></td>
+                    <td>Professional Communication</td>
+                    <td>2</td>
+                    <td><span class="tag tag-green">90%</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Announcements Board -->
+          <section class="dashboard-panel">
+            <div class="panel-header-bar">
+              <h2>Campus Announcements</h2>
+              <span class="count-tag gold-tag">Latest</span>
+            </div>
+            <div class="notice-items-stack">
+              <article class="notice-item">
+                <span class="notice-date">25 SEP 2026</span>
+                <h3>Tech Fest 2026 Registrations Open</h3>
+                <p>Hackathon, Web Design, and Coding sprints registrations are live. Visit the Events portal to register your team.</p>
+              </article>
+
+              <article class="notice-item">
+                <span class="notice-date">18 SEP 2026</span>
+                <h3>Mid-Semester Timetable Published</h3>
+                <p>Check the calendar section for hall allocations and time slots for all Semester 3 theory exams.</p>
+              </article>
+
+              <article class="notice-item">
+                <span class="notice-date">10 SEP 2026</span>
+                <h3>Library Digital Portal Access</h3>
+                <p>IEEE and Springer digital journal access credentials updated for all registered IT department students.</p>
+              </article>
+            </div>
+          </section>
+        </div>
+      </main>
     </div>
 
+    <!-- Footer Bar -->
     <footer class="footer-bar">
-      <p class="footer-note">Student Portal Dashboard</p>
-      <p class="footer-note">Contact us: xxxxx xxxxx</p>
+      <div class="footer-left">
+        <p class="footer-title"><strong>CHARUSAT Student Hub Portal</strong></p>
+        <p class="footer-note">&copy; 2026 Department of Information Technology. All Rights Reserved.</p>
+      </div>
+      <div class="footer-right">
+        <a href="../../index.html">Home</a>
+        <a href="../../about.html">About</a>
+        <a href="../../faqs.html">FAQs</a>
+        <a href="../../contact.html">Support</a>
+        <a href="../../Login.html">Logout</a>
+      </div>
     </footer>
   </div>
+
   <script src="menu.js"></script>
   <script>
+    // PDF Unit 5.1 Object reading from localStorage
     var student = JSON.parse(localStorage.getItem("studentUser") || "null");
 
     if (student) {
-      document.getElementById("student-name").textContent = student.name || "Not provided";
-      document.getElementById("student-id").textContent = student.studentId || "Not provided";
-      document.getElementById("student-email").textContent = student.email || "Not provided";
-      document.getElementById("student-department").textContent = student.department || "Not provided";
+      var name = student.name || "Student";
+      var id = student.studentId || "25DCS080";
+      var dept = student.department || "Information Technology";
+
+      var studentNameEl = document.getElementById("student-name");
+      var sidebarNameEl = document.getElementById("sidebar-user-name");
+      var studentIdEl = document.getElementById("student-id");
+      var sidebarIdEl = document.getElementById("sidebar-user-id");
+      var deptEl = document.getElementById("student-department");
+      var initialsEl = document.getElementById("avatar-initials");
+
+      if (studentNameEl) studentNameEl.textContent = name;
+      if (sidebarNameEl) sidebarNameEl.textContent = name;
+      if (studentIdEl) studentIdEl.textContent = id;
+      if (sidebarIdEl) sidebarIdEl.textContent = id;
+      if (deptEl) deptEl.textContent = dept;
+
+      if (initialsEl) {
+        var parts = name.trim().split(" ");
+        var init = parts[0] ? parts[0].charAt(0) : "S";
+        if (parts.length > 1) init += parts[parts.length - 1].charAt(0);
+        initialsEl.textContent = init.toUpperCase();
+      }
     }
   </script>
 </body>
+
 </html>

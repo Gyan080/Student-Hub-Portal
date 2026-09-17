@@ -1,69 +1,131 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <title>Student Portal</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Collegiate Student Hub Portal - Access course materials, attendance, exam results, and administrative tools.">
+  <title>Student Portal - University Hub</title>
   <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
   <div class="page-wrapper">
+    <!-- Header Navigation -->
     <header class="header-bar">
       <div class="header-brand">
         <a href="index.html" class="brand-link">
-          <img src="Images/Screenshot 2026-07-14 215638.png" alt="Portal Logo"
-            class="brand-logo">
-          <span class="brand-name">Student Portal</span>
+          <img src="Images/Screenshot 2026-07-14 215638.png" alt="University Logo" class="brand-logo">
+          <span class="brand-name">STUDENT PORTAL</span>
         </a>
       </div>
       <nav class="nav-links">
-        <a href="about.html">About</a>
-        <a href="faqs.html">FAQs</a>
-        <a href="contact.html">Contact</a>
-        <a href="login.html">Login</a>
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="faqs.html" class="nav-link">FAQs</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="Login.html" class="nav-btn">Portal Login &rarr;</a>
       </nav>
     </header>
-    
-    <section class="weather-widget-section">
-   <div class="weather-card" id="weather-box">
-     <h3>Campus Weather</h3>
-     <div class="weather-info">
-       <p>Temperature: <strong id="temp">Loading...</strong>°C</p>
-       <p>Wind Speed: <strong id="wind">Loading...</strong> km/h</p>
-       <p>Humidity: <strong id="humidity">Loading...</strong>%</p>
-       <p>Time: <strong id="time">Loading...</strong></p>
-     </div>
-   </div>
- </section>
-  <section class="section-row">
 
+    <!-- Campus Banner Notice -->
+    <section class="banner-notice">
+      <div class="notice-badge">CAMPUS NOTICE</div>
+      <p class="notice-text">Semester examinations schedule released. Check your exam timetables and fee receipts in the student dashboard.</p>
+    </section>
+
+    <!-- Main Content Grid -->
     <main class="main-content">
-      <section class="section-row">
-        <article class="card card-student">
-          <img src="Images/3087394_e2ed_2.webp" alt="Students" class="card-image">
-          <div class="card-text">
-            <h2 class="card-title">Register as Student</h2>
-            <p class="card-description">Join the student portal to view your courses, check grades, and stay updated
-              with campus news.</p>
-            <a href="regis_stud.html" class="button-link">Register</a>
+      <!-- Top Info Row: Weather & Quick Info -->
+      <section class="top-widgets-row">
+        <article class="weather-card" id="weather-box">
+          <div class="card-header-tag">LIVE METRICS</div>
+          <h2 class="card-title">Campus Weather & Clock</h2>
+          <div class="weather-grid">
+            <div class="metric-item">
+              <span class="metric-label">Temperature</span>
+              <strong class="metric-value"><span id="temp">--</span> °C</strong>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">Wind Speed</span>
+              <strong class="metric-value"><span id="wind">--</span> km/h</strong>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">Humidity</span>
+              <strong class="metric-value"><span id="humidity">--</span> %</strong>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">Live Time</span>
+              <strong class="metric-value" id="time">--:--:--</strong>
+            </div>
           </div>
         </article>
 
-        <article class="card card-admin">
-          <img src="Images/1769105180873.jpg" alt="Admin Desk" class="card-image">
-          <div class="card-text">
-            <h2 class="card-title">Register as Admin</h2>
-            <p class="card-description">Create an admin account to manage student data, schedules, and portal settings
-              with ease.</p>
-            <a href="regis_admin.html" class="button-link">Register</a>
-          </div>
-        </article>
+        <aside class="quick-links-card">
+          <div class="card-header-tag gold-tag">QUICK ACCESS</div>
+          <h2 class="card-title">Portal Services</h2>
+          <ul class="portal-feature-list">
+            <li><strong>Academics:</strong> Timetable, Course Syllabus, Attendance</li>
+            <li><strong>Examinations:</strong> Hall Tickets, Internal Marks, Results</li>
+            <li><strong>Finance:</strong> Tuition Fees, Receipts & Challans</li>
+            <li><strong>Support:</strong> FAQs, Helpdesk & Department Contacts</li>
+          </ul>
+        </aside>
+      </section>
+
+      <!-- Role-Based Registration & Login Cards -->
+      <section class="portal-roles-section">
+        <div class="section-title-wrap">
+          <h2 class="section-heading">Select Your Portal Role</h2>
+          <p class="section-subheading">Access student services, academic records, or manage institutional operations.</p>
+        </div>
+
+        <div class="roles-grid">
+          <article class="role-card student-card">
+            <div class="role-header">
+              <span class="role-badge">STUDENT ACCESS</span>
+            </div>
+            <img src="Images/3087394_e2ed_2.webp" alt="Students studying" class="card-image">
+            <div class="card-body">
+              <h3 class="role-title">Student Portal</h3>
+              <p class="card-description">View enrolled courses, track real-time attendance, view exam grades, and stay informed on upcoming collegiate events.</p>
+              <div class="card-action-group">
+                <a href="Student/Stud_login.html" class="btn btn-primary">Student Login &rarr;</a>
+                <a href="Student/regis_stud.html" class="btn btn-secondary">Register New Student</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="role-card admin-card">
+            <div class="role-header">
+              <span class="role-badge badge-admin">FACULTY & ADMIN</span>
+            </div>
+            <img src="Images/1769105180873.jpg" alt="Faculty desk" class="card-image">
+            <div class="card-body">
+              <h3 class="role-title">Admin Management</h3>
+              <p class="card-description">Manage student registration, upload attendance and academic results, coordinate events, and oversee campus departments.</p>
+              <div class="card-action-group">
+                <a href="Admin/Admin_login.html" class="btn btn-primary">Admin Login &rarr;</a>
+                <a href="Admin/regis_admin.html" class="btn btn-secondary">Register Admin Account</a>
+              </div>
+            </div>
+          </article>
+        </div>
       </section>
     </main>
 
+    <!-- Footer Bar -->
     <footer class="footer-bar">
-      <p class="footer-note">&copy; 2026 Student Portal System. All Rights Reserved.</p>
-      <p class="footer-note">Contact us: xxxxx xxxxx</p>
+      <div class="footer-left">
+        <p class="footer-title"><strong>CHARUSAT Student Hub Portal</strong></p>
+        <p class="footer-note">&copy; 2026 Department of Information Technology. All Rights Reserved.</p>
+      </div>
+      <div class="footer-right">
+        <a href="about.html">About Us</a>
+        <a href="faqs.html">FAQs</a>
+        <a href="contact.html">Support</a>
+        <a href="Login.html">Portal Login</a>
+      </div>
     </footer>
   </div>
   <script src="index.js"></script>
