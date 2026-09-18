@@ -1,14 +1,11 @@
-// Verification script for Student & Admin validations
 const assert = require('assert');
 
-// 1. Regular Expressions
 const nameRegex = /^[A-Za-z]{2,50}$/;
 const enrollmentRegex = /^\d{2}[A-Za-z]{3}\d{3}$/;
 const adminIdRegex = /^ADM\d{5}$/i;
 const emailRegex = /^[a-zA-Z0-9._%+-]+@charusat\.(edu|ac)\.in$/;
 const phoneRegex = /^[6-9]\d{9}$/;
 
-// Age calculation logic
 function calculateAge(dobVal) {
     const dobDate = new Date(dobVal);
     const today = new Date();
@@ -20,14 +17,13 @@ function calculateAge(dobVal) {
     return age;
 }
 
-// Run Tests
 try {
     console.log("Running Name validations...");
     assert.strictEqual(nameRegex.test("John"), true);
     assert.strictEqual(nameRegex.test("A"), false); // too short
-    assert.strictEqual(nameRegex.test("John123"), false); // no numbers allowed
-    assert.strictEqual(nameRegex.test("John-Doe"), false); // no hyphens in this strict pattern
-    assert.strictEqual(nameRegex.test("VeryLongNameThatExceedsFiftyCharactersJustToTestTheRegexConstraint"), false);
+    assert.strictEqual(nameRegex.test("Gyan123"), false); // no numbers allowed
+    assert.strictEqual(nameRegex.test("Gy-an"), false); // no hyphens in this strict pattern
+    assert.strictEqual(nameRegex.test("VeryLongNameThatcontainFiftyCharactersJustToTestTheRegexConstraint"), false);
 
     console.log("Running Enrollment ID validations...");
     assert.strictEqual(enrollmentRegex.test("25dcs080"), true);

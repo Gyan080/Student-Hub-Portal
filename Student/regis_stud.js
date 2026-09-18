@@ -1,4 +1,3 @@
-// ===== Student Registration Handler (PDF Unit 3.1 & 4.3 & 4.4) =====
 document.addEventListener("DOMContentLoaded", function () {
   const regForm = document.getElementById("studentRegForm");
   if (!regForm) return;
@@ -26,7 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    // PDF Unit 3.1 Regex Rules
     const nameRegex = /^[A-Za-z]{2,50}$/;
     const enrollmentRegex = /^\d{2}[A-Za-z]{3}\d{3}$/i;
     const emailRegex = /^[\w.-]+@[\w-]+\.[a-z]{2,}$/i;
@@ -97,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem("studentUser", JSON.stringify(studentUser));
 
     showBrutalistModal(
-      "Registration Successful! 🎉",
+      "Registration Successful! ",
       `Welcome ${fullName}! Your student record for ${college_id.toUpperCase()} has been created. Redirecting to your dashboard...`,
       "success",
       function () {
@@ -107,7 +105,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// PDF Unit 4.4 DOM element creation modal
 function showBrutalistModal(title, message, type, callback) {
   const existingModal = document.getElementById("customBrutalistModal");
   if (existingModal) existingModal.remove();
@@ -183,4 +180,3 @@ function showBrutalistModal(title, message, type, callback) {
   backdrop.appendChild(modalBox);
   document.body.appendChild(backdrop);
 }
-

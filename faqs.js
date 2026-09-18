@@ -1,4 +1,3 @@
-// ===== FAQ Accordion Script (PDF Unit 4.5 Event Delegation) =====
 document.addEventListener("DOMContentLoaded", function () {
   const faqList = document.getElementById("faqList");
   if (!faqList) return;
@@ -13,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const isOpen = faqItem.classList.contains("open");
     const icon = questionBtn.querySelector(".faq-icon");
 
-    // Optional: close other open items for a neat accordion experience
     const allItems = faqList.querySelectorAll(".faq-item");
     allItems.forEach(function (item) {
       if (item !== faqItem) {
@@ -36,4 +34,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
-

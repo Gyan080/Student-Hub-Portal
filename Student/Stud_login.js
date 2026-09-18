@@ -1,4 +1,3 @@
-// ===== Student Sign In Handler (PDF Unit 3.1 & 4.5 & 5.1) =====
 document.addEventListener("DOMContentLoaded", function () {
   const loginForm = document.getElementById("studentLoginForm");
   if (!loginForm) return;
@@ -16,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    // PDF Unit 3.1 Regex testing
     const idRegex = /^\d{2}[A-Za-z]{3}\d{3}$/i;
     if (!idRegex.test(studentId)) {
       alert("Please enter a valid Enrollment ID format (e.g. 25dcs080).");
@@ -36,4 +34,4 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem("studentUser", JSON.stringify(studentUser));
     window.location.href = "DashBoard/student_dashboard.html";
   });
-});
+});

@@ -1,5 +1,6 @@
-/* ===== Universal Reset & Box Model (PDF Unit 2.15) ===== */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -23,7 +24,6 @@ body {
   gap: 20px;
 }
 
-/* ===== Header Navigation ===== */
 .header-bar {
   display: flex;
   justify-content: space-between;
@@ -110,7 +110,6 @@ body {
   box-shadow: 1px 1px 0px #1A1A1A;
 }
 
-/* ===== Main Content Area ===== */
 .main-content {
   flex: 1;
   display: flex;
@@ -152,7 +151,6 @@ body {
   max-width: 900px;
 }
 
-/* ===== Info Grid (PDF Unit 2.19 CSS Grid) ===== */
 .info-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -204,7 +202,6 @@ body {
   margin-bottom: 10px;
 }
 
-/* ===== Stats Grid ===== */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -235,7 +232,6 @@ body {
   color: #4B5563;
 }
 
-/* ===== Forms (PDF Unit 2.8) ===== */
 .form-field {
   display: flex;
   flex-direction: column;
@@ -270,7 +266,6 @@ body {
   box-shadow: 2px 2px 0px #1F4E79;
 }
 
-/* ===== Buttons ===== */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -297,7 +292,6 @@ body {
   box-shadow: 2px 2px 0px #1A1A1A;
 }
 
-/* ===== Footer Bar ===== */
 .footer-bar {
   display: flex;
   justify-content: space-between;
@@ -340,7 +334,6 @@ body {
   text-decoration: underline;
 }
 
-/* ===== Responsive Design ===== */
 @media (max-width: 860px) {
   .info-grid {
     grid-template-columns: 1fr;
@@ -352,6 +345,7 @@ body {
 }
 
 @media (max-width: 640px) {
+
   .header-bar,
   .footer-bar {
     flex-direction: column;

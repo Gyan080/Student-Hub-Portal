@@ -1,4 +1,3 @@
-// ===== Campus Weather & Clock Script (PDF Unit 3 & 4) =====
 const apiUrl = "https://api.open-meteo.com/v1/forecast?latitude=22.6012&longitude=72.8201&current=temperature_2m,relative_humidity_2m,wind_speed_10m&timezone=auto";
 
 async function getWeather() {
@@ -35,8 +34,7 @@ function updateTime() {
   }
 }
 
-// Initial calls & timers (PDF Unit 3.6)
 getWeather();
 updateTime();
-setInterval(getWeather, 600000); // 10 minutes
-setInterval(updateTime, 1000); // 1 second
+setInterval(getWeather, 600000);
+setInterval(updateTime, 1000);
