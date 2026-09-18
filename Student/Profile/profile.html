@@ -104,17 +104,17 @@
 
             <div class="detail-card">
               <span class="detail-label">CURRENT SEMESTER</span>
-              <strong class="detail-value">Semester 3 (Regular)</strong>
+              <strong class="detail-value" id="student-profile-semester">Semester 3 (Regular)</strong>
             </div>
 
             <div class="detail-card">
               <span class="detail-label">ACADEMIC COUNSELOR / MENTOR</span>
-              <strong class="detail-value">Prof. R. M. Patel (Cabin 304)</strong>
+              <strong class="detail-value" id="student-profile-counselor">Prof. R. M. Patel (Cabin 304)</strong>
             </div>
 
             <div class="detail-card">
               <span class="detail-label">CUMULATIVE CGPA</span>
-              <strong class="detail-value text-green">8.65 / 10.00</strong>
+              <strong class="detail-value text-green" id="student-profile-cgpa">8.65 / 10.00</strong>
             </div>
           </div>
         </section>
@@ -138,13 +138,18 @@
             </div>
 
             <div class="detail-card">
+              <span class="detail-label">DATE OF BIRTH</span>
+              <strong class="detail-value" id="student-profile-dob">Not provided</strong>
+            </div>
+
+            <div class="detail-card">
               <span class="detail-label">GUARDIAN NAME & CONTACT</span>
-              <strong class="detail-value">Mr. Ramesh Patel (+91 98250 11223)</strong>
+              <strong class="detail-value" id="student-profile-guardian">Mr. Ramesh Patel (+91 98250 11223)</strong>
             </div>
 
             <div class="detail-card">
               <span class="detail-label">BLOOD GROUP & HEALTH</span>
-              <strong class="detail-value">B+ (No known allergies)</strong>
+              <strong class="detail-value" id="student-profile-health">B+ (No known allergies)</strong>
             </div>
 
             <div class="detail-card detail-card-full">
@@ -258,16 +263,28 @@
       var deptEl = document.getElementById("student-profile-dept");
       var initialsEl = document.getElementById("student-initials");
       var phoneEl = document.getElementById("student-profile-phone");
+      var dobEl = document.getElementById("student-profile-dob");
       var addressEl = document.getElementById("student-profile-address");
+      var semesterEl = document.getElementById("student-profile-semester");
+      var counselorEl = document.getElementById("student-profile-counselor");
+      var cgpaEl = document.getElementById("student-profile-cgpa");
+      var guardianEl = document.getElementById("student-profile-guardian");
+      var healthEl = document.getElementById("student-profile-health");
 
       function syncProfile() {
         if (student) {
           var sName = student.name || "Student User";
           var sId = student.studentId || "25DCS080";
           var sDept = student.department || "Information Technology";
-          var sEmail = student.email || "student@charusat.edu.in";
+          var sEmail = student.collegeEmail || "student@charusat.edu.in";
           var sPhone = student.phone || "+91 98765 43210";
+          var sDob = student.dob || "Not provided";
           var sAddress = student.address || "A-402 Shivalik Greens, SG Highway, Ahmedabad, Gujarat - 380054";
+          var sSemester = student.currentSemester || "Semester 3 (Regular)";
+          var sCounselor = student.academicCounselor || "Prof. R. M. Patel (Cabin 304)";
+          var sCgpa = student.cgpa ? Number(student.cgpa).toFixed(2) + " / 10.00" : "8.65 / 10.00";
+          var sGuardian = student.guardianName ? student.guardianName + " (" + (student.guardianContact || "Not provided") + ")" : "Not provided";
+          var sHealth = student.bloodGroup ? student.bloodGroup + " (" + (student.healthDetails || "No details") + ")" : "Not provided";
 
           if (nameEl) nameEl.textContent = sName;
           if (courseEl) courseEl.textContent = "Bachelor of Technology \u2022 " + sDept;
@@ -275,7 +292,13 @@
           if (emailEl) emailEl.textContent = sEmail;
           if (deptEl) deptEl.textContent = sDept;
           if (phoneEl) phoneEl.textContent = sPhone;
+          if (dobEl) dobEl.textContent = sDob;
           if (addressEl) addressEl.textContent = sAddress;
+          if (semesterEl) semesterEl.textContent = sSemester;
+          if (counselorEl) counselorEl.textContent = sCounselor;
+          if (cgpaEl) cgpaEl.textContent = sCgpa;
+          if (guardianEl) guardianEl.textContent = sGuardian;
+          if (healthEl) healthEl.textContent = sHealth;
 
           if (initialsEl) {
             var parts = sName.trim().split(" ");
@@ -297,7 +320,7 @@
 
       if (openBtn && modal) {
         openBtn.addEventListener("click", function () {
-          document.getElementById("edit-email").value = (student && student.email) || "25dcs080@charusat.edu.in";
+          document.getElementById("edit-email").value = (student && student.collegeEmail) || "25dcs080@charusat.edu.in";
           document.getElementById("edit-phone").value = (student && student.phone) ? student.phone.replace(/[^0-9]/g, "").slice(-10) : "9876543210";
           document.getElementById("edit-address").value = (student && student.address) || "A-402 Shivalik Greens, SG Highway, Ahmedabad, Gujarat - 380054";
           modal.style.display = "flex";
@@ -326,7 +349,7 @@
             };
           }
 
-          student.email = updatedEmail;
+          student.collegeEmail = updatedEmail;
           student.phone = "+91 " + updatedPhone;
           student.address = updatedAddress;
 

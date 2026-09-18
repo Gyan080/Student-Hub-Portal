@@ -4,49 +4,64 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Exam Results</title>
-  <link rel="stylesheet" href="student_dashboard.css">
+  <link rel="stylesheet" href="../DashBoard/student_dashboard.css">
 </head>
 <body>
   <div class="page-wrapper">
     <header class="header-bar">
       <div class="header-brand">
-        <a href="student_dashboard.html" class="brand-link">
-          <img src="Images/Screenshot 2026-07-14 215638.png" alt="Portal Logo" class="brand-logo">
+        <a href="../DashBoard/student_dashboard.html" class="brand-link">
+          <img src="../../Images/Screenshot 2026-07-14 215638.png" alt="Portal Logo" class="brand-logo">
           <span class="brand-name">Student Portal</span>
         </a>
       </div>
       <nav class="nav-links">
-        <a href="about.html">About</a>
-        <a href="faqs.html">FAQs</a>
-        <a href="contact.html">Contact</a>
-        <a href="Login.html">Login</a>
+        <a href="../../about.html" class="nav-link">About</a>
+        <a href="../../faqs.html" class="nav-link">FAQs</a>
+        <a href="../../contact.html" class="nav-link">Contact</a>
+        <a href="../../Login.html" class="nav-btn logout-btn">Logout</a>
       </nav>
     </header>
 
     <div class="dashboard-layout">
-      <aside>
-        <nav>
-          <h2>Menu</h2>
-          <ul>
-            <li><a href="profile.html">Profile Page</a></li>
-            <li><a href="event.html">Events Page</a></li>
-            <li><a href="calendar.html">Calendar</a></li>
-            <li><a href="attendance.html">Attendance Tracker</a></li>
-            <li><a href="fee.html">Fee Information</a></li>
-            <li class="active"><a href="exam_result.html">Exam Result</a></li>
-            <li><a href="Login.html">Logout</a></li>
+      <aside class="dashboard-sidebar">
+        <nav class="sidebar-nav">
+          <h2 class="sidebar-heading">PORTAL MENU</h2>
+          <ul class="sidebar-menu-list">
+            <li><a class="sidebar-link" href="../DashBoard/student_dashboard.html"><span>📊</span> Overview Dashboard</a></li>
+            <li><a class="sidebar-link" href="../Profile/profile.html"><span>👤</span> Student Profile</a></li>
+            <li><a class="sidebar-link" href="../Attendance/attendance.html"><span>📅</span> Attendance Tracker</a></li>
+            <li><a class="sidebar-link active" href="exam_result.html"><span>📝</span> Exam Results</a></li>
+            <li><a class="sidebar-link" href="../Calender/calendar.html"><span>📆</span> Academic Calendar</a></li>
+            <li><a class="sidebar-link" href="../Event/event.html"><span>🎉</span> Campus Events</a></li>
+            <li><a class="sidebar-link" href="../Fee/fee.html"><span>💳</span> Fee Information</a></li>
           </ul>
         </nav>
+        <div class="sidebar-notice">
+          <span class="notice-mini-tag">RESULT STATUS</span>
+          <p>Your latest academic performance and subject-wise results are available below.</p>
+        </div>
       </aside>
 
-      <main>
-        <section id="exams">
-          <header>
-            <h2>Exam Results</h2>
-            <p>Academic performance summary</p>
-          </header>
-          <article>
-            <table>
+      <main class="dashboard-main">
+        <section class="welcome-banner">
+          <div class="banner-text">
+            <div class="card-header-tag">ACADEMIC RECORD</div>
+            <h1 class="banner-title">Exam Results</h1>
+            <p class="banner-subtitle">Review your subject-wise marks, grades, and result status.</p>
+          </div>
+          <div class="banner-actions">
+            <span class="count-tag green-badge">All Subjects Passed</span>
+          </div>
+        </section>
+
+        <section class="dashboard-panel">
+          <div class="panel-header-bar">
+            <h2>Academic Performance Summary</h2>
+            <span class="count-tag">Semester 3</span>
+          </div>
+          <div class="table-container">
+            <table class="brutalist-table">
               <thead>
                 <tr>
                   <th>Subject</th>
@@ -76,16 +91,23 @@
                 </tr>
               </tbody>
             </table>
-          </article>
+          </div>
         </section>
       </main>
     </div>
 
     <footer class="footer-bar">
-      <p class="footer-note">Student Portal Dashboard</p>
-      <p class="footer-note">Contact us: xxxxx xxxxx</p>
+      <div class="footer-left">
+        <p class="footer-title">CHARUSAT Student Hub Portal</p>
+        <p class="footer-note">Academic results and performance records</p>
+      </div>
+      <div class="footer-right">
+        <a href="../../index.html">Home</a>
+        <a href="../../contact.html">Support</a>
+        <a href="../../Login.html">Logout</a>
+      </div>
     </footer>
   </div>
-  <script src="menu.js"></script>
+  <script src="../DashBoard/menu.js"></script>
 </body>
 </html>

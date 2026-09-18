@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const regForm = document.getElementById("studentRegForm");
   if (!regForm) return;
 
-  regForm.addEventListener("submit", function (event) {
+  regForm.addEventListener("submit", async function (event) {
     event.preventDefault();
 
     const firstname = document.getElementById("firstname").value.trim();
@@ -10,11 +10,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const lastname = document.getElementById("lastname").value.trim();
     const college_id = document.getElementById("college_id").value.trim();
     const dobVal = document.getElementById("dob").value;
-    const email = document.getElementById("email").value.trim();
+    const personalEmail = document.getElementById("personalEmail").value.trim();
+    const collegeEmail = document.getElementById("collegeEmail").value.trim();
     const phone = document.getElementById("phone").value.trim();
+    const password = document.getElementById("password").value.trim();
     const address = document.getElementById("address").value.trim();
+    const guardianName = document.getElementById("guardianName").value.trim();
+    const guardianContact = document.getElementById("guardianContact").value.trim();
+    const bloodGroup = document.getElementById("bloodGroup").value;
+    const healthDetails = document.getElementById("healthDetails").value.trim();
     const course = document.getElementById("course").value;
     const year = document.getElementById("year").value;
+    const currentSemester = document.getElementById("currentSemester").value;
+    const academicCounselor = document.getElementById("academicCounselor").value.trim();
+    const cgpa = document.getElementById("cgpa").value;
 
     const genderRadios = document.getElementsByName("gender");
     let gender = "male";
@@ -26,8 +35,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const nameRegex = /^[A-Za-z]{2,50}$/;
-    const enrollmentRegex = /^\d{2}[A-Za-z]{3}\d{3}$/i;
-    const emailRegex = /^[\w.-]+@[\w-]+\.[a-z]{2,}$/i;
+    const departmentCodeMap = {
+      "Information Technology": "DIT",
+      "Computer Science": "DCS",
+      "Computer Engineering": "DCE",
+      "AI & Machine Learning": "DAIML"
+    };
+    const enrollmentRegex = /^\d{2}(DCS|DIT|DCE|DAIML)\d{3}$/i;
+    const personalEmailRegex = /^[A-Za-z0-9._%+-]+@(gmail\.com|yahoo\.com)$/i;
+    const universityEmailRegex = /^\d{2}(DCS|DIT|DCE|DAIML)\d{3}@charusat\.edu\.in$/i;
     const phoneRegex = /^[6-9]\d{9}$/;
 
     if (!nameRegex.test(firstname)) {
@@ -49,7 +65,22 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (!enrollmentRegex.test(college_id)) {
-      showBrutalistModal("Validation Error", "Enrollment ID must match standard format: 2 digits, 3 letters, 3 digits (e.g. 25dcs080).", "error");
+      showBrutalistModal("Validation Error", "Enrollment ID must match format: YY + Department Code + 3-digit number. Example: 25DCS001, 25DIT010, 25DCE123, 25DAIML178.", "error");
+      document.getElementById("college_id").focus();
+      return;
+    }
+
+    const enteredCode = college_id.slice(2, 5).toUpperCase();
+    const expectedCode = departmentCodeMap[course];
+    if (enteredCode !== expectedCode) {
+      showBrutalistModal("Validation Error", `The department code in your ID must match the selected department: ${expectedCode}.`, "error");
+      document.getElementById("college_id").focus();
+      return;
+    }
+
+    const serialNumber = Number(college_id.slice(5));
+    if (serialNumber < 1 || serialNumber > 178) {
+      showBrutalistModal("Validation Error", "The last 3 digits must be between 001 and 178.", "error");
       document.getElementById("college_id").focus();
       return;
     }
@@ -60,9 +91,17 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    if (!emailRegex.test(email)) {
-      showBrutalistModal("Validation Error", "Please enter a valid email address.", "error");
-      document.getElementById("email").focus();
+    const isPersonalEmail = personalEmailRegex.test(personalEmail);
+    const studentId = college_id.toUpperCase();
+    const isUniversityEmail = universityEmailRegex.test(collegeEmail) && collegeEmail.toLowerCase().startsWith(studentId.toLowerCase());
+    if (!isPersonalEmail) {
+      showBrutalistModal("Validation Error", "Personal email must end with @gmail.com or @yahoo.com.", "error");
+      document.getElementById("personalEmail").focus();
+      return;
+    }
+    if (!isUniversityEmail) {
+      showBrutalistModal("Validation Error", "College email must match the format 25dcs001@charusat.edu.in and use your student ID.", "error");
+      document.getElementById("collegeEmail").focus();
       return;
     }
 
@@ -72,38 +111,106 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    if (!course || !year) {
-      showBrutalistModal("Validation Error", "Please select your Course Program and Year of Study.", "error");
+    if (!phoneRegex.test(guardianContact)) {
+      showBrutalistModal("Validation Error", "Guardian contact must be exactly 10 digits starting with 6, 7, 8, or 9.", "error");
+      document.getElementById("guardianContact").focus();
+      return;
+    }
+
+    if (!password || password.length < 6) {
+      showBrutalistModal("Validation Error", "Password must be at least 6 characters long.", "error");
+      document.getElementById("password").focus();
+      return;
+    }
+
+    if (!course || !year || !bloodGroup || !currentSemester || !guardianName || !healthDetails || !academicCounselor || !cgpa) {
+      showBrutalistModal("Validation Error", "Please complete all academic, health, guardian, and profile fields.", "error");
+      return;
+    }
+
+    if (Number(cgpa) < 0 || Number(cgpa) > 10) {
+      showBrutalistModal("Validation Error", "Cumulative CGPA must be between 0 and 10.", "error");
+      document.getElementById("cgpa").focus();
       return;
     }
 
     const fullName = `${firstname} ${middlename} ${lastname}`.trim();
+    const profileData = await loadStudentProfiles();
+    const enteredPersonalEmail = personalEmail.toLowerCase();
+    const enteredCollegeEmail = collegeEmail.toLowerCase();
+    const duplicate = profileData.find((student) => {
+      return (student.studentId && student.studentId.toUpperCase() === studentId) ||
+             (student.personalEmail && student.personalEmail.toLowerCase() === enteredPersonalEmail) ||
+             (student.collegeEmail && student.collegeEmail.toLowerCase() === enteredCollegeEmail) ||
+             (student.phone && student.phone === phone);
+    });
+
+    if (duplicate) {
+      showBrutalistModal(
+        "Duplicate Student Profile",
+        "This enrollment ID, email, or phone number already exists. Please login or use a different registration detail.",
+        "error",
+        function () {
+          window.location.href = "Stud_login.html";
+        }
+      );
+      return;
+    }
+
     const studentUser = {
+      id: Date.now(),
       name: fullName,
-      studentId: college_id.toUpperCase(),
-      email: email,
+      studentId: studentId,
+      personalEmail: enteredPersonalEmail,
+      collegeEmail: enteredCollegeEmail,
       phone: phone,
+      password: password,
       gender: gender,
       dob: dobVal,
       address: address,
+      guardianName: guardianName,
+      guardianContact: guardianContact,
+      bloodGroup: bloodGroup,
+      healthDetails: healthDetails,
       department: course,
       year: year,
+      currentSemester: currentSemester,
+      academicCounselor: academicCounselor,
+      cgpa: Number(cgpa),
       role: "Student",
+      status: "Active",
       registeredAt: new Date().toLocaleDateString()
     };
 
-    localStorage.setItem("studentUser", JSON.stringify(studentUser));
+    const allStudents = [...profileData, studentUser];
+    localStorage.setItem("studentProfiles", JSON.stringify(allStudents));
 
     showBrutalistModal(
-      "Registration Successful! ",
-      `Welcome ${fullName}! Your student record for ${college_id.toUpperCase()} has been created. Redirecting to your dashboard...`,
+      "Registration Successful!",
+      `Welcome ${fullName}! Your student account has been saved and redirected to login.`,
       "success",
       function () {
-        window.location.href = "DashBoard/student_dashboard.html";
+        window.location.href = "Stud_login.html";
       }
     );
+    setTimeout(function () {
+      window.location.href = "Stud_login.html";
+    }, 1500);
   });
 });
+
+async function loadStudentProfiles() {
+  const savedProfiles = JSON.parse(localStorage.getItem("studentProfiles") || "[]");
+
+  try {
+    const response = await fetch("../data/studentProfiles.json");
+    if (!response.ok) return savedProfiles;
+    const jsonProfiles = await response.json();
+    return [...jsonProfiles, ...savedProfiles];
+  } catch (error) {
+    return savedProfiles;
+  }
+}
 
 function showBrutalistModal(title, message, type, callback) {
   const existingModal = document.getElementById("customBrutalistModal");
@@ -179,4 +286,16 @@ function showBrutalistModal(title, message, type, callback) {
   modalBox.appendChild(btn);
   backdrop.appendChild(modalBox);
   document.body.appendChild(backdrop);
+}
+
+async function saveProfileToJson(profileType, profile) {
+  try {
+    await fetch("/api/" + profileType, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(profile)
+    });
+  } catch (error) {
+    // Local storage remains available when the page is opened without server.js.
+  }
 }

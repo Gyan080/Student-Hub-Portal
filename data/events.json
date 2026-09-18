@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Tech Fest 2026",
+    "date": "2026-10-05",
+    "time": "10:00 AM",
+    "location": "Main Campus Hall",
+    "description": "A technology event with student projects, demos, and competitions."
+  },
+  {
+    "id": 2,
+    "title": "Career Guidance Seminar",
+    "date": "2026-10-12",
+    "time": "2:00 PM",
+    "location": "Seminar Room A",
+    "description": "Students learn about careers, interview skills, and future opportunities."
+  },
+  {
+    "id": 3,
+    "title": "Annual Sports Day",
+    "date": "2026-11-01",
+    "time": "9:00 AM",
+    "location": "Sports Ground",
+    "description": "An outdoor event with fun games, teamwork, and awards."
+  }
+]

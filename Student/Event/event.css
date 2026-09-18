@@ -1,3 +1,7 @@
+@import url("../DashBoard/student_dashboard.css");
+
+/* Event page content */
+/*
 * {
   box-sizing: border-box;
 }
@@ -274,5 +278,137 @@ body {
 
   .event-date {
     width: 100%;
+  }
+}
+*/
+
+.event-filter-bar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 8px 12px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 800;
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+  box-shadow: var(--shadow-solid-sm);
+  cursor: pointer;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background-color: var(--accent-gold-bg);
+}
+
+.events-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.event-card {
+  display: flex;
+  gap: 18px;
+  background-color: var(--bg-surface);
+  border: 2.5px solid var(--border-color);
+  box-shadow: var(--shadow-solid);
+  padding: 18px;
+}
+
+.event-date-box {
+  width: 92px;
+  min-width: 92px;
+  height: 104px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--accent-navy);
+  color: #FFFFFF;
+  border: 2px solid var(--border-color);
+  text-align: center;
+}
+
+.event-day {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.event-month,
+.event-year {
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.event-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.event-top-meta,
+.event-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.event-tag,
+.event-venue,
+.event-time {
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.event-tag {
+  padding: 3px 8px;
+  border: 1px solid var(--border-color);
+}
+
+.tag-navy { background-color: #DBEAFE; color: var(--accent-navy); }
+.tag-gold { background-color: var(--accent-gold-bg); color: var(--accent-gold); }
+.tag-crimson { background-color: var(--accent-crimson-bg); color: var(--accent-crimson); }
+.tag-green { background-color: var(--accent-green-bg); color: var(--accent-green); }
+
+.event-venue,
+.event-time {
+  color: var(--text-muted);
+}
+
+.event-title {
+  margin: 10px 0 6px;
+  color: var(--accent-navy);
+  font-size: 1.15rem;
+  font-weight: 900;
+}
+
+.event-desc {
+  margin-bottom: 14px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.registered-btn {
+  background-color: var(--accent-green) !important;
+}
+
+@media (max-width: 600px) {
+  .event-card {
+    flex-direction: column;
+  }
+
+  .event-date-box {
+    width: 100%;
+    height: 76px;
+    flex-direction: row;
+    gap: 8px;
   }
 }

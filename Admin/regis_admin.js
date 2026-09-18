@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const regForm = document.getElementById("adminRegForm");
   if (!regForm) return;
 
-  regForm.addEventListener("submit", function (event) {
+  regForm.addEventListener("submit", async function (event) {
     event.preventDefault();
 
     const firstname = document.getElementById("firstname").value.trim();
@@ -11,8 +11,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const lastname = document.getElementById("lastname").value.trim();
     const admin_id = document.getElementById("admin_id").value.trim();
     const dobVal = document.getElementById("dob").value;
-    const email = document.getElementById("email").value.trim();
+    const personalEmail = document.getElementById("personalEmail").value.trim();
+    const collegeEmail = document.getElementById("collegeEmail").value.trim();
     const phone = document.getElementById("phone").value.trim();
+    const password = document.getElementById("password").value.trim();
     const address = document.getElementById("address").value.trim();
     const department = document.getElementById("department").value;
     const role = document.getElementById("role").value;
@@ -30,7 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const nameRegex = /^[A-Za-z]{2,50}$/;
     const adminIdRegex = /^ADM\d{5}$/i;
-    const emailRegex = /^[\w.-]+@[\w-]+\.[a-z]{2,}$/i;
+    const personalEmailRegex = /^[A-Za-z0-9._%+-]+@(gmail\.com|yahoo\.com)$/i;
+    const universityEmailRegex = /^[A-Za-z]+(?:\.[A-Za-z]+)?@charusat\.ac\.in$/i;
     const phoneRegex = /^[6-9]\d{9}$/;
 
     if (!nameRegex.test(firstname)) {
@@ -63,15 +66,29 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    if (!emailRegex.test(email)) {
-      showBrutalistModal("Validation Error", "Please enter a valid official university email address.", "error");
-      document.getElementById("email").focus();
+    const emailPrefix = collegeEmail.split("@")[0].toLowerCase();
+    const firstNameLower = firstname.toLowerCase();
+    const isOfficialAdminEmail = universityEmailRegex.test(collegeEmail) && (emailPrefix === firstNameLower || emailPrefix.startsWith(`${firstNameLower}.`));
+    if (!personalEmailRegex.test(personalEmail)) {
+      showBrutalistModal("Validation Error", "Personal email must end with @gmail.com or @yahoo.com.", "error");
+      document.getElementById("personalEmail").focus();
+      return;
+    }
+    if (!isOfficialAdminEmail) {
+      showBrutalistModal("Validation Error", "Official college email must be in the format firstname@charusat.ac.in or firstname.lastname@charusat.ac.in.", "error");
+      document.getElementById("collegeEmail").focus();
       return;
     }
 
     if (!phoneRegex.test(phone)) {
       showBrutalistModal("Validation Error", "Phone number must be exactly 10 digits starting with 6, 7, 8, or 9.", "error");
       document.getElementById("phone").focus();
+      return;
+    }
+
+    if (!password || password.length < 6) {
+      showBrutalistModal("Validation Error", "Password must be at least 6 characters long.", "error");
+      document.getElementById("password").focus();
       return;
     }
 
@@ -93,32 +110,75 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const fullName = `${firstname} ${middlename} ${lastname}`.trim();
+    const adminId = admin_id.toUpperCase();
+    const adminProfiles = await loadAdminProfiles();
+    const enteredOfficialEmail = collegeEmail.toLowerCase();
+    const enteredPersonalEmail = personalEmail.toLowerCase();
+    const duplicate = adminProfiles.find((admin) => {
+      return admin.adminId && admin.adminId.toUpperCase() === adminId ||
+             admin.personalEmail && admin.personalEmail.toLowerCase() === enteredPersonalEmail ||
+             admin.collegeEmail && admin.collegeEmail.toLowerCase() === enteredOfficialEmail ||
+             admin.phone && admin.phone === phone;
+    });
+
+    if (duplicate) {
+      showBrutalistModal(
+        "Duplicate Admin Profile",
+        "This admin ID, email, or phone number already exists. Please login or use a different official profile.",
+        "error",
+        function () {
+          window.location.href = "Admin_login.html";
+        }
+      );
+      return;
+    }
+
     const adminUser = {
+      id: Date.now(),
       name: fullName,
-      adminId: admin_id.toUpperCase(),
+      adminId: adminId,
       role: role,
-      email: email,
+      personalEmail: enteredPersonalEmail,
+      collegeEmail: enteredOfficialEmail,
       phone: phone,
+      password: password,
       gender: gender,
       department: department,
       address: address,
+      status: "Active",
       loginTime: new Date().toLocaleTimeString()
     };
 
-    localStorage.setItem("adminUser", JSON.stringify(adminUser));
+    const allAdmins = [...adminProfiles, adminUser];
+    localStorage.setItem("adminProfiles", JSON.stringify(allAdmins));
 
     showBrutalistModal(
-      "Admin Profile Registered! 🎓",
-      `Welcome ${fullName}! Your official administrative account has been established. Redirecting to Admin Dashboard...`,
+      "Admin Profile Registered!",
+      `Welcome ${fullName}! Your account has been saved and redirected to admin login.`,
       "success",
       function () {
-        window.location.href = "DashBoard/admin_dashboard.html";
+        window.location.href = "Admin_login.html";
       }
     );
+    setTimeout(function () {
+      window.location.href = "Admin_login.html";
+    }, 1500);
   });
 });
 
-// PDF Unit 4.4 DOM Modal
+async function loadAdminProfiles() {
+  const savedProfiles = JSON.parse(localStorage.getItem("adminProfiles") || "[]");
+
+  try {
+    const response = await fetch("../data/adminProfiles.json");
+    if (!response.ok) return savedProfiles;
+    const jsonProfiles = await response.json();
+    return [...jsonProfiles, ...savedProfiles];
+  } catch (error) {
+    return savedProfiles;
+  }
+}
+
 function showBrutalistModal(title, message, type, callback) {
   const existingModal = document.getElementById("customBrutalistModal");
   if (existingModal) existingModal.remove();
