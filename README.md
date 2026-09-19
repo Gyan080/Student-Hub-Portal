@@ -67,7 +67,6 @@ The portal is designed around Charusat University conventions (college e-mail do
 ### Quality touches
 - Strict, user-friendly validation with focused error messages.
 - Responsive dashboard navigation (collapsible ☰ menu on small screens).
-- A Node.js test script covering every validation rule.
 
 ---
 
@@ -80,7 +79,6 @@ The portal is designed around Charusat University conventions (college e-mail do
 | Behaviour | Vanilla JavaScript |
 | Browser storage | `localStorage` for session details |
 | External API | Open-Meteo (weather widget) |
-| Testing | Node.js `assert` module |
 | Tooling | VS Code (Chrome launch configuration included) |
 
 ---
@@ -194,7 +192,6 @@ Student-Hub-Portal/
 
 - A modern web browser (Chrome, Edge, Firefox or Safari)
 - *Optional:* [VS Code](https://code.visualstudio.com/) with the **Live Server** extension
-- *Optional:* [Node.js](https://nodejs.org/) (only needed to run the validation tests)
 
 ### Installation
 
@@ -241,7 +238,7 @@ Registration forms validate input in the browser before showing a success messag
 
 | Field | Rule | Example |
 | --- | --- | --- |
-| First / Middle / Last name | Letters only, 2–50 characters | `Rahul` |
+| First / Middle / Last name | Letters only, 2–50 characters | `Gyan` |
 | Student enrollment ID | 2 digits + 3 letters + 3 digits | `25dcs080` |
 | Admin ID | `ADM` + exactly 5 digits (case-insensitive) | `ADM12345` |
 | E-mail | Must end in `@charusat.edu.in` or `@charusat.ac.in` | `name@charusat.edu.in` |
