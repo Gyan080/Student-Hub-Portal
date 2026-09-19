@@ -1,119 +1,168 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Student Portal - Admin Registration</title>
-    <link rel="stylesheet" href="regis_admin.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Official Faculty and Administrator Registration - CHARUSAT Student Portal.">
+  <title>Admin Registration - Student Portal</title>
+  <link rel="stylesheet" href="regis_admin.css">
 </head>
+
 <body>
-    <div class="page-wrapper">
-        <header class="header-bar">
-            <div class="header-brand">
-                <a href="index.html" class="brand-link">
-                    <img src="Images/Screenshot 2026-07-14 215638.png" alt="Portal Logo" class="brand-logo">
-                    <span class="brand-name">Student Portal</span>
-                </a>
+  <div class="page-wrapper">
+    <!-- Header Navigation -->
+    <header class="header-bar">
+      <div class="header-brand">
+        <a href="../index.html" class="brand-link">
+          <img src="../Images/Screenshot 2026-07-14 215638.png" alt="University Logo" class="brand-logo">
+          <span class="brand-name">STUDENT PORTAL</span>
+        </a>
+      </div>
+      <nav class="nav-links">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="../about.html" class="nav-link">About</a>
+        <a href="../faqs.html" class="nav-link">FAQs</a>
+        <a href="../contact.html" class="nav-link">Contact</a>
+        <a href="Admin_login.html" class="nav-btn">Admin Login &rarr;</a>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <section class="form-card">
+        <div class="card-header-tag">ADMINISTRATIVE ENROLLMENT</div>
+        <h1 class="page-title">Administrator Registration</h1>
+        <p class="form-description">Register institutional faculty or administrative profile to coordinate course schedules, publish grades, and oversee student records.</p>
+
+        <form id="adminRegForm">
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="firstname">First Name</label>
+              <input type="text" id="firstname" name="f_name" placeholder="e.g. Mrugendra" required>
             </div>
-            <nav class="nav-links">
-                <a href="about.html">About</a>
-                <a href="faqs.html">FAQs</a>
-                <a href="contact.html">Contact</a>
-                <a href="login.html">Login</a>
-            </nav>
-        </header>
 
-        <main class="main-content">
-            <section class="form-card">
-                <h1 class="page-title">Admin Registration</h1>
-                <p class="form-description">Enter your admin details to create an official portal account.</p>
-                <form>
-                    <div class="form-grid">
-                        <div class="form-field">
-                            <label for="firstname">First Name</label>
-                            <input type="text" id="firstname" name="f_name" placeholder="First name">
-                        </div>
-                        <div class="form-field">
-                            <label for="middlename">Middle Name</label>
-                            <input type="text" id="middlename" name="m_name" placeholder="Middle name">
-                        </div>
-                        <div class="form-field">
-                            <label for="lastname">Last Name</label>
-                            <input type="text" id="lastname" name="l_name" placeholder="Last name">
-                        </div>
-                        <div class="form-field">
-                            <label for="admin_id">Admin ID</label>
-                            <input type="text" id="admin_id" name="admin_id" placeholder="Enter Admin ID">
-                        </div>
-                        <div class="form-field">
-                            <label for="dob">Date of Birth</label>
-                            <input type="date" id="dob" name="dob">
-                        </div>
-                        <div class="form-field">
-                            <label>Gender</label>
-                            <div>
-                                <input type="radio" id="male" name="gender" value="male">
-                                <label for="male">Male</label>
-                                <input type="radio" id="female" name="gender" value="female" style="margin-left: 16px;">
-                                <label for="female">Female</label>
-                                <input type="radio" id="other" name="gender" value="other" style="margin-left: 16px;">
-                                <label for="other">Other</label>
-                            </div>
-                        </div>
-                        <div class="form-field">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="name@charusat.edu.in">
-                        </div>
-                        <div class="form-field">
-                            <label for="phone">Phone</label>
-                            <input type="tel" id="phone" name="phone" maxlength="10" placeholder="10-digit number">
-                        </div>
-                        <div class="form-field">
-                            <label for="address">Address</label>
-                            <input type="text" id="address" name="address" placeholder="Your address">
-                        </div>
-                        <div class="form-field">
-                            <label for="department">Department</label>
-                            <select id="department" name="department">
-                                <option value="">Select Department</option>
-                                <option value="CSE">Computer Science</option>
-                                <option value="CE">Computer Engineering</option>
-                                <option value="IT">IT</option>
-                                <option value="AI-ML">AI-ML</option>
-                                <option value="CIVIL">Civil</option>
-                                <option value="MECH">Mechanical</option>
-                            </select>
-                        </div>
-                        <div class="form-field">
-                            <label for="role">Admin Role</label>
-                            <select id="role" name="role">
-                                <option value="">Select Role</option>
-                                <option value="principal">Principal</option>
-                                <option value="vice_principal">Vice Principal</option>
-                                <option value="coordinator">Coordinator</option>
-                                <option value="staff">Staff</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-field">
-                        <label for="affiliation_proof">Proof of Affiliation</label>
-                        <input type="file" id="affiliation_proof" name="affiliation_proof">
-                        <small>Upload ID or proof screenshot</small>
-                    </div>
-                    <div class="checkbox-field">
-                        <input type="checkbox" id="guidelines" name="guidelines">
-                        <label for="guidelines"><i>I agree to the Community Guidelines & Code of Conduct</i></label>
-                    </div>
-                    <div class="form-actions">
-                        <button type="submit" class="form-button">Submit</button>
-                        <button type="reset" class="form-button-secondary">Cancel</button>
-                    </div>
-                </form>
-            </section>
-        </main>
+            <div class="form-field">
+              <label for="middlename">Middle Name</label>
+              <input type="text" id="middlename" name="m_name" placeholder="e.g. Rasikbhai" required>
+            </div>
 
-        <footer class="footer-bar">
-            <p class="footer-note">&copy; 2026 Student Portal System. All Rights Reserved.</p>
-        </footer>
-    </div>
-    <script src="regis_admin.js"></script>
+            <div class="form-field">
+              <label for="lastname">Last Name</label>
+              <input type="text" id="lastname" name="l_name" placeholder="e.g. Patel" required>
+            </div>
+
+            <div class="form-field">
+              <label for="admin_id">Staff / Admin ID</label>
+              <input type="text" id="admin_id" name="admin_id" placeholder="e.g. ADM10025" required>
+              <small class="field-hint">Format: 'ADM' followed by 5 digits (e.g. ADM10025)</small>
+            </div>
+
+            <div class="form-field">
+              <label for="dob">Date of Birth</label>
+              <input type="date" id="dob" name="dob" required>
+            </div>
+
+            <div class="form-field">
+              <label>Gender</label>
+              <div class="radio-group">
+                <label class="radio-label">
+                  <input type="radio" id="male" name="gender" value="male" checked> Male
+                </label>
+                <label class="radio-label">
+                  <input type="radio" id="female" name="gender" value="female"> Female
+                </label>
+                <label class="radio-label">
+                  <input type="radio" id="other" name="gender" value="other"> Other
+                </label>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="personalEmail">Personal Email</label>
+              <input type="email" id="personalEmail" name="personalEmail" placeholder="e.g. mrugendra@gmail.com" required>
+            </div>
+
+            <div class="form-field">
+              <label for="collegeEmail">Official College Email</label>
+              <input type="email" id="collegeEmail" name="collegeEmail" placeholder="e.g. mrugendra.patel@charusat.ac.in" required>
+            </div>
+
+            <div class="form-field">
+              <label for="phone">Official Mobile Phone</label>
+              <input type="tel" id="phone" name="phone" maxlength="10" placeholder="e.g. 9876543210" required>
+            </div>
+
+            <div class="form-field">
+              <label for="password">Create Password</label>
+              <input type="password" id="password" name="password" placeholder="Create a password" minlength="6" required>
+            </div>
+
+            <div class="form-field full-width">
+              <label for="address">Department Office / Campus Address</label>
+              <input type="text" id="address" name="address" placeholder="e.g. IT Department, DEPSTAR Building, CHARUSAT" required>
+            </div>
+
+            <div class="form-field">
+              <label for="department">Assigned Department</label>
+              <select id="department" name="department" required>
+                <option value="" disabled selected>Select Department</option>
+                <option value="Information Technology">Information Technology (IT)</option>
+                <option value="Computer Science">Computer Science (CSE)</option>
+                <option value="Computer Engineering">Computer Engineering (CE)</option>
+                <option value="AI & Machine Learning">AI & Machine Learning</option>
+                <option value="Civil Engineering">Civil Engineering</option>
+                <option value="Mechanical Engineering">Mechanical Engineering</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="role">Administrative Role</label>
+              <select id="role" name="role" required>
+                <option value="" disabled selected>Select Role</option>
+                <option value="Department Head / Principal">Department Head / Principal</option>
+                <option value="Associate Professor / Faculty">Associate Professor / Faculty</option>
+                <option value="Examination Coordinator">Examination Coordinator</option>
+                <option value="Academic Counselor">Academic Counselor</option>
+                <option value="IT Systems Administrator">IT Systems Administrator</option>
+              </select>
+            </div>
+
+            <div class="form-field full-width">
+              <label for="affiliation_proof">Institutional ID / Appointment Letter Proof</label>
+              <input type="file" id="affiliation_proof" name="affiliation_proof" required>
+              <small class="field-hint">Accepted formats: PDF, JPG, PNG (Max 5MB)</small>
+            </div>
+          </div>
+
+          <div class="checkbox-field">
+            <input type="checkbox" id="guidelines" name="guidelines" checked>
+            <label for="guidelines">I verify that the above information is accurate and agree to university compliance rules.</label>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Complete Admin Registration &rarr;</button>
+            <button type="reset" class="btn btn-secondary">Reset Form</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <!-- Footer Bar -->
+    <footer class="footer-bar">
+      <div class="footer-left">
+        <p class="footer-title"><strong>CHARUSAT Student Hub Portal</strong></p>
+        <p class="footer-note">&copy; 2026 Department of Information Technology. All Rights Reserved.</p>
+      </div>
+      <div class="footer-right">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="Admin_login.html">Admin Login</a>
+        <a href="../contact.html">Contact</a>
+      </div>
+    </footer>
+  </div>
+  <script src="regis_admin.js"></script>
 </body>
+
 </html>

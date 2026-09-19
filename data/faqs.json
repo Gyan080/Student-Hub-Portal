@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "question": "How do I log in to the student portal?",
+    "answer": "Use your student ID and password on the login page. If you forget your password, contact the admin office."
+  },
+  {
+    "id": 2,
+    "question": "Can I update my profile information?",
+    "answer": "Yes, students can update their profile from the profile section after logging in."
+  },
+  {
+    "id": 3,
+    "question": "How can I register for an event?",
+    "answer": "Go to the Events page, choose your event, and click the Register button."
+  },
+  {
+    "id": 4,
+    "question": "Who can contact the admin office?",
+    "answer": "Students and staff can contact the admin office for support, registration, and general questions."
+  }
+]

@@ -1,3 +1,7 @@
+@import url("../DashBoard/student_dashboard.css");
+
+/* Fee page content */
+/*
 * {
   box-sizing: border-box;
 }
@@ -280,6 +284,127 @@ th {
     align-items: flex-start;
   }
 
+  .fee-cards {
+    grid-template-columns: 1fr;
+  }
+}
+*/
+
+.panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.panel-heading h1 {
+  color: var(--accent-navy);
+  font-size: 1.6rem;
+  font-weight: 900;
+}
+
+.eyebrow {
+  margin-bottom: 4px;
+  color: var(--accent-gold);
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.primary-btn {
+  padding: 10px 16px;
+  background-color: var(--accent-navy);
+  color: #FFFFFF;
+  border: 2px solid var(--border-color);
+  box-shadow: var(--shadow-solid-sm);
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 800;
+}
+
+.fee-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.fee-card {
+  background-color: var(--bg-surface-alt);
+  border: 2px solid var(--border-color);
+  box-shadow: var(--shadow-solid-sm);
+  padding: 18px;
+}
+
+.fee-card span {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 8px;
+}
+
+.fee-card strong {
+  color: var(--accent-navy);
+  font-size: 1.8rem;
+}
+
+.fee-card.total {
+  background-color: var(--accent-navy);
+}
+
+.fee-card.total span,
+.fee-card.total strong {
+  color: #FFFFFF;
+}
+
+.fee-table-wrap {
+  overflow-x: auto;
+}
+
+.fee-table-wrap table {
+  width: 100%;
+  min-width: 620px;
+  border-collapse: collapse;
+}
+
+.fee-table-wrap th,
+.fee-table-wrap td {
+  padding: 12px;
+  border: 1.5px solid var(--border-color);
+  text-align: left;
+}
+
+.fee-table-wrap th {
+  background-color: var(--bg-surface-alt);
+  color: var(--accent-navy);
+  font-weight: 900;
+}
+
+.status {
+  display: inline-block;
+  padding: 3px 8px;
+  border: 1px solid var(--border-color);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.status.paid {
+  background-color: var(--accent-green-bg);
+  color: var(--accent-green);
+}
+
+.status.pending {
+  background-color: var(--accent-gold-bg);
+  color: var(--accent-gold);
+}
+
+@media (max-width: 600px) {
   .fee-cards {
     grid-template-columns: 1fr;
   }

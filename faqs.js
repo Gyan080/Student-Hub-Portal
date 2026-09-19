@@ -1,20 +1,36 @@
-var questions = document.getElementsByClassName("faq-question");
+document.addEventListener("DOMContentLoaded", function () {
+  const faqList = document.getElementById("faqList");
+  if (!faqList) return;
 
-for (var i = 0; i < questions.length; i++) {
-    questions[i].onclick = function () {
-        toggleFAQ(this);
-    };
-}
+  faqList.addEventListener("click", function (event) {
+    const questionBtn = event.target.closest(".faq-question");
+    if (!questionBtn) return;
 
-function toggleFAQ(question) {
-    var item = question.parentElement;
-    var icon = question.getElementsByTagName("span")[0];
+    const faqItem = questionBtn.closest(".faq-item");
+    if (!faqItem) return;
 
-    if (item.classList.contains("open")) {
+    const isOpen = faqItem.classList.contains("open");
+    const icon = questionBtn.querySelector(".faq-icon");
+
+    const allItems = faqList.querySelectorAll(".faq-item");
+    allItems.forEach(function (item) {
+      if (item !== faqItem) {
         item.classList.remove("open");
-        icon.innerHTML = "+";
+        const otherBtn = item.querySelector(".faq-question");
+        const otherIcon = item.querySelector(".faq-icon");
+        if (otherBtn) otherBtn.setAttribute("aria-expanded", "false");
+        if (otherIcon) otherIcon.textContent = "+";
+      }
+    });
+
+    if (isOpen) {
+      faqItem.classList.remove("open");
+      questionBtn.setAttribute("aria-expanded", "false");
+      if (icon) icon.textContent = "+";
     } else {
-        item.classList.add("open");
-        icon.innerHTML = "-";
+      faqItem.classList.add("open");
+      questionBtn.setAttribute("aria-expanded", "true");
+      if (icon) icon.textContent = "−";
     }
-}
+  });
+});

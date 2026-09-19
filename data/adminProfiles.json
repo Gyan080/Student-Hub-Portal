@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "name": "Mr.Amit Nayak",
+    "role": "Administrator",
+    "department": "Student Affairs",
+    "personalEmail": "amit@gmail.com",
+    "collegeEmail": "amit@charusat.ac.in",
+    "phone": "+1234567001",
+    "password": "amit123",
+    "status": "Active"
+  },
+  {
+    "id": 2,
+    "name": "Ms. Niana Parmar",
+    "role": "Head of Department",
+    "department": "Academics",
+    "personalEmail": "niana@gmail.com",
+    "collegeEmail": "niana.parmar@charusat.ac.in",
+    "phone": "+1234567002",
+    "password": "naina123",
+    "status": "Active"
+  }
+]

@@ -1,120 +1,367 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Profile</title>
+  <meta name="description" content="Student Profile Management - CHARUSAT Academic Portal.">
+  <title>Student Profile - CHARUSAT Portal</title>
   <link rel="stylesheet" href="profile.css">
 </head>
+
 <body>
   <div class="page-wrapper">
+    <!-- Header Navigation (PDF Unit 2.9 & 2.18) -->
     <header class="header-bar">
       <div class="header-brand">
-        <a href="student_dashboard.html" class="brand-link">
-          <img src="Images/Screenshot 2026-07-14 215638.png" alt="Portal Logo" class="brand-logo">
-          <span class="brand-name">Student Portal</span>
+        <a href="../../index.html" class="brand-link">
+          <img src="../../Images/Screenshot 2026-07-14 215638.png" alt="University Logo" class="brand-logo">
+          <span class="brand-name">STUDENT PORTAL</span>
         </a>
       </div>
       <nav class="nav-links">
-        <a href="about.html">About</a>
-        <a href="faqs.html">FAQs</a>
-        <a href="contact.html">Contact</a>
-        <a href="Login.html">Login</a>
+        <a href="../../index.html" class="nav-link">Home</a>
+        <a href="../../about.html" class="nav-link">About</a>
+        <a href="../../faqs.html" class="nav-link">FAQs</a>
+        <a href="../../contact.html" class="nav-link">Contact</a>
+        <a href="../../Login.html" class="nav-btn logout-btn">Logout &rarr;</a>
       </nav>
     </header>
 
+    <!-- Dashboard Layout Grid (PDF Unit 2.19) -->
     <div class="dashboard-layout">
-      <aside class="side-panel">
-        <nav>
-          <h2>Menu</h2>
-          <ul>
-            <li class="active"><a href="profile.html">Profile Page</a></li>
-            <li><a href="event.html">Events Page</a></li>
-            <li><a href="calendar.html">Calendar</a></li>
-            <li><a href="attendance.html">Attendance Tracker</a></li>
-            <li><a href="fee.html">Fee Information</a></li>
-            <li><a href="student_dashboard.html">Dashboard</a></li>
+      <!-- Sidebar Navigation -->
+      <aside class="dashboard-sidebar">
+        <div class="sidebar-user-card">
+          <div class="user-avatar" id="avatar-initials">ST</div>
+          <div class="user-meta">
+            <strong class="user-name" id="sidebar-user-name">Loading...</strong>
+            <span class="user-role" id="sidebar-user-id">Student ID</span>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <h2 class="sidebar-heading">PORTAL MENU</h2>
+          <ul class="sidebar-menu-list">
+            <li><a href="../DashBoard/student_dashboard.html" class="sidebar-link"><span></span> Overview Dashboard</a></li>
+            <li><a href="profile.html" class="sidebar-link active"><span></span> Student Profile</a></li>
+            <li><a href="../Attendance/attendance.html" class="sidebar-link"><span></span> Attendance Tracker</a></li>
+            <li><a href="../Exam_Result/exam_result.html" class="sidebar-link"><span></span> Exam Results</a></li>
+            <li><a href="../Calender/calendar.html" class="sidebar-link"><span></span> Academic Calendar</a></li>
+            <li><a href="../Event/event.html" class="sidebar-link"><span></span> Campus Events</a></li>
+            <li><a href="../Fee/fee.html" class="sidebar-link"><span></span> Fee Information</a></li>
           </ul>
         </nav>
+
+        <div class="sidebar-notice">
+          <span class="notice-mini-tag">PROFILE STATUS</span>
+          <p>Profile is verified and up-to-date for Academic Year 2026-2027.</p>
+        </div>
       </aside>
 
-      <main class="content-panel">
-        <section class="panel">
-          <div class="panel-heading">
-            <div>
-              <p class="eyebrow">Profile Management</p>
-              <h1>Student Profile</h1>
-            </div>
-            <button class="primary-btn">Edit Profile</button>
-          </div>
-
-          <div class="profile-header">
-            <div class="profile-avatar" id="student-initials">ST</div>
-            <div class="profile-intro">
-              <h2 id="student-profile-name">Loading...</h2>
-              <p id="student-profile-course">Loading...</p>
-              <div class="info-row">
-                <div class="mini-card">
-                  <span>Student ID</span>
-                  <strong id="student-profile-id">Loading...</strong>
-                </div>
-                <div class="mini-card">
-                  <span>Batch</span>
-                  <strong>2023-2027</strong>
-                </div>
+      <!-- Main Content Panel -->
+      <main class="dashboard-main">
+        <!-- Profile Hero Header -->
+        <section class="profile-hero-card">
+          <div class="profile-hero-left">
+            <div class="profile-avatar-large" id="student-initials">ST</div>
+            <div class="profile-hero-info">
+              <div class="badge-row">
+                <span class="status-badge green-badge">&bull; ACTIVE ENROLLMENT</span>
+                <span class="status-badge navy-badge" id="student-batch-badge">BATCH 2024-2028</span>
               </div>
+              <h1 class="student-title" id="student-profile-name">Student Name</h1>
+              <p class="student-subtitle" id="student-profile-course">Bachelor of Technology &bull; Information Technology</p>
             </div>
           </div>
+          <div class="profile-hero-actions">
+            <button type="button" class="btn btn-primary" id="open-edit-modal-btn">Edit Contact Details &rarr;</button>
+          </div>
+        </section>
 
-          <div class="profile-grid">
-            <div class="detail-box">
-              <span class="label">College Email ID</span>
-              <strong id="student-profile-email">Loading...</strong>
-            </div>
-            <div class="detail-box">
-              <span class="label">Institute</span>
-              <strong>Charusat University</strong>
-            </div>
-            <div class="detail-box">
-              <span class="label">Mobile Number</span>
-              <strong>+91 98765 43210</strong>
-            </div>
-            <div class="detail-box">
-              <span class="label">Address</span>
-              <strong>Ahmedabad, Gujarat</strong>
-            </div>
+        <!-- Academic & Institution Summary (PDF Unit 2.19 Grid) -->
+        <section class="dashboard-panel">
+          <div class="panel-header-bar">
+            <h2>Academic Identity & Institution Records</h2>
+            <span class="count-tag">Verified</span>
           </div>
 
-          <div class="notice-box">
-            <h3>Academic Notes</h3>
-            <p>Keep your profile details updated to receive the latest announcements, enrollment updates, and campus notifications.</p>
+          <div class="details-grid">
+            <div class="detail-card">
+              <span class="detail-label">STUDENT ID / ENROLLMENT</span>
+              <strong class="detail-value" id="student-profile-id">25DCS080</strong>
+            </div>
+
+            <div class="detail-card">
+              <span class="detail-label">INSTITUTE</span>
+              <strong class="detail-value">CSPIT - CHARUSAT</strong>
+            </div>
+
+            <div class="detail-card">
+              <span class="detail-label">DEPARTMENT / BRANCH</span>
+              <strong class="detail-value" id="student-profile-dept">Information Technology</strong>
+            </div>
+
+            <div class="detail-card">
+              <span class="detail-label">CURRENT SEMESTER</span>
+              <strong class="detail-value" id="student-profile-semester">Semester 3 (Regular)</strong>
+            </div>
+
+            <div class="detail-card">
+              <span class="detail-label">ACADEMIC COUNSELOR / MENTOR</span>
+              <strong class="detail-value" id="student-profile-counselor">Prof. R. M. Patel (Cabin 304)</strong>
+            </div>
+
+            <div class="detail-card">
+              <span class="detail-label">CUMULATIVE CGPA</span>
+              <strong class="detail-value text-green" id="student-profile-cgpa">8.65 / 10.00</strong>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact & Personal Information -->
+        <section class="dashboard-panel">
+          <div class="panel-header-bar">
+            <h2>Personal & Contact Information</h2>
+            <span class="count-tag gold-tag">Confidential</span>
+          </div>
+
+          <div class="details-grid">
+            <div class="detail-card">
+              <span class="detail-label">OFFICIAL UNIVERSITY EMAIL</span>
+              <strong class="detail-value" id="student-profile-email">25dcs080@charusat.edu.in</strong>
+            </div>
+
+            <div class="detail-card">
+              <span class="detail-label">PRIMARY CONTACT NUMBER</span>
+              <strong class="detail-value" id="student-profile-phone">+91 98765 43210</strong>
+            </div>
+
+            <div class="detail-card">
+              <span class="detail-label">DATE OF BIRTH</span>
+              <strong class="detail-value" id="student-profile-dob">Not provided</strong>
+            </div>
+
+            <div class="detail-card">
+              <span class="detail-label">GUARDIAN NAME & CONTACT</span>
+              <strong class="detail-value" id="student-profile-guardian">Mr. Ramesh Patel (+91 98250 11223)</strong>
+            </div>
+
+            <div class="detail-card">
+              <span class="detail-label">BLOOD GROUP & HEALTH</span>
+              <strong class="detail-value" id="student-profile-health">B+ (No known allergies)</strong>
+            </div>
+
+            <div class="detail-card detail-card-full">
+              <span class="detail-label">PERMANENT RESIDENTIAL ADDRESS</span>
+              <strong class="detail-value" id="student-profile-address">A-402 Shivalik Greens, SG Highway, Ahmedabad, Gujarat - 380054</strong>
+            </div>
+          </div>
+        </section>
+
+        <!-- Academic Milestones & Semester Performance -->
+        <section class="dashboard-panel">
+          <div class="panel-header-bar">
+            <h2>Semester History & Milestones</h2>
+            <span class="count-tag">Transcript</span>
+          </div>
+
+          <div class="table-container">
+            <table class="brutalist-table">
+              <thead>
+                <tr>
+                  <th scope="col">Semester</th>
+                  <th scope="col">Academic Year</th>
+                  <th scope="col">Credits Earned</th>
+                  <th scope="col">SGPA</th>
+                  <th scope="col">Result Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Semester 1</strong></td>
+                  <td>2024-2025 (Odd)</td>
+                  <td>24 / 24</td>
+                  <td><strong>8.50</strong></td>
+                  <td><span class="tag tag-green">Passed (Distinction)</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Semester 2</strong></td>
+                  <td>2024-2025 (Even)</td>
+                  <td>26 / 26</td>
+                  <td><strong>8.80</strong></td>
+                  <td><span class="tag tag-green">Passed (Distinction)</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Semester 3</strong></td>
+                  <td>2025-2026 (Ongoing)</td>
+                  <td>22 (Enrolled)</td>
+                  <td><em>In Progress</em></td>
+                  <td><span class="tag tag-gold">Registered</span></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </section>
       </main>
     </div>
 
+    <!-- Edit Profile Modal Dialog (PDF Unit 4.13 & 5.1) -->
+    <div class="modal-backdrop" id="edit-modal" style="display: none;">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h2 class="modal-title">Edit Contact Details</h2>
+          <button type="button" class="modal-close" id="close-modal-btn">&times;</button>
+        </div>
+        <form id="edit-profile-form" class="modal-form">
+          <div class="form-group">
+            <label for="edit-email" class="form-label">Email Address <span class="req">*</span></label>
+            <input type="email" id="edit-email" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label for="edit-phone" class="form-label">Phone Number <span class="req">*</span></label>
+            <input type="tel" id="edit-phone" class="form-input" pattern="[0-9]{10}" placeholder="10 digit number" required>
+          </div>
+          <div class="form-group">
+            <label for="edit-address" class="form-label">Residential Address <span class="req">*</span></label>
+            <textarea id="edit-address" class="form-textarea" rows="3" required></textarea>
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-secondary" id="cancel-modal-btn">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer Bar -->
     <footer class="footer-bar">
-      <p class="footer-note">Student Portal Dashboard</p>
-      <p class="footer-note">Contact us: xxxxx xxxxx</p>
+      <div class="footer-left">
+        <p class="footer-title"><strong>CHARUSAT Student Hub Portal</strong></p>
+        <p class="footer-note">&copy; 2026 Department of Information Technology. All Rights Reserved.</p>
+      </div>
+      <div class="footer-right">
+        <a href="../../index.html">Home</a>
+        <a href="../../about.html">About</a>
+        <a href="../../faqs.html">FAQs</a>
+        <a href="../../contact.html">Support</a>
+        <a href="../../Login.html">Logout</a>
+      </div>
     </footer>
   </div>
-  <script src="menu.js"></script>
-  <script>
-    var student = JSON.parse(localStorage.getItem("studentUser") || "null");
 
-    if (student) {
-      var studentName = student.name || "Student";
-      document.getElementById("student-profile-name").textContent = studentName;
-      document.getElementById("student-profile-course").textContent = student.department || "Course not provided";
-      document.getElementById("student-profile-id").textContent = student.studentId || "Not provided";
-      document.getElementById("student-profile-email").textContent = student.email || "Not provided";
-      document.getElementById("student-initials").textContent = studentName
-        .split(" ")
-        .map(function (namePart) { return namePart.charAt(0); })
-        .slice(0, 2)
-        .join("")
-        .toUpperCase();
-    }
+  <script src="../DashBoard/menu.js"></script>
+  <script>
+    // PDF Unit 5.1 Object reading and DOM population
+    document.addEventListener("DOMContentLoaded", function () {
+      var student = JSON.parse(localStorage.getItem("studentUser") || "null");
+
+      var nameEl = document.getElementById("student-profile-name");
+      var courseEl = document.getElementById("student-profile-course");
+      var idEl = document.getElementById("student-profile-id");
+      var emailEl = document.getElementById("student-profile-email");
+      var deptEl = document.getElementById("student-profile-dept");
+      var initialsEl = document.getElementById("student-initials");
+      var phoneEl = document.getElementById("student-profile-phone");
+      var dobEl = document.getElementById("student-profile-dob");
+      var addressEl = document.getElementById("student-profile-address");
+      var semesterEl = document.getElementById("student-profile-semester");
+      var counselorEl = document.getElementById("student-profile-counselor");
+      var cgpaEl = document.getElementById("student-profile-cgpa");
+      var guardianEl = document.getElementById("student-profile-guardian");
+      var healthEl = document.getElementById("student-profile-health");
+
+      function syncProfile() {
+        if (student) {
+          var sName = student.name || "Student User";
+          var sId = student.studentId || "25DCS080";
+          var sDept = student.department || "Information Technology";
+          var sEmail = student.collegeEmail || "student@charusat.edu.in";
+          var sPhone = student.phone || "+91 98765 43210";
+          var sDob = student.dob || "Not provided";
+          var sAddress = student.address || "A-402 Shivalik Greens, SG Highway, Ahmedabad, Gujarat - 380054";
+          var sSemester = student.currentSemester || "Semester 3 (Regular)";
+          var sCounselor = student.academicCounselor || "Prof. R. M. Patel (Cabin 304)";
+          var sCgpa = student.cgpa ? Number(student.cgpa).toFixed(2) + " / 10.00" : "8.65 / 10.00";
+          var sGuardian = student.guardianName ? student.guardianName + " (" + (student.guardianContact || "Not provided") + ")" : "Not provided";
+          var sHealth = student.bloodGroup ? student.bloodGroup + " (" + (student.healthDetails || "No details") + ")" : "Not provided";
+
+          if (nameEl) nameEl.textContent = sName;
+          if (courseEl) courseEl.textContent = "Bachelor of Technology \u2022 " + sDept;
+          if (idEl) idEl.textContent = sId;
+          if (emailEl) emailEl.textContent = sEmail;
+          if (deptEl) deptEl.textContent = sDept;
+          if (phoneEl) phoneEl.textContent = sPhone;
+          if (dobEl) dobEl.textContent = sDob;
+          if (addressEl) addressEl.textContent = sAddress;
+          if (semesterEl) semesterEl.textContent = sSemester;
+          if (counselorEl) counselorEl.textContent = sCounselor;
+          if (cgpaEl) cgpaEl.textContent = sCgpa;
+          if (guardianEl) guardianEl.textContent = sGuardian;
+          if (healthEl) healthEl.textContent = sHealth;
+
+          if (initialsEl) {
+            var parts = sName.trim().split(" ");
+            var init = parts[0] ? parts[0].charAt(0) : "S";
+            if (parts.length > 1) init += parts[parts.length - 1].charAt(0);
+            initialsEl.textContent = init.toUpperCase();
+          }
+        }
+      }
+
+      syncProfile();
+
+      // Modal Handling (PDF Unit 4 & 5)
+      var modal = document.getElementById("edit-modal");
+      var openBtn = document.getElementById("open-edit-modal-btn");
+      var closeBtn = document.getElementById("close-modal-btn");
+      var cancelBtn = document.getElementById("cancel-modal-btn");
+      var form = document.getElementById("edit-profile-form");
+
+      if (openBtn && modal) {
+        openBtn.addEventListener("click", function () {
+          document.getElementById("edit-email").value = (student && student.collegeEmail) || "25dcs080@charusat.edu.in";
+          document.getElementById("edit-phone").value = (student && student.phone) ? student.phone.replace(/[^0-9]/g, "").slice(-10) : "9876543210";
+          document.getElementById("edit-address").value = (student && student.address) || "A-402 Shivalik Greens, SG Highway, Ahmedabad, Gujarat - 380054";
+          modal.style.display = "flex";
+        });
+      }
+
+      function closeModal() {
+        if (modal) modal.style.display = "none";
+      }
+
+      if (closeBtn) closeBtn.addEventListener("click", closeModal);
+      if (cancelBtn) cancelBtn.addEventListener("click", closeModal);
+
+      if (form) {
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var updatedEmail = document.getElementById("edit-email").value.trim();
+          var updatedPhone = document.getElementById("edit-phone").value.trim();
+          var updatedAddress = document.getElementById("edit-address").value.trim();
+
+          if (!student) {
+            student = {
+              name: "Student User",
+              studentId: "25DCS080",
+              department: "Information Technology"
+            };
+          }
+
+          student.collegeEmail = updatedEmail;
+          student.phone = "+91 " + updatedPhone;
+          student.address = updatedAddress;
+
+          localStorage.setItem("studentUser", JSON.stringify(student));
+          syncProfile();
+          closeModal();
+          alert("Profile contact details updated successfully!");
+        });
+      }
+    });
   </script>
 </body>
+
 </html>
+

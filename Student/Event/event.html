@@ -1,108 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Events Page</title>
+  <meta name="description" content="Campus Events, Hackathons & Competitions - CHARUSAT Academic Portal.">
+  <title>Campus Events - CHARUSAT Portal</title>
   <link rel="stylesheet" href="event.css">
 </head>
+
 <body>
   <div class="page-wrapper">
+    <!-- Header Navigation (PDF Unit 2.9 & 2.18) -->
     <header class="header-bar">
       <div class="header-brand">
-        <a href="student_dashboard.html" class="brand-link">
-          <img src="Images/Screenshot 2026-07-14 215638.png" alt="Portal Logo" class="brand-logo">
-          <span class="brand-name">Student Portal</span>
+        <a href="../../index.html" class="brand-link">
+          <img src="../../Images/Screenshot 2026-07-14 215638.png" alt="University Logo" class="brand-logo">
+          <span class="brand-name">STUDENT PORTAL</span>
         </a>
       </div>
       <nav class="nav-links">
-        <a href="about.html">About</a>
-        <a href="faqs.html">FAQs</a>
-        <a href="contact.html">Contact</a>
-        <a href="Login.html">Login</a>
+        <a href="../../index.html" class="nav-link">Home</a>
+        <a href="../../about.html" class="nav-link">About</a>
+        <a href="../../faqs.html" class="nav-link">FAQs</a>
+        <a href="../../contact.html" class="nav-link">Contact</a>
+        <a href="../../Login.html" class="nav-btn logout-btn">Logout &rarr;</a>
       </nav>
     </header>
 
+    <!-- Dashboard Layout Grid (PDF Unit 2.19) -->
     <div class="dashboard-layout">
-      <aside class="side-panel">
-        <nav>
-          <h2>Menu</h2>
-          <ul>
-            <li><a href="profile.html">Profile Page</a></li>
-            <li class="active"><a href="event.html">Events Page</a></li>
-            <li><a href="calendar.html">Calendar</a></li>
-            <li><a href="attendance.html">Attendance Tracker</a></li>
-            <li><a href="fee.html">Fee Information</a></li>
-            <li><a href="student_dashboard.html">Dashboard</a></li>
+      <!-- Sidebar Navigation -->
+      <aside class="dashboard-sidebar">
+        <div class="sidebar-user-card">
+          <div class="user-avatar" id="avatar-initials">ST</div>
+          <div class="user-meta">
+            <strong class="user-name" id="sidebar-user-name">Loading...</strong>
+            <span class="user-role" id="sidebar-user-id">Student ID</span>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <h2 class="sidebar-heading">PORTAL MENU</h2>
+          <ul class="sidebar-menu-list">
+            <li><a href="../DashBoard/student_dashboard.html" class="sidebar-link"><span></span> Overview Dashboard</a></li>
+            <li><a href="../Profile/profile.html" class="sidebar-link"><span></span> Student Profile</a></li>
+            <li><a href="../Attendance/attendance.html" class="sidebar-link"><span></span> Attendance Tracker</a></li>
+            <li><a href="../Exam_Result/exam_result.html" class="sidebar-link"><span></span> Exam Results</a></li>
+            <li><a href="../Calender/calendar.html" class="sidebar-link"><span></span> Academic Calendar</a></li>
+            <li><a href="event.html" class="sidebar-link active"><span></span> Campus Events</a></li>
+            <li><a href="../Fee/fee.html" class="sidebar-link"><span></span> Fee Information</a></li>
           </ul>
         </nav>
+
+        <div class="sidebar-notice">
+          <span class="notice-mini-tag">ACTIVITY CREDITS</span>
+          <p>Earn non-academic credit points by participating in certified university fests.</p>
+        </div>
       </aside>
 
-      <main class="content-panel">
-        <section class="panel">
-          <div class="panel-heading">
-            <div>
-              <p class="eyebrow">Campus Highlights</p>
-              <h1>Upcoming Events</h1>
-            </div>
-            <button class="primary-btn">+ New Event</button>
+      <!-- Main Content Panel -->
+      <main class="dashboard-main">
+        <!-- Banner Header -->
+        <section class="welcome-banner">
+          <div class="banner-text">
+            <div class="card-header-tag">CAMPUS HAPPENINGS</div>
+            <h1 class="banner-title">University Events & Competitions</h1>
+            <p class="banner-subtitle">Explore technical hackathons, cultural festivals, and skill workshops</p>
           </div>
-
-          <div class="event-list">
-            <article class="event-card">
-              <div class="event-date">
-                <span>18</span>
-                <small>Aug</small>
-              </div>
-              <div class="event-info">
-                <h3>Tech Fest 2026</h3>
-                <p>Innovation showcase, coding contests, and student startup stalls.</p>
-                <ul>
-                  <li>10:00 AM</li>
-                  <li>Main Auditorium</li>
-                </ul>
-              </div>
-            </article>
-
-            <article class="event-card">
-              <div class="event-date">
-                <span>22</span>
-                <small>Aug</small>
-              </div>
-              <div class="event-info">
-                <h3>Career Guidance Seminar</h3>
-                <p>Learn interview tips, placement strategies, and industry expectations.</p>
-                <ul>
-                  <li>02:00 PM</li>
-                  <li>Seminar Hall 2</li>
-                </ul>
-              </div>
-            </article>
-
-            <article class="event-card">
-              <div class="event-date">
-                <span>05</span>
-                <small>Sep</small>
-              </div>
-              <div class="event-info">
-                <h3>College Sports Day</h3>
-                <p>Inter-department competitions, fun games, and team spirit activities.</p>
-                <ul>
-                  <li>09:30 AM</li>
-                  <li>Sports Ground</li>
-                </ul>
-              </div>
-            </article>
+          <div class="banner-actions">
+            <span class="count-tag gold-tag">4 Upcoming Events</span>
           </div>
         </section>
+
+        <!-- Filter Controls (PDF Unit 4 DOM Event Delegation) -->
+        <div class="event-filter-bar">
+          <button type="button" class="filter-btn active" data-category="all">All Events</button>
+          <button type="button" class="filter-btn" data-category="tech">Technical & Coding</button>
+          <button type="button" class="filter-btn" data-category="cultural">Cultural & Arts</button>
+          <button type="button" class="filter-btn" data-category="sports">Sports & Athletics</button>
+        </div>
+
+        <!-- Event Cards Stack (PDF Unit 2.19 Grid & Flexbox) -->
+        <div class="events-grid" id="events-container">
+          <!-- Event 1 -->
+          <article class="event-card" data-category="tech">
+            <div class="event-date-box">
+              <span class="event-day">25</span>
+              <span class="event-month">SEP</span>
+              <span class="event-year">2026</span>
+            </div>
+            <div class="event-content">
+              <div class="event-top-meta">
+                <span class="event-tag tag-navy">TECHNICAL HACKATHON</span>
+                <span class="event-venue">📍 CSPIT Auditorium</span>
+              </div>
+              <h2 class="event-title">Cognizance 2026: 24-Hour AI & Web Hackathon</h2>
+              <p class="event-desc">Collaborate with fellow engineers to build full-stack web solutions and generative AI prototypes for real-world campus problems. Exciting cash rewards and internship sponsorships.</p>
+              <div class="event-footer">
+                <span class="event-time">⏰ 09:00 AM onwards (24h)</span>
+                <button type="button" class="btn btn-primary register-event-btn" data-event="Cognizance 2026">Register Team &rarr;</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Event 2 -->
+          <article class="event-card" data-category="tech">
+            <div class="event-date-box">
+              <span class="event-day">02</span>
+              <span class="event-month">OCT</span>
+              <span class="event-year">2026</span>
+            </div>
+            <div class="event-content">
+              <div class="event-top-meta">
+                <span class="event-tag tag-gold">WORKSHOP</span>
+                <span class="event-venue">📍 Lab C-204</span>
+              </div>
+              <h2 class="event-title">Hands-On Cloud Architecture & Docker Masterclass</h2>
+              <p class="event-desc">Learn container orchestration, microservices deployment, and CI/CD pipelines guided by industry cloud architects from AWS & Google Cloud.</p>
+              <div class="event-footer">
+                <span class="event-time">⏰ 02:00 PM - 05:00 PM</span>
+                <button type="button" class="btn btn-primary register-event-btn" data-event="Cloud Workshop">Register Seat &rarr;</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Event 3 -->
+          <article class="event-card" data-category="cultural">
+            <div class="event-date-box">
+              <span class="event-day">15</span>
+              <span class="event-month">OCT</span>
+              <span class="event-year">2026</span>
+            </div>
+            <div class="event-content">
+              <div class="event-top-meta">
+                <span class="event-tag tag-crimson">CULTURAL FEST</span>
+                <span class="event-venue">📍 University Open Lawn</span>
+              </div>
+              <h2 class="event-title">Spandan 2026: Annual Youth & Drama Festival</h2>
+              <p class="event-desc">Inter-college street plays, classical music nights, and battle of the bands. Open to all students across faculties with certificates of merit.</p>
+              <div class="event-footer">
+                <span class="event-time">⏰ 05:00 PM - 10:00 PM</span>
+                <button type="button" class="btn btn-primary register-event-btn" data-event="Spandan 2026">Register Solo / Group &rarr;</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Event 4 -->
+          <article class="event-card" data-category="sports">
+            <div class="event-date-box">
+              <span class="event-day">22</span>
+              <span class="event-month">OCT</span>
+              <span class="event-year">2026</span>
+            </div>
+            <div class="event-content">
+              <div class="event-top-meta">
+                <span class="event-tag tag-green">SPORTS TOURNAMENT</span>
+                <span class="event-venue">📍 Sports Complex Ground</span>
+              </div>
+              <h2 class="event-title">Charusat Premier Cricket & Badminton League</h2>
+              <p class="event-desc">Departmental league fixtures for boys and girls teams. Fixtures, jersey kits, and match schedules will be issued upon registration confirmation.</p>
+              <div class="event-footer">
+                <span class="event-time">⏰ 08:30 AM onwards</span>
+                <button type="button" class="btn btn-primary register-event-btn" data-event="Sports League">Register Squad &rarr;</button>
+              </div>
+            </div>
+          </article>
+        </div>
       </main>
     </div>
 
+    <!-- Footer Bar -->
     <footer class="footer-bar">
-      <p class="footer-note">Student Portal Dashboard</p>
-      <p class="footer-note">Contact us: xxxxx xxxxx</p>
+      <div class="footer-left">
+        <p class="footer-title"><strong>CHARUSAT Student Hub Portal</strong></p>
+        <p class="footer-note">&copy; 2026 Department of Information Technology. All Rights Reserved.</p>
+      </div>
+      <div class="footer-right">
+        <a href="../../index.html">Home</a>
+        <a href="../../about.html">About</a>
+        <a href="../../faqs.html">FAQs</a>
+        <a href="../../contact.html">Support</a>
+        <a href="../../Login.html">Logout</a>
+      </div>
     </footer>
   </div>
-  <script src="menu.js"></script>
+
+  <script src="../DashBoard/menu.js"></script>
+  <script>
+    // PDF Unit 4 & 5: Category Filtering and Interactive Registration
+    document.addEventListener("DOMContentLoaded", function () {
+      var filterBtns = document.querySelectorAll(".filter-btn");
+      var cards = document.querySelectorAll(".event-card");
+
+      filterBtns.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          filterBtns.forEach(function (b) { b.classList.remove("active"); });
+          btn.classList.add("active");
+
+          var category = btn.getAttribute("data-category");
+
+          cards.forEach(function (card) {
+            if (category === "all" || card.getAttribute("data-category") === category) {
+              card.style.display = "flex";
+            } else {
+              card.style.display = "none";
+            }
+          });
+        });
+      });
+
+      var regButtons = document.querySelectorAll(".register-event-btn");
+      regButtons.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var eventName = btn.getAttribute("data-event");
+          if (btn.textContent.indexOf("Registered") !== -1) {
+            btn.textContent = "Register Now \u2192";
+            btn.classList.remove("registered-btn");
+            alert("Cancelled registration for " + eventName);
+          } else {
+            btn.textContent = "Registered \u2713";
+            btn.classList.add("registered-btn");
+            alert("Successfully registered for " + eventName + "! Check your email for event passes.");
+          }
+        });
+      });
+    });
+  </script>
 </body>
+
 </html>
+

@@ -1,88 +1,119 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Contact Us</title>
-    <link rel="stylesheet" href="contact.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact CHARUSAT Student Portal - Reach academic advisors, IT helpdesk, and administrative departments.">
+  <title>Contact Us - Student Portal</title>
+  <link rel="stylesheet" href="contact.css">
 </head>
 
 <body>
-    <div class="page-wrapper">
-        <header class="header-bar">
-            <div class="header-brand">
-                <a href="index.html" class="brand-link">
-                    <img src="Images/Screenshot 2026-07-14 215638.png"
-                        alt="Portal Logo" class="brand-logo">
-                    <span class="brand-name">Student Portal</span>
-                </a>
+  <div class="page-wrapper">
+    <!-- Header Navigation -->
+    <header class="header-bar">
+      <div class="header-brand">
+        <a href="index.html" class="brand-link">
+          <img src="Images/Screenshot 2026-07-14 215638.png" alt="University Logo" class="brand-logo">
+          <span class="brand-name">STUDENT PORTAL</span>
+        </a>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="faqs.html" class="nav-link">FAQs</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+        <a href="Login.html" class="nav-btn">Portal Login &rarr;</a>
+      </nav>
+    </header>
+
+    <main class="main-content">
+      <section class="contact-grid">
+        <article class="contact-card">
+          <div class="card-header-tag">MESSAGE US</div>
+          <h1 class="contact-title">Get in Touch</h1>
+          <p class="contact-sub">Have questions or facing issues? Send our student services office a message.</p>
+
+          <form action="contact.html" method="get" id="contactForm">
+            <div class="contact-field">
+              <label for="full-name">Full Name</label>
+              <input type="text" id="full-name" name="full_name" placeholder="e.g. Riya Shah" required>
             </div>
-            <nav class="nav-links">
-                <a href="about.html">About</a>
-                <a href="faqs.html">FAQs</a>
-                <a href="login.html">Login</a>
-            </nav>
-        </header>
+            <div class="contact-field">
+              <label for="email-address">Email Address</label>
+              <input type="email" id="email-address" name="email_address" placeholder="e.g. student@charusat.edu.in" required>
+            </div>
+            <div class="contact-field">
+              <label for="department-select">Concerned Department</label>
+              <select id="department-select" name="department" class="select-field">
+                <option value="academics">Academic Administration</option>
+                <option value="it_support">IT & Portal Support</option>
+                <option value="finance">Accounts & Fee Section</option>
+                <option value="exam">Examination Cell</option>
+              </select>
+            </div>
+            <div class="contact-field">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="Brief summary of your query" required>
+            </div>
+            <div class="contact-field">
+              <label for="message">Detailed Message</label>
+              <textarea id="message" name="message" rows="4" placeholder="Type your message here..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message &rarr;</button>
+          </form>
+        </article>
 
-        <main class="main-content">
-            <section class="contact-grid">
-                <article class="contact-card">
-                    <h2>Get in Touch</h2>
-                    <p>Please fill out the form below and we will contact you as soon as possible.</p>
-                    <form action="contact.html" method="post">
-                        <div class="contact-field">
-                            <label for="full-name">Full Name:</label>
-                            <input type="text" id="full-name" name="full_name" required>
-                        </div>
-                        <div class="contact-field">
-                            <label for="email-address">Email Address:</label>
-                            <input type="email" id="email-address" name="email_address" required>
-                        </div>
-                        <div class="contact-field">
-                            <label for="subject">Subject:</label>
-                            <input type="text" id="subject" name="subject" required>
-                        </div>
-                        <div class="contact-field">
-                            <label for="message">Message:</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-button">Send Message</button>
-                    </form>
-                </article>
+        <aside class="support-card">
+          <div class="card-header-tag gold-tag">CAMPUS DESK</div>
+          <h2 class="support-title">Support & Hours</h2>
+          <img src="Images/images.png" alt="University Administration Block" class="support-image">
 
-                <aside class="support-card">
-                    <h2>Support & Location</h2>
-                    <img src="Images/images.png"
-                        alt="Office" class="support-image">
-                    <table class="opening-table">
-                        <thead>
-                            <tr>
-                                <th>Day</th>
-                                <th>Opening Hours</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Monday - Friday</td>
-                                <td>09:00 AM - 06:00 PM</td>
-                            </tr>
-                            <tr>
-                                <td>Saturday</td>
-                                <td>10:00 AM - 04:00 PM</td>
-                            </tr>
-                            <tr>
-                                <td>Sunday</td>
-                                <td>Closed</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </aside>
-            </section>
-        </main>
+          <p><strong>Campus Address:</strong> CHARUSAT Campus, Highway 139, Changa, Gujarat 388421</p>
+          <p><strong>General Phone:</strong> +91 2697 265011 / 265022</p>
 
-        <footer class="footer-bar">
-            <p class="footer-note">&copy; 2026 Student Portal System. All rights reserved.</p>
-        </footer>
-    </div>
+          <div class="table-container">
+            <table class="opening-table">
+              <caption>Campus Helpdesk Hours</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Day Schedule</th>
+                  <th scope="col">Operating Hours</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Monday – Friday</td>
+                  <td><strong>09:00 AM – 05:30 PM</strong></td>
+                </tr>
+                <tr>
+                  <td>Saturday</td>
+                  <td><strong>09:30 AM – 02:00 PM</strong></td>
+                </tr>
+                <tr>
+                  <td>Sunday & Public Holidays</td>
+                  <td><span class="status-closed">Closed</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="footer-bar">
+      <div class="footer-left">
+        <p class="footer-title"><strong>CHARUSAT Student Hub Portal</strong></p>
+        <p class="footer-note">&copy; 2026 Department of Information Technology. All Rights Reserved.</p>
+      </div>
+      <div class="footer-right">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="faqs.html">FAQs</a>
+        <a href="Login.html">Portal Login</a>
+      </div>
+    </footer>
+  </div>
 </body>
-
 </html>
