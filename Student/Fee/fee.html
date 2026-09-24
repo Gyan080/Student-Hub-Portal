@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><title>Fee Information</title>
-  <link rel="stylesheet" href="fee.css">
+  <link rel="stylesheet" href="../studentStyle.css">
 </head>
 <body>
   <div class="page-wrapper">
@@ -21,47 +21,75 @@
     </header>
 
     <div class="dashboard-layout">
-      <aside class="side-panel">
-        <nav>
-          <h2>Menu</h2>
-          <ul>
-            <li><a href="profile.html">Profile Page</a></li>
-            <li><a href="event.html">Events Page</a></li>
-            <li><a href="calendar.html">Calendar</a></li>
-            <li><a href="attendance.html">Attendance Tracker</a></li>
-            <li class="active"><a href="fee.html">Fee Information</a></li>
-            <li><a href="student_dashboard.html">Dashboard</a></li>
+      <aside class="dashboard-sidebar">
+        <div class="sidebar-user-card">
+          <div class="user-avatar" id="avatar-initials">ST</div>
+          <div class="user-meta">
+            <strong class="user-name" id="sidebar-user-name">Loading...</strong>
+            <span class="user-role" id="sidebar-user-id">Student ID</span>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <h2 class="sidebar-heading">PORTAL MENU</h2>
+          <ul class="sidebar-menu-list">
+            <li><a href="../DashBoard/student_dashboard.html" class="sidebar-link"><span></span> Overview Dashboard</a></li>
+            <li><a href="../Profile/profile.html" class="sidebar-link"><span></span> Student Profile</a></li>
+            <li><a href="../Attendance/attendance.html" class="sidebar-link"><span></span> Attendance Tracker</a></li>
+            <li><a href="../Exam_Result/exam_result.html" class="sidebar-link"><span></span> Exam Results</a></li>
+            <li><a href="../Calender/calendar.html" class="sidebar-link"><span></span> Academic Calendar</a></li>
+            <li><a href="../Event/event.html" class="sidebar-link"><span></span> Campus Events</a></li>
+            <li><a href="fee.html" class="sidebar-link active"><span></span> Fee Information</a></li>
           </ul>
         </nav>
       </aside>
 
-      <main class="content-panel">
-        <section class="panel">
-          <div class="panel-heading">
-            <div>
-              <p class="eyebrow">Payment Summary</p>
-              <h1>Fee Information</h1>
-            </div>
-            <button class="primary-btn">Pay Now</button>
+      <main class="dashboard-main">
+        <section class="welcome-banner">
+          <div class="banner-text">
+            <div class="card-header-tag">PAYMENT SUMMARY</div>
+            <h1 class="banner-title">Fee Information</h1>
           </div>
-
-          <div class="fee-cards">
-            <div class="fee-card total">
-              <span>Total Due</span>
-              <strong>₹45,000</strong>
-            </div>
-            <div class="fee-card">
-              <span>Paid</span>
-              <strong>₹30,000</strong>
-            </div>
-            <div class="fee-card">
-              <span>Pending</span>
-              <strong>₹15,000</strong>
-            </div>
+          <div class="banner-actions">
+            <button class="btn btn-primary">Pay Now</button>
           </div>
+        </section>
 
-          <div class="fee-table-wrap">
-            <table>
+        <section class="metrics-grid">
+          <article class="metric-card">
+            <div class="metric-top">
+              <span class="metric-title">TOTAL DUE</span>
+            </div>
+            <div class="metric-main">
+              <span class="metric-number">₹45,000</span>
+            </div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-top">
+              <span class="metric-title">PAID</span>
+              <span class="kpi-badge tag-green" style="padding: 2px 6px; border: 1.5px solid #1A1A1A; font-weight: bold; font-size: 0.8rem;">Cleared</span>
+            </div>
+            <div class="metric-main">
+              <span class="metric-number">₹30,000</span>
+            </div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-top">
+              <span class="metric-title">PENDING</span>
+              <span class="kpi-badge tag-crimson" style="padding: 2px 6px; border: 1.5px solid #1A1A1A; font-weight: bold; font-size: 0.8rem;">Action Req</span>
+            </div>
+            <div class="metric-main">
+              <span class="metric-number">₹15,000</span>
+            </div>
+          </article>
+        </section>
+
+        <section class="dashboard-panel">
+          <div class="panel-header-bar">
+            <h2>Fee Breakdown</h2>
+          </div>
+          <div class="table-container">
+            <table class="brutalist-table">
               <thead>
                 <tr>
                   <th>Fee Type</th>
