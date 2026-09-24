@@ -1,0 +1,42 @@
+{
+    "25DCS080": {
+        "First Name": "Gyan",
+        "Middle Name": "Bharatkumar",
+        "Last Name": "Patel",
+        "University": "DEPSTAR",
+        "Mobile Number": 9876543210,
+        "CGPA": 7.78,
+        "Email Address": "25dcs080@charusat.edu.in",
+        "Counsellor": "Dr. Mohini Darji"
+    },
+    "25DCS095": {
+        "First Name": "Om",
+        "Middle Name": "Ketankumar",
+        "Last Name": "Patel",
+        "University": "DEPSTAR",
+        "Mobile Number": 7418529630,
+        "CGPA": 6.95,
+        "Email Address": "25dcs095@charusat.edu.in",
+        "Counsellor": "Dr. Mohini Darji"
+    },
+    "25DCS130": {
+        "First Name": "Smit",
+        "Middle Name": "Jigneshbhai",
+        "Last Name": "Tandel",
+        "University": "DEPSTAR",
+        "Mobile Number": 9638527410,
+        "CGPA": 6.30,
+        "Email Address": "25dcs130@charusat.edu.in",
+        "Counsellor": "Mr. Vaibhav Matalia"
+    },
+    "25DCS096": {
+        "First Name": "Prathamet",
+        "Middle Name": "Dhanshukbhai",
+        "Last Name": "TPatel",
+        "University": "DEPSTAR",
+        "Mobile Number": 7894561230,
+        "CGPA": 8.32,
+        "Email Address": "25dcs096@charusat.edu.in",
+        "Counsellor": "Dr. Mohini Darji"
+    }
+}

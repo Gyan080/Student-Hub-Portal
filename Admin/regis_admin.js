@@ -1,4 +1,3 @@
-// ===== Admin Registration Handler (PDF Unit 3.1 & 4.3 & 4.4) =====
 document.addEventListener("DOMContentLoaded", function () {
   const regForm = document.getElementById("adminRegForm");
   if (!regForm) return;
@@ -118,7 +117,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// PDF Unit 4.4 DOM Modal
 function showBrutalistModal(title, message, type, callback) {
   const existingModal = document.getElementById("customBrutalistModal");
   if (existingModal) existingModal.remove();
@@ -194,4 +192,3 @@ function showBrutalistModal(title, message, type, callback) {
   backdrop.appendChild(modalBox);
   document.body.appendChild(backdrop);
 }
-

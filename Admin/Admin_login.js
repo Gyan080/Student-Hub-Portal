@@ -1,4 +1,3 @@
-// ===== Admin Sign In Handler (PDF Unit 3.1 & 4.5 & 5.1) =====
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("adminLoginForm");
   if (!form) return;
@@ -34,4 +33,4 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem("adminUser", JSON.stringify(admin));
     window.location.href = "DashBoard/admin_dashboard.html";
   });
-});
+});

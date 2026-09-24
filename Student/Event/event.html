@@ -1,17 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Campus Events, Hackathons & Competitions - CHARUSAT Academic Portal.">
-  <title>Campus Events - CHARUSAT Portal</title>
+<html>
+<head><title>Campus Events - CHARUSAT Portal</title>
   <link rel="stylesheet" href="event.css">
 </head>
 
 <body>
   <div class="page-wrapper">
-    <!-- Header Navigation (PDF Unit 2.9 & 2.18) -->
     <header class="header-bar">
       <div class="header-brand">
         <a href="../../index.html" class="brand-link">
@@ -24,13 +18,11 @@
         <a href="../../about.html" class="nav-link">About</a>
         <a href="../../faqs.html" class="nav-link">FAQs</a>
         <a href="../../contact.html" class="nav-link">Contact</a>
-        <a href="../../Login.html" class="nav-btn logout-btn">Logout &rarr;</a>
+        <a href="../../Login.html" class="nav-btn logout-btn">Logout</a>
       </nav>
     </header>
 
-    <!-- Dashboard Layout Grid (PDF Unit 2.19) -->
     <div class="dashboard-layout">
-      <!-- Sidebar Navigation -->
       <aside class="dashboard-sidebar">
         <div class="sidebar-user-card">
           <div class="user-avatar" id="avatar-initials">ST</div>
@@ -43,13 +35,13 @@
         <nav class="sidebar-nav">
           <h2 class="sidebar-heading">PORTAL MENU</h2>
           <ul class="sidebar-menu-list">
-            <li><a href="../DashBoard/student_dashboard.html" class="sidebar-link"><span>📊</span> Overview Dashboard</a></li>
-            <li><a href="../Profile/profile.html" class="sidebar-link"><span>👤</span> Student Profile</a></li>
-            <li><a href="../Attendance/attendance.html" class="sidebar-link"><span>📅</span> Attendance Tracker</a></li>
-            <li><a href="../Exam_Result/exam_result.html" class="sidebar-link"><span>📝</span> Exam Results</a></li>
-            <li><a href="../Calender/calendar.html" class="sidebar-link"><span>📆</span> Academic Calendar</a></li>
-            <li><a href="event.html" class="sidebar-link active"><span>🎉</span> Campus Events</a></li>
-            <li><a href="../Fee/fee.html" class="sidebar-link"><span>💳</span> Fee Information</a></li>
+            <li><a href="../DashBoard/student_dashboard.html" class="sidebar-link"><span></span> Overview Dashboard</a></li>
+            <li><a href="../Profile/profile.html" class="sidebar-link"><span></span> Student Profile</a></li>
+            <li><a href="../Attendance/attendance.html" class="sidebar-link"><span></span> Attendance Tracker</a></li>
+            <li><a href="../Exam_Result/exam_result.html" class="sidebar-link"><span></span> Exam Results</a></li>
+            <li><a href="../Calender/calendar.html" class="sidebar-link"><span></span> Academic Calendar</a></li>
+            <li><a href="event.html" class="sidebar-link active"><span></span> Campus Events</a></li>
+            <li><a href="../Fee/fee.html" class="sidebar-link"><span></span> Fee Information</a></li>
           </ul>
         </nav>
 
@@ -59,9 +51,7 @@
         </div>
       </aside>
 
-      <!-- Main Content Panel -->
       <main class="dashboard-main">
-        <!-- Banner Header -->
         <section class="welcome-banner">
           <div class="banner-text">
             <div class="card-header-tag">CAMPUS HAPPENINGS</div>
@@ -73,7 +63,6 @@
           </div>
         </section>
 
-        <!-- Filter Controls (PDF Unit 4 DOM Event Delegation) -->
         <div class="event-filter-bar">
           <button type="button" class="filter-btn active" data-category="all">All Events</button>
           <button type="button" class="filter-btn" data-category="tech">Technical & Coding</button>
@@ -81,9 +70,7 @@
           <button type="button" class="filter-btn" data-category="sports">Sports & Athletics</button>
         </div>
 
-        <!-- Event Cards Stack (PDF Unit 2.19 Grid & Flexbox) -->
         <div class="events-grid" id="events-container">
-          <!-- Event 1 -->
           <article class="event-card" data-category="tech">
             <div class="event-date-box">
               <span class="event-day">25</span>
@@ -93,18 +80,17 @@
             <div class="event-content">
               <div class="event-top-meta">
                 <span class="event-tag tag-navy">TECHNICAL HACKATHON</span>
-                <span class="event-venue">📍 CSPIT Auditorium</span>
+                <span class="event-venue">CSPIT Auditorium</span>
               </div>
               <h2 class="event-title">Cognizance 2026: 24-Hour AI & Web Hackathon</h2>
               <p class="event-desc">Collaborate with fellow engineers to build full-stack web solutions and generative AI prototypes for real-world campus problems. Exciting cash rewards and internship sponsorships.</p>
               <div class="event-footer">
-                <span class="event-time">⏰ 09:00 AM onwards (24h)</span>
-                <button type="button" class="btn btn-primary register-event-btn" data-event="Cognizance 2026">Register Team &rarr;</button>
+                <span class="event-time">09:00 AM onwards (24h)</span>
+                <button type="button" class="btn btn-primary register-event-btn" data-event="Cognizance 2026">Register Team</button>
               </div>
             </div>
           </article>
 
-          <!-- Event 2 -->
           <article class="event-card" data-category="tech">
             <div class="event-date-box">
               <span class="event-day">02</span>
@@ -114,18 +100,17 @@
             <div class="event-content">
               <div class="event-top-meta">
                 <span class="event-tag tag-gold">WORKSHOP</span>
-                <span class="event-venue">📍 Lab C-204</span>
+                <span class="event-venue">Lab C-204</span>
               </div>
               <h2 class="event-title">Hands-On Cloud Architecture & Docker Masterclass</h2>
               <p class="event-desc">Learn container orchestration, microservices deployment, and CI/CD pipelines guided by industry cloud architects from AWS & Google Cloud.</p>
               <div class="event-footer">
-                <span class="event-time">⏰ 02:00 PM - 05:00 PM</span>
-                <button type="button" class="btn btn-primary register-event-btn" data-event="Cloud Workshop">Register Seat &rarr;</button>
+                <span class="event-time">02:00 PM - 05:00 PM</span>
+                <button type="button" class="btn btn-primary register-event-btn" data-event="Cloud Workshop">Register Seat</button>
               </div>
             </div>
           </article>
 
-          <!-- Event 3 -->
           <article class="event-card" data-category="cultural">
             <div class="event-date-box">
               <span class="event-day">15</span>
@@ -135,18 +120,17 @@
             <div class="event-content">
               <div class="event-top-meta">
                 <span class="event-tag tag-crimson">CULTURAL FEST</span>
-                <span class="event-venue">📍 University Open Lawn</span>
+                <span class="event-venue">University Open Lawn</span>
               </div>
               <h2 class="event-title">Spandan 2026: Annual Youth & Drama Festival</h2>
               <p class="event-desc">Inter-college street plays, classical music nights, and battle of the bands. Open to all students across faculties with certificates of merit.</p>
               <div class="event-footer">
-                <span class="event-time">⏰ 05:00 PM - 10:00 PM</span>
-                <button type="button" class="btn btn-primary register-event-btn" data-event="Spandan 2026">Register Solo / Group &rarr;</button>
+                <span class="event-time">05:00 PM - 10:00 PM</span>
+                <button type="button" class="btn btn-primary register-event-btn" data-event="Spandan 2026">Register Solo / Group</button>
               </div>
             </div>
           </article>
 
-          <!-- Event 4 -->
           <article class="event-card" data-category="sports">
             <div class="event-date-box">
               <span class="event-day">22</span>
@@ -156,13 +140,13 @@
             <div class="event-content">
               <div class="event-top-meta">
                 <span class="event-tag tag-green">SPORTS TOURNAMENT</span>
-                <span class="event-venue">📍 Sports Complex Ground</span>
+                <span class="event-venue">Sports Complex Ground</span>
               </div>
               <h2 class="event-title">Charusat Premier Cricket & Badminton League</h2>
               <p class="event-desc">Departmental league fixtures for boys and girls teams. Fixtures, jersey kits, and match schedules will be issued upon registration confirmation.</p>
               <div class="event-footer">
-                <span class="event-time">⏰ 08:30 AM onwards</span>
-                <button type="button" class="btn btn-primary register-event-btn" data-event="Sports League">Register Squad &rarr;</button>
+                <span class="event-time">08:30 AM onwards</span>
+                <button type="button" class="btn btn-primary register-event-btn" data-event="Sports League">Register Squad</button>
               </div>
             </div>
           </article>
@@ -170,11 +154,10 @@
       </main>
     </div>
 
-    <!-- Footer Bar -->
     <footer class="footer-bar">
       <div class="footer-left">
         <p class="footer-title"><strong>CHARUSAT Student Hub Portal</strong></p>
-        <p class="footer-note">&copy; 2026 Department of Information Technology. All Rights Reserved.</p>
+        <p class="footer-note">2026 Department of Information Technology. All Rights Reserved.</p>
       </div>
       <div class="footer-right">
         <a href="../../index.html">Home</a>
@@ -188,7 +171,6 @@
 
   <script src="../DashBoard/menu.js"></script>
   <script>
-    // PDF Unit 4 & 5: Category Filtering and Interactive Registration
     document.addEventListener("DOMContentLoaded", function () {
       var filterBtns = document.querySelectorAll(".filter-btn");
       var cards = document.querySelectorAll(".event-card");
@@ -228,6 +210,4 @@
     });
   </script>
 </body>
-
 </html>
-

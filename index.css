@@ -1,11 +1,9 @@
-/* ===== Universal Reset & Box Model (PDF Unit 2.15) ===== */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* ===== Base Body Styling (PDF Unit 2.14 & 2.16) ===== */
 body {
   font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
   background-color: #F8F9FA;
@@ -24,7 +22,6 @@ body {
   gap: 20px;
 }
 
-/* ===== Neo-Brutalist Header Bar (PDF Unit 2.18 Flexbox) ===== */
 .header-bar {
   display: flex;
   justify-content: space-between;
@@ -64,7 +61,7 @@ body {
   font-size: 1.25rem;
   font-weight: 800;
   letter-spacing: -0.5px;
-  color: #1F4E79; /* Collegiate Navy */
+  color: #1F4E79;
 }
 
 .nav-links {
@@ -82,7 +79,6 @@ body {
   padding: 8px 14px;
   border-radius: 6px;
   border: 2px solid transparent;
-  transition: all 0.15s ease;
 }
 
 .nav-link:hover,
@@ -102,22 +98,19 @@ body {
   border: 2px solid #1A1A1A;
   border-radius: 6px;
   box-shadow: 2px 2px 0px #1A1A1A;
-  transition: all 0.15s ease;
 }
 
 .nav-btn:hover {
   background-color: #163A5F;
-  transform: translate(1px, 1px);
   box-shadow: 1px 1px 0px #1A1A1A;
 }
 
-/* ===== Banner Notice (PDF Unit 2.9 & 2.16) ===== */
 .banner-notice {
   display: flex;
   align-items: center;
   gap: 14px;
   padding: 12px 18px;
-  background-color: #FEF3C7; /* Soft Amber */
+  background-color: #FEF3C7;
   border: 2.5px solid #1A1A1A;
   border-radius: 8px;
   box-shadow: 3px 3px 0px #1A1A1A;
@@ -141,15 +134,13 @@ body {
   color: #92400E;
 }
 
-/* ===== Main Content Area ===== */
 .main-content {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 42px;
 }
 
-/* ===== Top Widgets Grid (PDF Unit 2.19 CSS Grid) ===== */
 .top-widgets-row {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
@@ -234,7 +225,6 @@ body {
   color: #1F2937;
 }
 
-/* ===== Roles Section & Cards ===== */
 .portal-roles-section {
   display: flex;
   flex-direction: column;
@@ -270,12 +260,6 @@ body {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.role-card:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 7px 7px 0px #1A1A1A;
 }
 
 .role-header {
@@ -334,7 +318,6 @@ body {
   gap: 10px;
 }
 
-/* ===== Buttons (PDF Unit 2.14 & 2.18) ===== */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -372,7 +355,6 @@ body {
   box-shadow: 2px 2px 0px #1A1A1A;
 }
 
-/* ===== Footer Bar (PDF Unit 2.9 & 2.18) ===== */
 .footer-bar {
   display: flex;
   justify-content: space-between;
@@ -415,7 +397,6 @@ body {
   text-decoration: underline;
 }
 
-/* ===== Responsive Breakpoints (PDF Unit 2.20 Mobile-First) ===== */
 @media (max-width: 900px) {
   .top-widgets-row,
   .roles-grid {

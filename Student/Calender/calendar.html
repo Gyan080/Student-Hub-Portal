@@ -1,17 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Academic Calendar & Examination Schedule - CHARUSAT Portal.">
-  <title>Academic Calendar - CHARUSAT Portal</title>
+<html>
+<head><title>Academic Calendar - CHARUSAT Portal</title>
   <link rel="stylesheet" href="calendar.css">
 </head>
-
 <body>
   <div class="page-wrapper">
-    <!-- Header Navigation (PDF Unit 2.9 & 2.18) -->
     <header class="header-bar">
       <div class="header-brand">
         <a href="../../index.html" class="brand-link">
@@ -24,13 +17,11 @@
         <a href="../../about.html" class="nav-link">About</a>
         <a href="../../faqs.html" class="nav-link">FAQs</a>
         <a href="../../contact.html" class="nav-link">Contact</a>
-        <a href="../../Login.html" class="nav-btn logout-btn">Logout &rarr;</a>
+        <a href="../../Login.html" class="nav-btn logout-btn">Logout</a>
       </nav>
     </header>
 
-    <!-- Dashboard Layout Grid (PDF Unit 2.19) -->
     <div class="dashboard-layout">
-      <!-- Sidebar Navigation -->
       <aside class="dashboard-sidebar">
         <div class="sidebar-user-card">
           <div class="user-avatar" id="avatar-initials">ST</div>
@@ -43,13 +34,13 @@
         <nav class="sidebar-nav">
           <h2 class="sidebar-heading">PORTAL MENU</h2>
           <ul class="sidebar-menu-list">
-            <li><a href="../DashBoard/student_dashboard.html" class="sidebar-link"><span>📊</span> Overview Dashboard</a></li>
-            <li><a href="../Profile/profile.html" class="sidebar-link"><span>👤</span> Student Profile</a></li>
-            <li><a href="../Attendance/attendance.html" class="sidebar-link"><span>📅</span> Attendance Tracker</a></li>
-            <li><a href="../Exam_Result/exam_result.html" class="sidebar-link"><span>📝</span> Exam Results</a></li>
-            <li><a href="calendar.html" class="sidebar-link active"><span>📆</span> Academic Calendar</a></li>
-            <li><a href="../Event/event.html" class="sidebar-link"><span>🎉</span> Campus Events</a></li>
-            <li><a href="../Fee/fee.html" class="sidebar-link"><span>💳</span> Fee Information</a></li>
+            <li><a href="../DashBoard/student_dashboard.html" class="sidebar-link"><span></span> Overview Dashboard</a></li>
+            <li><a href="../Profile/profile.html" class="sidebar-link"><span></span> Student Profile</a></li>
+            <li><a href="../Attendance/attendance.html" class="sidebar-link"><span></span> Attendance Tracker</a></li>
+            <li><a href="../Exam_Result/exam_result.html" class="sidebar-link"><span></span> Exam Results</a></li>
+            <li><a href="calendar.html" class="sidebar-link active"><span></span> Academic Calendar</a></li>
+            <li><a href="../Event/event.html" class="sidebar-link"><span></span> Campus Events</a></li>
+            <li><a href="../Fee/fee.html" class="sidebar-link"><span></span> Fee Information</a></li>
           </ul>
         </nav>
 
@@ -59,32 +50,28 @@
         </div>
       </aside>
 
-      <!-- Main Content Panel -->
       <main class="dashboard-main">
-        <!-- Banner Header -->
         <section class="welcome-banner">
           <div class="banner-text">
             <div class="card-header-tag">SCHEDULE & TIMETABLE</div>
             <h1 class="banner-title">Academic Year Calendar 2026-2027</h1>
-            <p class="banner-subtitle">Semester 3 &bull; Term dates, holidays, and examination schedules</p>
+            <p class="banner-subtitle">Semester 3 : Term dates, holidays, and examination schedules</p>
           </div>
           <div class="banner-actions">
-            <button type="button" class="btn btn-primary" onclick="window.print()">Print Calendar &rarr;</button>
+            <button type="button" class="btn btn-primary" onclick="window.print()">Print Calendar</button>
           </div>
         </section>
 
-        <!-- Interactive Calendar Grid Panel -->
         <section class="dashboard-panel">
           <div class="panel-header-bar">
             <div class="calendar-controls">
-              <button type="button" class="btn btn-secondary cal-nav-btn" id="prev-month-btn">&larr; Prev</button>
+              <button type="button" class="btn btn-secondary cal-nav-btn" id="prev-month-btn">Prev</button>
               <h2 id="calendar-month-title">October 2026</h2>
-              <button type="button" class="btn btn-secondary cal-nav-btn" id="next-month-btn">Next &rarr;</button>
+              <button type="button" class="btn btn-secondary cal-nav-btn" id="next-month-btn">Next</button>
             </div>
             <span class="count-tag">Semester Term</span>
           </div>
 
-          <!-- Calendar Grid (PDF Unit 2.19 Grid) -->
           <div class="calendar-container">
             <div class="calendar-weekdays">
               <div>MON</div>
@@ -97,82 +84,14 @@
             </div>
 
             <div class="calendar-days" id="calendar-days-grid">
-              <!-- Rendered via JS -->
             </div>
           </div>
         </section>
 
-        <!-- Upcoming Important Dates & Schedule Table -->
-        <div class="schedule-split-grid">
-          <section class="dashboard-panel">
-            <div class="panel-header-bar">
-              <h2>Upcoming Academic Deadlines</h2>
-              <span class="count-tag gold-tag">Priority</span>
-            </div>
-            <div class="notice-items-stack">
-              <article class="notice-item">
-                <span class="notice-date">05 OCT 2026</span>
-                <h3>Project Phase-1 Submission</h3>
-                <p>ITUE203 Web Development lab project synopsis and GitHub repo link submission on LMS.</p>
-              </article>
-
-              <article class="notice-item">
-                <span class="notice-date">10 OCT &ndash; 17 OCT 2026</span>
-                <h3>Mid-Semester Theory Exams</h3>
-                <p>Theory examinations for all Semester 3 courses. Reporting time: 09:30 AM at Block C.</p>
-              </article>
-
-              <article class="notice-item">
-                <span class="notice-date">28 OCT &ndash; 04 NOV 2026</span>
-                <h3>Diwali & Semester Break</h3>
-                <p>University academic holiday. Campus administrative offices resume on 05 November.</p>
-              </article>
-            </div>
-          </section>
-
-          <section class="dashboard-panel">
-            <div class="panel-header-bar">
-              <h2>Weekly Class Schedule Summary</h2>
-              <span class="count-tag">Classroom 302</span>
-            </div>
-            <div class="table-container">
-              <table class="brutalist-table">
-                <thead>
-                  <tr>
-                    <th scope="col">Time Slot</th>
-                    <th scope="col">Monday - Wednesday</th>
-                    <th scope="col">Thursday - Friday</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><strong>09:00 - 11:00</strong></td>
-                    <td>Web Dev (Lab C2)</td>
-                    <td>Data Structures (Lab C4)</td>
-                  </tr>
-                  <tr>
-                    <td><strong>11:15 - 01:15</strong></td>
-                    <td>Database Systems</td>
-                    <td>Operating Systems</td>
-                  </tr>
-                  <tr>
-                    <td><strong>02:00 - 04:00</strong></td>
-                    <td>Prof. Communication</td>
-                    <td>Self Study / Library</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </section>
-        </div>
-      </main>
-    </div>
-
-    <!-- Footer Bar -->
-    <footer class="footer-bar">
+        <footer class="footer-bar">
       <div class="footer-left">
         <p class="footer-title"><strong>CHARUSAT Student Hub Portal</strong></p>
-        <p class="footer-note">&copy; 2026 Department of Information Technology. All Rights Reserved.</p>
+        <p class="footer-note">2026 Department of Information Technology. All Rights Reserved.</p>
       </div>
       <div class="footer-right">
         <a href="../../index.html">Home</a>

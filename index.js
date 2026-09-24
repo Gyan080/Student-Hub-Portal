@@ -1,6 +1,4 @@
-// ===== Campus Weather & Clock Script (PDF Unit 3 & 4) =====
 const apiUrl = "https://api.open-meteo.com/v1/forecast?latitude=22.6012&longitude=72.8201&current=temperature_2m,relative_humidity_2m,wind_speed_10m&timezone=auto";
-
 async function getWeather() {
   try {
     const response = await fetch(apiUrl);
@@ -27,16 +25,13 @@ async function getWeather() {
     if (humidityEl) humidityEl.textContent = "54";
   }
 }
-
 function updateTime() {
   const timeEl = document.getElementById("time");
   if (timeEl) {
     timeEl.textContent = new Date().toLocaleTimeString();
   }
 }
-
-// Initial calls & timers (PDF Unit 3.6)
 getWeather();
 updateTime();
 setInterval(getWeather, 600000); // 10 minutes
-setInterval(updateTime, 1000); // 1 second
+setInterval(updateTime, 1000); // 1 second

@@ -1,4 +1,3 @@
-// PDF Unit 4 & 5: DOM Manipulation and Event Handling
 document.addEventListener("DOMContentLoaded", function () {
   var dashboardLayout = document.querySelector(".dashboard-layout");
   var sidebar = dashboardLayout ? dashboardLayout.querySelector("aside, .dashboard-sidebar") : null;
@@ -54,4 +53,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
-
