@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-  var dashboardLayout = document.querySelector(".dashboard-layout");
-  var sidebar = dashboardLayout ? dashboardLayout.querySelector("aside, .dashboard-sidebar") : null;
+  var dashboardLayout = document.querySelector(".d-layout");
+  var sidebar = dashboardLayout ? dashboardLayout.querySelector("aside, .d-sidebar") : null;
   var student = JSON.parse(localStorage.getItem("studentUser") || "null");
 
   function setStudentText(id, value) {
