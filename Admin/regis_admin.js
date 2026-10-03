@@ -107,11 +107,11 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem("adminUser", JSON.stringify(adminUser));
 
     showBrutalistModal(
-      "Admin Profile Registered! 🎓",
-      `Welcome ${fullName}! Your official administrative account has been established. Redirecting to Admin Dashboard...`,
+      "Admin Profile Registered!",
+      `Welcome ${fullName}! Your official administrative account has been registered successfully.`,
       "success",
       function () {
-        window.location.href = "DashBoard/admin_dashboard.html";
+        regForm.reset();
       }
     );
   });

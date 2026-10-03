@@ -96,10 +96,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     showBrutalistModal(
       "Registration Successful!",
-      `Welcome ${fullName}! Your student record for ${college_id.toUpperCase()} has been created. Redirecting to your dashboard...`,
+      `Welcome ${fullName}! Your student record for ${college_id.toUpperCase()} has been registered successfully.`,
       "success",
       function () {
-        window.location.href = "DashBoard/student_dashboard.html";
+        regForm.reset();
       }
     );
   });
