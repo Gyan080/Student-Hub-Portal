@@ -528,3 +528,78 @@ body {
     width: 100%;
   }
 }
+
+.response-page {
+  background-color: #f3f4f6;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.response-card {
+  width: 100%;
+  max-width: 500px;
+  padding: 30px;
+  background-color: #ffffff;
+  border: 2.5px solid #1a1a1a;
+  border-radius: 10px;
+  box-shadow: 6px 6px 0 #1a1a1a;
+}
+
+.status-tag {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 4px 10px;
+  border: 1.5px solid #1a1a1a;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.status-tag.success {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.status-tag.error {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+.card-title {
+  margin: 0 0 12px;
+  color: #111827;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.card-msg {
+  margin-bottom: 24px;
+  color: #4b5563;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.btn-action {
+  display: inline-block;
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+  border: 2px solid #1a1a1a;
+  border-radius: 6px;
+  background-color: #1f4e79;
+  box-shadow: 3px 3px 0 #1a1a1a;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.btn-action:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 #1a1a1a;
+}

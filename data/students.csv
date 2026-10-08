@@ -1,0 +1,5 @@
+ID,Firstname,Middlename,Lastname,EnrollmentID,DOB,Gender,Email,Phone,Address,Course,Year,Password,CreatedAt
+1,Gyan,Bharatkumar,Patel,25dcs080,2007-10-20,male,25dcs080@charusat.edu.in,9876543210,"Hostel , street","Computer Science","2nd Year (Semester 3 & 4)",Gyan@123,"2026-10-04 10:05:23"
+2,Om,Ketankumar,Patel,25dcs095,2006-07-23,male,25dcs095@charusat.edu.in,7418529630,"Random Hostel , no street","Computer Science","2nd Year (Semester 3 & 4)",Omptl@123,"2026-10-04 10:10:05"
+3,Pratham,Dhanshukbhai,Patel,25dcs096,2007-02-06,male,25dcs096@charusat.edu.in,8789456123,"No Hostel , No street","Computer Science","2nd Year (Semester 3 & 4)",p@1234,"2026-10-04 17:12:42"
+4,Ramesh,Mukeshbhai,Patel,25dcs171,2007-06-05,male,25dcs171@charusat.edu.in,8321654987,"Nadiad , street no. 48","Information Technology","1st Year (Semester 1 & 2)",r@1234,"2026-10-08 11:14:36"

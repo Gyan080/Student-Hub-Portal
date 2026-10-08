@@ -8,13 +8,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const firstname = document.getElementById("firstname").value.trim();
     const middlename = document.getElementById("middlename").value.trim();
     const lastname = document.getElementById("lastname").value.trim();
-    const college_id = document.getElementById("college_id").value.trim();
+    const college_id = document.getElementById("college_id").value.trim().toLowerCase();
     const dobVal = document.getElementById("dob").value;
-    const email = document.getElementById("email").value.trim();
+    const email = document.getElementById("email").value.trim().toLowerCase();
     const phone = document.getElementById("phone").value.trim();
     const address = document.getElementById("address").value.trim();
     const course = document.getElementById("course").value;
     const year = document.getElementById("year").value;
+    const password = document.getElementById("password") ? document.getElementById("password").value : "";
+    const confirmPassword = document.getElementById("confirm_password") ? document.getElementById("confirm_password").value : "";
 
     const genderRadios = document.getElementsByName("gender");
     let gender = "male";
@@ -26,8 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const nameRegex = /^[A-Za-z]{2,50}$/;
-    const enrollmentRegex = /^\d{2}[A-Za-z]{3}\d{3}$/i;
-    const emailRegex = /^[\w.-]+@[\w-]+\.[a-z]{2,}$/i;
+    const enrollmentRegex = /^\d{2}(dit|dcs|dce)\d{3}$/;
+    const emailRegex = /^\d{2}(dit|dcs|dce)\d{3}@charusat\.edu\.in$/;
     const phoneRegex = /^[6-9]\d{9}$/;
 
     if (!nameRegex.test(firstname)) {
@@ -49,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (!enrollmentRegex.test(college_id)) {
-      showBrutalistModal("Validation Error", "Enrollment ID must match standard format: 2 digits, 3 letters, 3 digits (e.g. 25dcs080).", "error");
+      showBrutalistModal("Validation Error", "Enrollment ID must match standard format: 2 digits year, branch (dit, dcs, dce), and 3 digits (e.g. 25dcs080).", "error");
       document.getElementById("college_id").focus();
       return;
     }
@@ -61,7 +63,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (!emailRegex.test(email)) {
-      showBrutalistModal("Validation Error", "Please enter a valid email address.", "error");
+      showBrutalistModal("Validation Error", "Please enter a valid university email address in lowercase (e.g. 25dcs080@charusat.edu.in).", "error");
+      document.getElementById("email").focus();
+      return;
+    }
+
+    const emailPrefix = email.split("@")[0];
+    if (emailPrefix !== college_id) {
+      showBrutalistModal("Validation Error", `University Email prefix (${emailPrefix}) must match your Enrollment ID (${college_id}) exactly.`, "error");
       document.getElementById("email").focus();
       return;
     }
@@ -77,10 +86,22 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+    if (!password || password.length < 6) {
+      showBrutalistModal("Validation Error", "Password must be at least 6 characters long.", "error");
+      if (document.getElementById("password")) document.getElementById("password").focus();
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      showBrutalistModal("Validation Error", "Password and Confirm Password do not match.", "error");
+      if (document.getElementById("confirm_password")) document.getElementById("confirm_password").focus();
+      return;
+    }
+
     const fullName = `${firstname} ${middlename} ${lastname}`.trim();
     const studentUser = {
       name: fullName,
-      studentId: college_id.toUpperCase(),
+      studentId: college_id.toLowerCase(),
       email: email,
       phone: phone,
       gender: gender,
@@ -94,14 +115,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     localStorage.setItem("studentUser", JSON.stringify(studentUser));
 
-    showBrutalistModal(
-      "Registration Successful!",
-      `Welcome ${fullName}! Your student record for ${college_id.toUpperCase()} has been registered successfully.`,
-      "success",
-      function () {
-        regForm.reset();
-      }
-    );
+    // Submit form to student_registration.php
+    regForm.submit();
   });
 });
 

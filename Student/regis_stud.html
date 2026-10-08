@@ -35,7 +35,7 @@
         <h1 class="page-title">Student Registration</h1>
         <p class="form-description" style="color:#4B5563;font-size:0.95rem;">Please fill in your academic and personal information to register your student profile.</p>
 
-        <form id="studentRegForm">
+        <form id="studentRegForm" action="student_registration.php" method="POST">
           <div class="form-grid">
             <div class="form-field">
               <label for="firstname" style="font-size:0.9rem;font-weight:700;">First Name</label>
@@ -55,7 +55,7 @@
             <div class="form-field">
               <label for="college_id" style="font-size:0.9rem;font-weight:700;">Enrollment ID</label>
               <input type="text" id="college_id" name="college_id" placeholder="e.g. 25dcs080" required>
-              <small class="field-hint" style="font-size:0.8rem;color:#6B7280;">Format: 2 digits, 3 letters, 3 digits</small>
+              <small class="field-hint" style="font-size:0.8rem;color:#6B7280;">Format: 2 digits, dit/dcs/dce, 3 digits (lowercase)</small>
             </div>
 
             <div class="form-field">
@@ -115,6 +115,16 @@
                 <option value="3rd Year (Semester 5 & 6)">3rd Year</option>
                 <option value="4th Year (Semester 7 & 8)">4th Year</option>
               </select>
+            </div>
+
+            <div class="form-field">
+              <label for="password" style="font-size:0.9rem;font-weight:700;">Password</label>
+              <input type="password" id="password" name="password" placeholder="Create Password (min 6 chars)" required>
+            </div>
+
+            <div class="form-field">
+              <label for="confirm_password" style="font-size:0.9rem;font-weight:700;">Confirm Password</label>
+              <input type="password" id="confirm_password" name="confirm_password" placeholder="Re-enter Password" required>
             </div>
           </div>
 
