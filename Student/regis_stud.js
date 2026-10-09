@@ -61,9 +61,20 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("dob").focus();
       return;
     }
+    const selectedDate = new Date(dobVal);
+    if (Number.isNaN(selectedDate.getTime()) || selectedDate.toISOString().slice(0, 10) !== dobVal) {
+      showBrutalistModal("Validation Error", "Please select a valid Date of Birth.", "error");
+      document.getElementById("dob").focus();
+      return;
+    }
+
+    if (!["male", "female", "other"].includes(gender)) {
+      showBrutalistModal("Validation Error", "Please select a valid gender.", "error");
+      return;
+    }
 
     if (!emailRegex.test(email)) {
-      showBrutalistModal("Validation Error", "Please enter a valid university email address in lowercase (e.g. 25dcs080@charusat.edu.in).", "error");
+      showBrutalistModal("Validation Error", "Please enter a valid university email address (e.g. 25dcs080@charusat.edu.in).", "error");
       document.getElementById("email").focus();
       return;
     }
@@ -81,12 +92,32 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    if (!course || !year) {
+    if (!address) {
+      showBrutalistModal("Validation Error", "Please enter your residential address.", "error");
+      document.getElementById("address").focus();
+      return;
+    }
+
+    const validCourses = [
+      "Information Technology",
+      "Computer Science",
+      "Computer Engineering",
+      "AI & Machine Learning",
+      "Civil Engineering",
+      "Mechanical Engineering"
+    ];
+    const validYears = [
+      "1st Year (Semester 1 & 2)",
+      "2nd Year (Semester 3 & 4)",
+      "3rd Year (Semester 5 & 6)",
+      "4th Year (Semester 7 & 8)"
+    ];
+    if (!validCourses.includes(course) || !validYears.includes(year)) {
       showBrutalistModal("Validation Error", "Please select your Course Program and Year of Study.", "error");
       return;
     }
 
-    if (!password || password.length < 6) {
+    if (Array.from(password).length < 6) {
       showBrutalistModal("Validation Error", "Password must be at least 6 characters long.", "error");
       if (document.getElementById("password")) document.getElementById("password").focus();
       return;
