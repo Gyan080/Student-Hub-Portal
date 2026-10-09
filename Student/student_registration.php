@@ -48,16 +48,11 @@ $password = $_POST['password'] ?? '';
 $confirmPassword = $_POST['confirm_password'] ?? '';
 
 $namePattern = '/^[A-Za-z]{2,50}$/';
-$enrollmentPattern = '/^\d{2}(dit|dcs|dce)\d{3}$/';
-$emailPattern = '/^\d{2}(dit|dcs|dce)\d{3}@charusat\.edu\.in$/';
 $phonePattern = '/^[6-9]\d{9}$/';
-$courses = [
-    'Information Technology',
-    'Computer Science',
-    'Computer Engineering',
-    'AI & Machine Learning',
-    'Civil Engineering',
-    'Mechanical Engineering',
+$courseBranches = [
+    'Information Technology' => 'dit',
+    'Computer Engineering' => 'dce',
+    'Computer Science Engineering' => 'dcs',
 ];
 $studyYears = [
     '1st Year (Semester 1 & 2)',
@@ -76,15 +71,30 @@ foreach ([
     }
 }
 
-if (!preg_match($enrollmentPattern, $collegeId)) {
-    renderPage('Validation Error', 'Invalid Enrollment ID', 'Enrollment ID must match format: 2 digits, dit/dcs/dce, then 3 digits (e.g. 25dcs080).');
+if (!isset($courseBranches[$course])) {
+    renderPage('Validation Error', 'Invalid Course', 'Please select Information Technology, Computer Engineering, or Computer Science Engineering.');
 }
 
-if (!preg_match($emailPattern, $email)) {
-    renderPage('Validation Error', 'Invalid University Email', 'Email must match the student format (e.g. 25dcs080@charusat.edu.in).');
+$branchCode = $courseBranches[$course];
+$enrollmentPattern = '/^\d{2}(dit|dce|dcs)\d{3}$/';
+
+if (!preg_match($enrollmentPattern, $collegeId, $enrollmentMatches)) {
+    renderPage('Validation Error', 'Invalid Enrollment ID Format', 'Enrollment ID must contain 2 digits, a valid branch code (dit, dce, or dcs), then 3 digits (e.g. 25dcs080).');
 }
 
-if (substr($email, 0, strpos($email, '@')) !== $collegeId) {
+if ($enrollmentMatches[1] !== $branchCode) {
+    renderPage('Validation Error', 'Course and Enrollment ID Do Not Match', "The selected course is {$course}, but Enrollment ID {$collegeId} uses the {$enrollmentMatches[1]} branch code. Select the matching course or correct the Enrollment ID.");
+}
+
+if (!preg_match('/^(\d{2}(dit|dce|dcs)\d{3})@charusat\.edu\.in$/', $email, $emailMatches)) {
+    renderPage('Validation Error', 'Invalid University Email Format', "Use your Enrollment ID followed by @charusat.edu.in (e.g. {$collegeId}@charusat.edu.in).");
+}
+
+if ($emailMatches[2] !== $branchCode) {
+    renderPage('Validation Error', 'Course and Email Do Not Match', "The selected course is {$course}, but the email uses the {$emailMatches[2]} branch code. Use the email address for your selected course.");
+}
+
+if ($emailMatches[1] !== $collegeId) {
     renderPage('Validation Error', 'Email Mismatch', 'The university email prefix must match the Enrollment ID.');
 }
 
@@ -105,7 +115,7 @@ if ($address === '') {
     renderPage('Validation Error', 'Address Required', 'Please enter your residential address.');
 }
 
-if (!in_array($course, $courses, true) || !in_array($year, $studyYears, true)) {
+if (!in_array($year, $studyYears, true)) {
     renderPage('Validation Error', 'Course / Year Required', 'Please select a valid Course Program and Year of Study.');
 }
 
@@ -123,38 +133,39 @@ $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 try {
     require_once __DIR__ . '/db_connect.php';
 
-    $checkStatement = $pdo->prepare(
-        'SELECT 1 FROM students WHERE student_uid = :student_uid OR email = :email LIMIT 1'
+    $checkStatement = $mysqli->prepare(
+        'SELECT 1 FROM students WHERE student_uid = ? OR email = ? LIMIT 1'
     );
-    $checkStatement->execute([
-        ':student_uid' => $collegeId,
-        ':email' => $email,
-    ]);
+    $checkStatement->bind_param('ss', $collegeId, $email);
+    $checkStatement->execute();
+    $checkStatement->store_result();
 
-    if ($checkStatement->fetchColumn() !== false) {
+    if ($checkStatement->num_rows > 0) {
         renderPage('Registration Error', 'Duplicate Entry', 'A student with this Enrollment ID or Email is already registered.');
     }
 
-    $insertStatement = $pdo->prepare(
+    $insertStatement = $mysqli->prepare(
         'INSERT INTO students
             (student_uid, name, email, password_hash, dob, gender, phone, address, course, study_year)
          VALUES
-            (:student_uid, :name, :email, :password_hash, :dob, :gender, :phone, :address, :course, :study_year)'
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
     );
-    $insertStatement->execute([
-        ':student_uid' => $collegeId,
-        ':name' => $fullName,
-        ':email' => $email,
-        ':password_hash' => $passwordHash,
-        ':dob' => $dob,
-        ':gender' => $gender,
-        ':phone' => $phone,
-        ':address' => $address,
-        ':course' => $course,
-        ':study_year' => $year,
-    ]);
-} catch (PDOException $exception) {
-    if ($exception->getCode() === '23000') {
+    $insertStatement->bind_param(
+        'ssssssssss',
+        $collegeId,
+        $fullName,
+        $email,
+        $passwordHash,
+        $dob,
+        $gender,
+        $phone,
+        $address,
+        $course,
+        $year
+    );
+    $insertStatement->execute();
+} catch (mysqli_sql_exception $exception) {
+    if ($exception->getCode() === 1062) {
         renderPage('Registration Error', 'Duplicate Entry', 'A student with this Enrollment ID or Email is already registered.');
     }
 

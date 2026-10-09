@@ -28,8 +28,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const nameRegex = /^[A-Za-z]{2,50}$/;
-    const enrollmentRegex = /^\d{2}(dit|dcs|dce)\d{3}$/;
-    const emailRegex = /^\d{2}(dit|dcs|dce)\d{3}@charusat\.edu\.in$/;
+    const courseBranches = {
+      "Information Technology": "dit",
+      "Computer Engineering": "dce",
+      "Computer Science Engineering": "dcs"
+    };
     const phoneRegex = /^[6-9]\d{9}$/;
 
     if (!nameRegex.test(firstname)) {
@@ -50,9 +53,24 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    if (!enrollmentRegex.test(college_id)) {
-      showBrutalistModal("Validation Error", "Enrollment ID must match standard format: 2 digits year, branch (dit, dcs, dce), and 3 digits (e.g. 25dcs080).", "error");
+    const branchCode = courseBranches[course];
+    if (!branchCode) {
+      showBrutalistModal("Validation Error", "Please select Information Technology, Computer Engineering, or Computer Science Engineering.", "error");
+      document.getElementById("course").focus();
+      return;
+    }
+
+    const enrollmentMatch = college_id.match(/^(\d{2})(dit|dce|dcs)(\d{3})$/);
+
+    if (!enrollmentMatch) {
+      showBrutalistModal("Validation Error", "Enrollment ID must contain 2 digits, a valid branch code (dit, dce, or dcs), then 3 digits (e.g. 25dcs080).", "error");
       document.getElementById("college_id").focus();
+      return;
+    }
+
+    if (enrollmentMatch[2] !== branchCode) {
+      showBrutalistModal("Validation Error", `The selected course is ${course}, but Enrollment ID ${college_id} uses the ${enrollmentMatch[2]} branch code. Select the matching course or correct the Enrollment ID.`, "error");
+      document.getElementById("course").focus();
       return;
     }
 
@@ -73,15 +91,21 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    if (!emailRegex.test(email)) {
-      showBrutalistModal("Validation Error", "Please enter a valid university email address (e.g. 25dcs080@charusat.edu.in).", "error");
+    const emailMatch = email.match(/^(\d{2}(dit|dce|dcs)\d{3})@charusat\.edu\.in$/);
+    if (!emailMatch) {
+      showBrutalistModal("Validation Error", `Use your Enrollment ID followed by @charusat.edu.in (e.g. ${college_id}@charusat.edu.in).`, "error");
       document.getElementById("email").focus();
       return;
     }
 
-    const emailPrefix = email.split("@")[0];
-    if (emailPrefix !== college_id) {
-      showBrutalistModal("Validation Error", `University Email prefix (${emailPrefix}) must match your Enrollment ID (${college_id}) exactly.`, "error");
+    if (emailMatch[2] !== branchCode) {
+      showBrutalistModal("Validation Error", `The selected course is ${course}, but the email uses the ${emailMatch[2]} branch code. Use the email address for your selected course.`, "error");
+      document.getElementById("email").focus();
+      return;
+    }
+
+    if (emailMatch[1] !== college_id) {
+      showBrutalistModal("Validation Error", `University Email prefix (${emailMatch[1]}) must match your Enrollment ID (${college_id}) exactly.`, "error");
       document.getElementById("email").focus();
       return;
     }
@@ -98,22 +122,14 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    const validCourses = [
-      "Information Technology",
-      "Computer Science",
-      "Computer Engineering",
-      "AI & Machine Learning",
-      "Civil Engineering",
-      "Mechanical Engineering"
-    ];
     const validYears = [
       "1st Year (Semester 1 & 2)",
       "2nd Year (Semester 3 & 4)",
       "3rd Year (Semester 5 & 6)",
       "4th Year (Semester 7 & 8)"
     ];
-    if (!validCourses.includes(course) || !validYears.includes(year)) {
-      showBrutalistModal("Validation Error", "Please select your Course Program and Year of Study.", "error");
+    if (!validYears.includes(year)) {
+      showBrutalistModal("Validation Error", "Please select a valid Year of Study.", "error");
       return;
     }
 

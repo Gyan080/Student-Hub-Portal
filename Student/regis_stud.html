@@ -55,7 +55,7 @@
             <div class="form-field">
               <label for="college_id" style="font-size:0.9rem;font-weight:700;">Enrollment ID</label>
               <input type="text" id="college_id" name="college_id" placeholder="e.g. 25dcs080" required>
-              <small class="field-hint" style="font-size:0.8rem;color:#6B7280;">Format: 2 digits, dit/dcs/dce, 3 digits (case-insensitive)</small>
+              <small class="field-hint" style="font-size:0.8rem;color:#6B7280;">Format depends on your program: 2 digits, branch code, then 3 digits.</small>
             </div>
 
             <div class="form-field">
@@ -97,12 +97,9 @@
               <label for="course" style="font-size:0.9rem;font-weight:700;">Program / Department</label>
               <select id="course" name="course" required>
                 <option value="" disabled selected>Select Course</option>
-                <option value="Information Technology">Information Technology (IT)</option>
-                <option value="Computer Science">Computer Science (CSE)</option>
-                <option value="Computer Engineering">Computer Engineering (CE)</option>
-                <option value="AI & Machine Learning">AI & Machine Learning</option>
-                <option value="Civil Engineering">Civil Engineering</option>
-                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                <option value="Information Technology">Information Technology (DIT)</option>
+                <option value="Computer Engineering">Computer Engineering (DCE)</option>
+                <option value="Computer Science Engineering">Computer Science Engineering (DCS)</option>
               </select>
             </div>
 
