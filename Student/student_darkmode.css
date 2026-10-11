@@ -1,0 +1,278 @@
+/* ===================================================
+   STUDENT PORTAL DARK MODE (Neutral Charcoal Edition)
+   File: student_darkmode.css
+   =================================================== */
+
+body.dark-mode {
+  background-color: #121212 !important;
+  color: #f5f5f5 !important;
+}
+
+/* Surfaces & Containers */
+body.dark-mode .header-bar,
+body.dark-mode .f-bar,
+body.dark-mode .d-sidebar,
+body.dark-mode .w-banner,
+body.dark-mode .m-card,
+body.dark-mode .d-panel,
+body.dark-mode .form-card,
+body.dark-mode .form-container-card,
+body.dark-mode .user-card,
+body.dark-mode .notice-item,
+body.dark-mode .ev-card,
+body.dark-mode .modal-card,
+body.dark-mode .response-card {
+  background-color: #1e1e1e !important;
+  border-color: #2e2e2e !important;
+  color: #f5f5f5 !important;
+}
+
+/* Headings & Brand Text */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode .b-title,
+body.dark-mode .b-name,
+body.dark-mode .card-title,
+body.dark-mode .page-title,
+body.dark-mode .ev-tit,
+body.dark-mode .p-head-bar h2 {
+  color: #f5f5f5 !important;
+}
+
+/* Body & Muted Text */
+body.dark-mode p,
+body.dark-mode span,
+body.dark-mode label,
+body.dark-mode td {
+  color: #d4d4d4;
+}
+
+body.dark-mode .b-sub,
+body.dark-mode .form-description,
+body.dark-mode .field-hint,
+body.dark-mode .metric-hint,
+body.dark-mode .metric-sub,
+body.dark-mode .metric-title,
+body.dark-mode .f-note,
+body.dark-mode .event-venue,
+body.dark-mode .ev-desc,
+body.dark-mode .card-msg,
+body.dark-mode .user-role {
+  color: #a3a3a3 !important;
+}
+
+/* Nav Links & Sidebar */
+body.dark-mode .b-link,
+body.dark-mode .nav-link,
+body.dark-mode .s-link,
+body.dark-mode .f-right a {
+  color: #e5e5e5 !important;
+}
+
+body.dark-mode .nav-link:hover,
+body.dark-mode .nav-link.active,
+body.dark-mode .s-link:hover {
+  background-color: #2a2a2a !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .s-link.active {
+  background-color: #333333 !important;
+  color: #f5f5f5 !important;
+  font-weight: 600;
+}
+
+body.dark-mode .b-logo {
+  background-color: #262626 !important;
+  border-color: #383838 !important;
+}
+
+/* Tags & Badges */
+body.dark-mode .c-head-tag,
+body.dark-mode .nav-btn,
+body.dark-mode .gold-badge,
+body.dark-mode .gold-tag {
+  background-color: #2a2318 !important;
+  color: #f59e0b !important;
+  border-color: #78350f !important;
+}
+
+body.dark-mode .sidebar-notice {
+  background-color: #181818 !important;
+  border-color: #333333 !important;
+  color: #a3a3a3 !important;
+}
+
+body.dark-mode .kpi-badge,
+body.dark-mode .green-badge,
+body.dark-mode .tag-green,
+body.dark-mode .tag {
+  background-color: #1c2b1e !important;
+  color: #86efac !important;
+  border-color: #2e4a32 !important;
+}
+
+/* Metric Cards & Progress */
+body.dark-mode .metric-number {
+  color: #ffffff !important;
+}
+
+body.dark-mode .progress-bar-wrap {
+  background-color: #2a2a2a !important;
+}
+
+body.dark-mode .progress-bar-fill,
+body.dark-mode .green-fill {
+  background-color: #10b981 !important;
+}
+
+/* Tables */
+body.dark-mode .b-table th {
+  background-color: #181818 !important;
+  border-color: #2e2e2e !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .b-table td {
+  border-color: #2e2e2e !important;
+}
+
+body.dark-mode .b-table tr:hover {
+  background-color: #242424 !important;
+}
+
+/* Buttons */
+body.dark-mode .btn-primary {
+  background-color: #d97706 !important;
+  color: #ffffff !important;
+  border-color: #d97706 !important;
+}
+
+body.dark-mode .btn-primary:hover {
+  background-color: #b45309 !important;
+  border-color: #b45309 !important;
+}
+
+body.dark-mode .btn-secondary {
+  background-color: #262626 !important;
+  color: #e5e5e5 !important;
+  border-color: #404040 !important;
+}
+
+body.dark-mode .btn-secondary:hover {
+  background-color: #333333 !important;
+}
+
+/* Form Inputs */
+body.dark-mode input[type="text"],
+body.dark-mode input[type="password"],
+body.dark-mode input[type="email"],
+body.dark-mode input[type="date"],
+body.dark-mode input[type="number"],
+body.dark-mode input[type="tel"],
+body.dark-mode select,
+body.dark-mode textarea,
+body.dark-mode .form-input,
+body.dark-mode .form-textarea,
+body.dark-mode .select-field {
+  background-color: #181818 !important;
+  color: #f5f5f5 !important;
+  border-color: #333333 !important;
+}
+
+body.dark-mode input:focus,
+body.dark-mode select:focus,
+body.dark-mode textarea:focus,
+body.dark-mode .form-input:focus,
+body.dark-mode .form-textarea:focus {
+  border-color: #d97706 !important;
+  outline: none !important;
+}
+
+/* Event Cards */
+body.dark-mode .ev-dt {
+  background-color: #262626 !important;
+  border-right: 1px solid #333333 !important;
+  color: #f5f5f5 !important;
+}
+
+body.dark-mode .ev-dt span {
+  color: #f5f5f5 !important;
+}
+
+body.dark-mode .ev-tag {
+  background-color: #181818 !important;
+  border-color: #333333 !important;
+  color: #a3a3a3 !important;
+}
+
+body.dark-mode .ev-foot {
+  border-top-color: #2e2e2e !important;
+}
+
+body.dark-mode .f-btn {
+  background-color: #222222 !important;
+  color: #a3a3a3 !important;
+  border-color: #333333 !important;
+}
+
+body.dark-mode .f-btn.active,
+body.dark-mode .f-btn:hover {
+  background-color: #d97706 !important;
+  color: #ffffff !important;
+  border-color: #d97706 !important;
+}
+
+/* Modals */
+body.dark-mode .modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.75) !important;
+}
+
+body.dark-mode .modal-header {
+  border-bottom-color: #2e2e2e !important;
+}
+
+body.dark-mode .modal-close {
+  color: #a3a3a3 !important;
+}
+
+/* Minimal 40px Floating Dark Mode Toggle Button */
+.dark-mode-toggle-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #1e1e1e;
+  color: #f5f5f5;
+  border: 1px solid #3a3a3a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  padding: 0;
+}
+
+.dark-mode-toggle-btn:hover {
+  transform: scale(1.08);
+  border-color: #d97706;
+}
+
+.dark-mode-toggle-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  display: block;
+}
+
+body.dark-mode .dark-mode-toggle-btn {
+  background-color: #2e2e2e;
+  color: #fbbf24;
+  border-color: #4a4a4a;
+}
