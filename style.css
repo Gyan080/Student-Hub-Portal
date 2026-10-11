@@ -196,6 +196,15 @@ h3, .role-title, .info-title {
   color: #0f172a;
 }
 
+.gateway-intro {
+  text-align: center;
+}
+
+.gateway-description {
+  color: #4b5563;
+  font-size: 0.95rem;
+}
+
 .card-title, .section-heading, .role-title, .login-card-title {
   font-size: 1.35rem;
   font-weight: 700;
@@ -214,6 +223,12 @@ h3, .role-title, .info-title {
   padding: 10px 18px;
   background-color: #f8fafc;
   border-bottom: 1px solid #e2e8f0;
+}
+
+.role-badge.badge-admin {
+  background-color: #d1fae5;
+  border-color: #a7f3d0;
+  color: #065f46;
 }
 
 .card-image {
@@ -252,6 +267,25 @@ h3, .role-title, .info-title {
   flex: 1;
   font-size: 0.95rem;
   line-height: 1.5;
+}
+
+.action-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gateway-footer {
+  margin-top: auto;
+}
+
+.gateway-footer .f-title {
+  font-size: 0.95rem;
+}
+
+.gateway-footer .f-note {
+  color: #6b7280;
+  font-size: 0.85rem;
 }
 
 .form-field, .contact-field {

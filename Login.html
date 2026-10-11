@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html>
-<head><title>Portal Gateway - Select Login</title>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Gateway - Select Login</title>
   <link rel="stylesheet" href="Fonts/local-fonts.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dark-mode.css">
 </head>
 <body>
   <div class="page-wrapper">
@@ -18,15 +22,15 @@
         <a href="about.html" class="nav-link">About</a>
         <a href="faqs.html" class="nav-link">FAQs</a>
         <a href="contact.html" class="nav-link">Contact</a>
-        <a href="Login.html" class="nav-btn">Portal Login</a>
+        <a href="Login.html" class="nav-btn" aria-current="page">Portal Login</a>
       </nav>
     </header>
 
     <main class="main-content">
-      <section class="login-intro" style="text-align:center;">
+      <section class="login-intro gateway-intro">
         <div class="c-head-tag">AUTHENTICATION GATEWAY</div>
         <h1 class="login-heading">Choose Your Portal Account</h1>
-        <p class="login-sub" style="color:#4B5563;font-size:0.95rem;">Please select whether you are logging in as an enrolled Student or an Authorized Staff Administrator.</p>
+        <p class="login-sub gateway-description">Please select whether you are logging in as an enrolled Student or an Authorized Staff Administrator.</p>
       </section>
 
       <section class="login-cards-grid">
@@ -40,7 +44,7 @@
           <div class="login-card-body">
             <h2 class="login-card-title">Student Account</h2>
             <p class="login-card-text">Log in to view course lectures, real-time attendance percentage, exam grades, timetable, and campus fees.</p>
-            <div class="action-stack" style="display:flex;flex-direction:column;gap:10px;">
+            <div class="action-stack">
               <a href="Student/Stud_login.html" class="btn btn-primary">Student Sign In</a>
               <a href="Student/regis_stud.html" class="btn btn-secondary">New Student Registration</a>
             </div>
@@ -49,7 +53,7 @@
 
         <article class="login-card">
           <div class="role-badge-bar">
-            <span class="role-badge badge-admin" style="background-color:#D1FAE5;color:#065F46;">FACULTY / ADMIN</span>
+            <span class="role-badge badge-admin">FACULTY / ADMIN</span>
           </div>
           <div class="card-img-wrap">
             <img src="Images/Screenshot 2026-08-02 155746.png" alt="Admin operations illustration">
@@ -57,7 +61,7 @@
           <div class="login-card-body">
             <h2 class="login-card-title">Staff / Admin Account</h2>
             <p class="login-card-text">Manage institutional records, student enrollments, exam result publications, and departmental notifications.</p>
-            <div class="action-stack" style="display:flex;flex-direction:column;gap:10px;">
+            <div class="action-stack">
               <a href="Admin/Admin_login.html" class="btn btn-primary">Admin Sign In</a>
               <a href="Admin/regis_admin.html" class="btn btn-secondary">Admin Registration</a>
             </div>
@@ -66,18 +70,20 @@
       </section>
     </main>
 
-    <footer class="f-bar" style="margin-top:auto;">
+    <footer class="f-bar gateway-footer">
       <div class="f-left">
-        <p class="f-title" style="font-size:0.95rem;"><strong>CHARUSAT Student Hub Portal</strong></p>
-        <p class="f-note" style="font-size:0.85rem;color:#6B7280;">2026 Department of Information Technology. All Rights Reserved.</p>
+        <p class="f-title"><strong>CHARUSAT Student Hub Portal</strong></p>
+        <p class="f-note">2026 Department of Information Technology. All Rights Reserved.</p>
       </div>
       <div class="f-right">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="faqs.html">FAQs</a>
         <a href="contact.html">Contact</a>
+        <a href="Login.html" aria-current="page">Portal Login</a>
       </div>
     </footer>
   </div>
+  <script src="dark-mode.js"></script>
 </body>
 </html>
