@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "question": "How do I register as a new student?",
+    "answer": "Navigate to the homepage and select Register New Student under Student Access. Fill in your full name, student ID / roll number, university email, and mobile number. Once registered, you can log in directly.",
+    "category": "registration"
+  },
+  {
+    "id": 2,
+    "question": "How is my attendance percentage calculated?",
+    "answer": "Attendance is tracked per enrolled course subject based on total classes conducted versus classes attended. A minimum of 75% attendance is mandatory for university examination eligibility.",
+    "category": "attendance"
+  },
+  {
+    "id": 3,
+    "question": "Where can I download my examination results and marksheets?",
+    "answer": "Log in to your student account, go to the Exam Result section in the dashboard sidebar, and view your semester course marks, GPA, and distinction status.",
+    "category": "results"
+  },
+  {
+    "id": 4,
+    "question": "How do I pay tuition fees and get payment receipts?",
+    "answer": "Access the Fee Information page from the dashboard menu to see your current tuition fee balance, semester breakdown, and download payment confirmation receipts.",
+    "category": "fees"
+  },
+  {
+    "id": 5,
+    "question": "Who should I contact if I encounter login or profile issues?",
+    "answer": "You can submit an inquiry through our Contact Us page or email the campus IT Helpdesk at itdesk@charusat.ac.in during office hours (9:00 AM - 5:00 PM).",
+    "category": "login"
+  },
+  {
+    "id": 6,
+    "question": "What is the minimum attendance required to sit for exams?",
+    "answer": "Students must maintain at least 75% attendance in each subject during the semester to be eligible to appear in the university end-semester examination. Students below this threshold may apply for a condonation request through the academic office.",
+    "category": "attendance"
+  },
+  {
+    "id": 7,
+    "question": "How do I reset my student portal password?",
+    "answer": "On the Student Sign In page, click Forgot Password and enter your registered university email address. A password reset link will be sent to your inbox within 5 minutes. Check your spam folder if you do not receive it.",
+    "category": "login"
+  },
+  {
+    "id": 8,
+    "question": "When are semester fee payment deadlines?",
+    "answer": "Tuition fees for the odd semester are due by the 15th of July, and even semester fees are due by the 5th of January. A late fee penalty of Rs 100 per day is applied after the deadline. Check the Fee Information section in your dashboard for your exact balance.",
+    "category": "fees"
+  },
+  {
+    "id": 9,
+    "question": "How do I register for a campus event?",
+    "answer": "Go to the Campus Events page from your student dashboard sidebar. Browse the upcoming events, then click the Register button on any event card. You will receive a confirmation alert, and your event pass details will be sent to your registered email.",
+    "category": "events"
+  },
+  {
+    "id": 10,
+    "question": "Can I update my personal information after registration?",
+    "answer": "Yes. Log in to your student account and navigate to the Student Profile page from the dashboard. You can update your mobile number, address, and profile photo. Changes to your name or student ID require a formal request to the academic office.",
+    "category": "registration"
+  },
+  {
+    "id": 11,
+    "question": "How do I view my semester-wise GPA and CGPA?",
+    "answer": "After logging in, go to Exam Results in the dashboard sidebar. The page displays your marks for each course along with the calculated GPA for each semester and your cumulative CGPA up to the current semester.",
+    "category": "results"
+  },
+  {
+    "id": 12,
+    "question": "What should I do if my attendance is marked incorrectly?",
+    "answer": "If you believe an attendance entry is incorrect, contact your subject teacher directly within one week of the class. If the issue is unresolved, submit a written application to the academic coordinator with the relevant date and lecture details for review.",
+    "category": "attendance"
+  },
+  {
+    "id": 13,
+    "question": "Are there any scholarships or fee concessions available?",
+    "answer": "Yes. Merit-based scholarships are awarded to students who score above 8.5 CGPA in the previous semester. Government scholarship schemes for SC, ST, OBC, and EWS categories are also available. Visit the finance office or check the Fee Information section in your dashboard for application details.",
+    "category": "fees"
+  },
+  {
+    "id": 14,
+    "question": "How do I get a bonafide or enrollment certificate?",
+    "answer": "Submit a request through the Student Profile page under the Documents section. Bonafide certificates are typically processed within 2 to 3 working days. You can collect the printed certificate from the academic office or download a digitally signed copy from the portal.",
+    "category": "registration"
+  },
+  {
+    "id": 15,
+    "question": "How will I know if an event is cancelled or rescheduled?",
+    "answer": "Event updates are posted on the Campus Events page. If you have registered for an event, a notification email is sent to your registered university email address when the event is cancelled or rescheduled. Always check the portal before the event date.",
+    "category": "events"
+  }
+]

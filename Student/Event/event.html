@@ -54,102 +54,36 @@
         <section class="w-banner">
           <div class="b-text">
             <div class="c-head-tag">CAMPUS HAPPENINGS</div>
-            <h1 class="b-title">University Events & Competitions</h1>
+            <h1 class="b-title">University Events &amp; Competitions</h1>
             <p class="b-sub">Explore technical hackathons, cultural festivals, and skill workshops</p>
           </div>
           <div class="b-acts">
-            <span class="count-tag gold-tag">4 Upcoming Events</span>
+            <span class="count-tag gold-tag" id="eventCount">15 Upcoming Events</span>
           </div>
         </section>
 
         <div class="ev-filt">
           <button type="button" class="f-btn active" data-category="all">All Events</button>
-          <button type="button" class="f-btn" data-category="tech">Technical & Coding</button>
-          <button type="button" class="f-btn" data-category="cultural">Cultural & Arts</button>
-          <button type="button" class="f-btn" data-category="sports">Sports & Athletics</button>
+          <button type="button" class="f-btn" data-category="tech">Technical &amp; Coding</button>
+          <button type="button" class="f-btn" data-category="cultural">Cultural &amp; Arts</button>
+          <button type="button" class="f-btn" data-category="sports">Sports &amp; Athletics</button>
         </div>
 
-        <div class="ev-grid" id="events-container">
-          <article class="ev-card" data-category="tech">
-            <div class="ev-dt">
-              <span class="event-day">25</span>
-              <span class="event-month">SEP</span>
-              <span class="event-year">2026</span>
-            </div>
-            <div class="ev-cnt">
-              <div class="ev-meta">
-                <span class="ev-tag tag-navy">TECHNICAL HACKATHON</span>
-                <span class="event-venue">CSPIT Auditorium</span>
-              </div>
-              <h2 class="ev-tit">Cognizance 2026: 24-Hour AI & Web Hackathon</h2>
-              <p class="ev-desc">Collaborate with fellow engineers to build full-stack web solutions and generative AI prototypes for real-world campus problems. Exciting cash rewards and internship sponsorships.</p>
-              <div class="ev-foot">
-                <span class="ev-tm">09:00 AM onwards (24h)</span>
-                <button type="button" class="btn btn-primary register-event-btn" data-event="Cognizance 2026">Register Team</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="ev-card" data-category="tech">
-            <div class="ev-dt">
-              <span class="event-day">02</span>
-              <span class="event-month">OCT</span>
-              <span class="event-year">2026</span>
-            </div>
-            <div class="ev-cnt">
-              <div class="ev-meta">
-                <span class="ev-tag tag-gold">WORKSHOP</span>
-                <span class="event-venue">Lab C-204</span>
-              </div>
-              <h2 class="ev-tit">Hands-On Cloud Architecture & Docker Masterclass</h2>
-              <p class="ev-desc">Learn container orchestration, microservices deployment, and CI/CD pipelines guided by industry cloud architects from AWS & Google Cloud.</p>
-              <div class="ev-foot">
-                <span class="ev-tm">02:00 PM - 05:00 PM</span>
-                <button type="button" class="btn btn-primary register-event-btn" data-event="Cloud Workshop">Register Seat</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="ev-card" data-category="cultural">
-            <div class="ev-dt">
-              <span class="event-day">15</span>
-              <span class="event-month">OCT</span>
-              <span class="event-year">2026</span>
-            </div>
-            <div class="ev-cnt">
-              <div class="ev-meta">
-                <span class="ev-tag tag-crimson">CULTURAL FEST</span>
-                <span class="event-venue">University Open Lawn</span>
-              </div>
-              <h2 class="ev-tit">Spandan 2026: Annual Youth & Drama Festival</h2>
-              <p class="ev-desc">Inter-college street plays, classical music nights, and battle of the bands. Open to all students across faculties with certificates of merit.</p>
-              <div class="ev-foot">
-                <span class="ev-tm">05:00 PM - 10:00 PM</span>
-                <button type="button" class="btn btn-primary register-event-btn" data-event="Spandan 2026">Register Solo / Group</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="ev-card" data-category="sports">
-            <div class="ev-dt">
-              <span class="event-day">22</span>
-              <span class="event-month">OCT</span>
-              <span class="event-year">2026</span>
-            </div>
-            <div class="ev-cnt">
-              <div class="ev-meta">
-                <span class="ev-tag tag-green">SPORTS TOURNAMENT</span>
-                <span class="event-venue">Sports Complex Ground</span>
-              </div>
-              <h2 class="ev-tit">Charusat Premier Cricket & Badminton League</h2>
-              <p class="ev-desc">Departmental league fixtures for boys and girls teams. Fixtures, jersey kits, and match schedules will be issued upon registration confirmation.</p>
-              <div class="ev-foot">
-                <span class="ev-tm">08:30 AM onwards</span>
-                <button type="button" class="btn btn-primary register-event-btn" data-event="Sports League">Register Squad</button>
-              </div>
-            </div>
-          </article>
+        <div class="ev-filt" style="gap:12px;align-items:center;flex-wrap:wrap;margin-top:10px;">
+          <input type="text" id="eventSearch" placeholder="Search events..." style="padding:8px 14px;border:1px solid #d1d5db;border-radius:6px;font-size:0.9rem;min-width:200px;">
+          <select id="eventSort" style="padding:8px 14px;border:1px solid #d1d5db;border-radius:6px;font-size:0.9rem;cursor:pointer;">
+            <option value="date-asc">Date: earliest first</option>
+            <option value="date-desc">Date: latest first</option>
+            <option value="title-asc">Title: A to Z</option>
+          </select>
         </div>
+
+        <p id="eventStatus" style="padding:12px 0;color:#6B7280;font-size:0.9rem;"></p>
+
+        <div class="ev-grid" id="events-container"></div>
+
+        <div id="eventPager" style="display:flex;align-items:center;gap:12px;margin-top:20px;"></div>
+
       </main>
     </div>
 
@@ -169,45 +103,7 @@
   </div>
 
   <script src="../DashBoard/menu.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var filterBtns = document.querySelectorAll(".f-btn");
-      var cards = document.querySelectorAll(".ev-card");
-
-      filterBtns.forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          filterBtns.forEach(function (b) { b.classList.remove("active"); });
-          btn.classList.add("active");
-
-          var category = btn.getAttribute("data-category");
-
-          cards.forEach(function (card) {
-            if (category === "all" || card.getAttribute("data-category") === category) {
-              card.style.display = "flex";
-            } else {
-              card.style.display = "none";
-            }
-          });
-        });
-      });
-
-      var regButtons = document.querySelectorAll(".register-event-btn");
-      regButtons.forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          var eventName = btn.getAttribute("data-event");
-          if (btn.textContent.indexOf("Registered") !== -1) {
-            btn.textContent = "Register Now \u2192";
-            btn.classList.remove("registered-btn");
-            alert("Cancelled registration for " + eventName);
-          } else {
-            btn.textContent = "Registered \u2713";
-            btn.classList.add("registered-btn");
-            alert("Successfully registered for " + eventName + "! Check your email for event passes.");
-          }
-        });
-      });
-    });
-  </script>
+  <script src="events.js"></script>
   <script src="../../dark-mode.js"></script>
 </body>
 </html>

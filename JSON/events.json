@@ -1,0 +1,152 @@
+[
+  {
+    "id": 1,
+    "title": "Cognizance 2026: 24-Hour AI & Web Hackathon",
+    "category": "tech",
+    "date": "2026-09-25",
+    "time": "09:00 AM onwards (24h)",
+    "venue": "CSPIT Auditorium",
+    "description": "Collaborate with fellow engineers to build full-stack web solutions and generative AI prototypes for real-world campus problems. Exciting cash rewards and internship sponsorships.",
+    "fee": "Free"
+  },
+  {
+    "id": 2,
+    "title": "Hands-On Cloud Architecture & Docker Masterclass",
+    "category": "tech",
+    "date": "2026-10-02",
+    "time": "02:00 PM - 05:00 PM",
+    "venue": "Lab C-204",
+    "description": "Learn container orchestration, microservices deployment, and CI/CD pipelines guided by industry cloud architects from AWS & Google Cloud.",
+    "fee": 200
+  },
+  {
+    "id": 3,
+    "title": "Spandan 2026: Annual Youth & Drama Festival",
+    "category": "cultural",
+    "date": "2026-10-15",
+    "time": "05:00 PM - 10:00 PM",
+    "venue": "University Open Lawn",
+    "description": "Inter-college street plays, classical music nights, and battle of the bands. Open to all students across faculties with certificates of merit.",
+    "fee": "Free"
+  },
+  {
+    "id": 4,
+    "title": "Charusat Premier Cricket & Badminton League",
+    "category": "sports",
+    "date": "2026-10-22",
+    "time": "08:30 AM onwards",
+    "venue": "Sports Complex Ground",
+    "description": "Departmental league fixtures for boys and girls teams. Fixtures, jersey kits, and match schedules will be issued upon registration confirmation.",
+    "fee": 100
+  },
+  {
+    "id": 5,
+    "title": "Web Dev Workshop: React & Node.js Bootcamp",
+    "category": "tech",
+    "date": "2026-10-28",
+    "time": "10:00 AM - 04:00 PM",
+    "venue": "Lab B-101",
+    "description": "A full-day hands-on workshop covering React hooks, REST APIs with Node.js and Express, and deployment on Render. Bring your laptop.",
+    "fee": 150
+  },
+  {
+    "id": 6,
+    "title": "Navratri Garba Night 2026",
+    "category": "cultural",
+    "date": "2026-10-30",
+    "time": "07:00 PM - 11:00 PM",
+    "venue": "Campus Central Ground",
+    "description": "Join the university's biggest cultural gathering for nine nights of traditional Garba and Dandiya. Traditional attire encouraged. Entry with college ID.",
+    "fee": "Free"
+  },
+  {
+    "id": 7,
+    "title": "Inter-Department Football Championship",
+    "category": "sports",
+    "date": "2026-11-05",
+    "time": "09:00 AM - 06:00 PM",
+    "venue": "Sports Complex Ground",
+    "description": "Annual football tournament open to all departments. Register your squad of 11 players. Trophies and medals for top three finishing teams.",
+    "fee": 50
+  },
+  {
+    "id": 8,
+    "title": "Cybersecurity & Ethical Hacking Workshop",
+    "category": "tech",
+    "date": "2026-11-10",
+    "time": "11:00 AM - 03:00 PM",
+    "venue": "Lab C-301",
+    "description": "Explore penetration testing techniques, OWASP top 10 vulnerabilities, and how to use tools like Burp Suite and Metasploit in a legal lab environment.",
+    "fee": 100
+  },
+  {
+    "id": 9,
+    "title": "Annual Classical Music & Dance Recital",
+    "category": "cultural",
+    "date": "2026-11-14",
+    "time": "06:00 PM - 09:00 PM",
+    "venue": "Mini Auditorium",
+    "description": "Students from the performing arts club present Bharatanatyam, Kathak, and Hindustani classical vocal performances. Free entry for all students.",
+    "fee": "Free"
+  },
+  {
+    "id": 10,
+    "title": "Data Science & ML Hackathon",
+    "category": "tech",
+    "date": "2026-11-20",
+    "time": "08:00 AM - 08:00 PM",
+    "venue": "CSPIT Seminar Hall",
+    "description": "A 12-hour competitive event where teams of two to three build machine learning models on real datasets. Prizes include cloud credits and internship offers.",
+    "fee": "Free"
+  },
+  {
+    "id": 11,
+    "title": "Table Tennis Open Tournament",
+    "category": "sports",
+    "date": "2026-11-25",
+    "time": "10:00 AM - 05:00 PM",
+    "venue": "Indoor Sports Hall",
+    "description": "Singles and doubles categories open for all enrolled students. Register individually or as a pair. Rackets available on loan at the sports office.",
+    "fee": 30
+  },
+  {
+    "id": 12,
+    "title": "Photography & Short Film Festival",
+    "category": "cultural",
+    "date": "2026-11-28",
+    "time": "04:00 PM - 08:00 PM",
+    "venue": "Gallery Hall, Admin Block",
+    "description": "Submit your campus photographs and short films (up to 5 minutes) for judging by faculty and alumni. Best entries will be displayed permanently in the gallery.",
+    "fee": "Free"
+  },
+  {
+    "id": 13,
+    "title": "Python & Django Workshop for Beginners",
+    "category": "tech",
+    "date": "2026-12-03",
+    "time": "02:00 PM - 05:30 PM",
+    "venue": "Lab A-202",
+    "description": "Learn to build and deploy a complete web application with Python and Django. No prior Python experience required. All materials provided.",
+    "fee": 80
+  },
+  {
+    "id": 14,
+    "title": "Annual Athletic Meet 2026",
+    "category": "sports",
+    "date": "2026-12-10",
+    "time": "07:30 AM - 05:00 PM",
+    "venue": "University Athletic Track",
+    "description": "Track and field events including 100m, 400m, relay races, long jump, and shot put. Represent your department and win overall championship shield.",
+    "fee": "Free"
+  },
+  {
+    "id": 15,
+    "title": "Farewell & Cultural Evening 2026",
+    "category": "cultural",
+    "date": "2026-12-18",
+    "time": "06:00 PM - 10:00 PM",
+    "venue": "Main Auditorium",
+    "description": "A grand evening hosted by the student council to celebrate the graduating batch, featuring performances, awards, and a formal dinner for all final year students.",
+    "fee": 250
+  }
+]
