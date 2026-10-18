@@ -31,32 +31,21 @@
         <h1 class="page-title">Faculty & Staff Login</h1>
         <p class="form-description">Authenticate with your official institutional credentials to manage students, publish results, and oversee schedules.</p>
 
-        <form id="adminLoginForm">
+        <form id="adminLoginForm" method="POST" action="Admin_login.php">
           <div class="form-field">
             <label for="fullname">Administrator / Faculty Full Name</label>
             <input type="text" id="fullname" name="fullname" placeholder="e.g. Dr. Mrugendra Patel" required>
           </div>
 
           <div class="form-field">
-            <label for="campus_role">Official Campus Role</label>
-            <select id="campus_role" name="campus_role" class="select-field" required>
-              <option value="" disabled selected>Select your role</option>
-              <option value="Department Head / Principal">Department Head / Principal</option>
-              <option value="Associate Professor / Faculty">Associate Professor / Faculty</option>
-              <option value="Examination Coordinator">Examination Coordinator</option>
-              <option value="Academic Counselor">Academic Counselor</option>
-              <option value="IT Systems Administrator">IT Systems Administrator</option>
-            </select>
-          </div>
-
-          <div class="form-field">
             <label for="email">Official University Email</label>
-            <input type="email" id="email" name="email" placeholder="e.g. mrugendra.patel@charusat.ac.in" required>
+            <input type="email" id="email" name="email" placeholder="e.g. rakesh.patel@charusat.ac.in" required>
           </div>
 
           <div class="form-field">
-            <label for="dept">Department</label>
-            <input type="text" id="dept" name="dept" placeholder="e.g. Information Technology (DEPSTAR)" required>
+            <label for="admin_id">Staff / Admin ID</label>
+            <input type="text" id="admin_id" name="admin_id" placeholder="e.g. ADM10005" required>
+            <small class="field-hint">Format: 'ADM' followed by 5 digits (e.g. ADM10005)</small>
           </div>
 
           <div class="form-field">

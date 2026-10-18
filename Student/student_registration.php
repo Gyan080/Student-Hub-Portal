@@ -173,6 +173,65 @@ try {
     renderPage('Database Error', 'Registration Could Not Be Completed', 'A database error occurred. Please try again later.');
 }
 
+// Create data folder if it does not exist
+$folder = dirname(__DIR__) . '/data';
+if (!file_exists($folder)) {
+    mkdir($folder, 0755, true);
+}
+
+$csvFile = $folder . '/students.csv';
+
+// Write header row if file does not exist
+if (!file_exists($csvFile)) {
+    $file = fopen($csvFile, 'w');
+    if ($file === false) {
+        renderPage('CSV Error', 'File Error', 'Saved to database, but the CSV backup could not be written.');
+    }
+    $headers = [
+        'student_uid',
+        'name',
+        'email',
+        'dob',
+        'gender',
+        'phone',
+        'address',
+        'course',
+        'study_year',
+        'created_at'
+    ];
+    fputcsv($file, $headers);
+    fclose($file);
+}
+
+// Prepare row data without password
+$row = [
+    $collegeId,
+    $fullName,
+    $email,
+    $dob,
+    $gender,
+    $phone,
+    $address,
+    $course,
+    $year,
+    date('Y-m-d H:i:s')
+];
+
+// Prevent formula injection
+foreach ($row as $key => $value) {
+    if ($value != '' && ($value[0] == '=' || $value[0] == '+' || $value[0] == '-' || $value[0] == '@')) {
+        $row[$key] = "'" . $value;
+    }
+}
+
+// Append student record to CSV
+$file = fopen($csvFile, 'a');
+if ($file === false) {
+    renderPage('CSV Error', 'File Error', 'Saved to database, but the CSV backup could not be written.');
+}
+fputcsv($file, $row);
+fclose($file);
+
 $safeFullName = htmlspecialchars($fullName, ENT_QUOTES, 'UTF-8');
 $safeCollegeId = htmlspecialchars($collegeId, ENT_QUOTES, 'UTF-8');
 renderPage(

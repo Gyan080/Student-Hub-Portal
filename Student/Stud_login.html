@@ -29,39 +29,16 @@
         <h1 class="page-title">Student Sign In</h1>
         <p class="form-description" style="color:#4B5563;font-size:0.95rem;">Enter your university enrollment ID and password to access your personalized academic dashboard.</p>
 
-        <form id="studentLoginForm">
+        <form id="studentLoginForm" method="POST" action="Stud_login.php">
           <div class="form-field">
-            <label for="student_id" style="font-size:0.9rem;font-weight:700;">Enrollment ID / Roll Number</label>
-            <input type="text" id="student_id" name="student_id" placeholder="e.g. 25dcs080" required>
+            <label for="student_id" style="font-size:0.9rem;font-weight:700;">Enrollment ID / University Email</label>
+            <input type="text" id="student_id" name="student_id" placeholder="e.g. 25dcs080 or 25dcs080@charusat.edu.in" required>
             <small class="field-hint" style="font-size:0.8rem;color:#6B7280;">Format: 2 numbers, 3 letters, 3 numbers (e.g. 25dcs080)</small>
           </div>
 
           <div class="form-field">
-            <label for="fullname" style="font-size:0.9rem;font-weight:700;">Student Full Name</label>
-            <input type="text" id="fullname" name="fullname" placeholder="e.g. Ramesh patel" required>
-          </div>
-
-          <div class="form-field">
-            <label for="email" style="font-size:0.9rem;font-weight:700;">University Email</label>
-            <input type="email" id="email" name="email" placeholder="e.g. 25dcs080@charusat.edu.in" required>
-          </div>
-
-          <div class="form-field">
-            <label for="department" style="font-size:0.9rem;font-weight:700;">Department / Program</label>
-            <select id="department" name="department" class="select-field" required>
-              <option value="" disabled selected>Select your department</option>
-              <option value="Information Technology">Information Technology (IT)</option>
-              <option value="Computer Science">Computer Science (CSE)</option>
-              <option value="Computer Engineering">Computer Engineering (CE)</option>
-              <option value="AI & Machine Learning">AI & Machine Learning (AI-ML)</option>
-              <option value="Civil Engineering">Civil Engineering</option>
-              <option value="Mechanical Engineering">Mechanical Engineering</option>
-            </select>
-          </div>
-
-          <div class="form-field">
             <label for="password" style="font-size:0.9rem;font-weight:700;">Password</label>
-            <input type="password" id="password" name="password" placeholder="Enter password (min 6 chars)" required>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
           </div>
 
           <div class="checkbox-field" style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">

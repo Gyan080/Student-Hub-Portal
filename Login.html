@@ -31,6 +31,7 @@
         <div class="c-head-tag">AUTHENTICATION GATEWAY</div>
         <h1 class="login-heading">Choose Your Portal Account</h1>
         <p class="login-sub gateway-description">Please select whether you are logging in as an enrolled Student or an Authorized Staff Administrator.</p>
+        <div id="auth-status-banner"></div>
       </section>
 
       <section class="login-cards-grid">
@@ -84,6 +85,17 @@
       </div>
     </footer>
   </div>
+  <script>
+    var urlParams = new URLSearchParams(window.location.search);
+    var bannerContainer = document.getElementById("auth-status-banner");
+    if (bannerContainer) {
+      if (urlParams.has("logged_out")) {
+        bannerContainer.innerHTML = '<div style="background:#D1FAE5;color:#065F46;border:2px solid #1A1A1A;box-shadow:3px 3px 0px #1A1A1A;padding:12px;border-radius:6px;margin:15px auto;max-width:600px;font-weight:700;text-align:center;">You have been logged out successfully. Active session destroyed.</div>';
+      } else if (urlParams.has("timeout")) {
+        bannerContainer.innerHTML = '<div style="background:#FEE2E2;color:#B91C1C;border:2px solid #1A1A1A;box-shadow:3px 3px 0px #1A1A1A;padding:12px;border-radius:6px;margin:15px auto;max-width:600px;font-weight:700;text-align:center;">Your session expired after 15 minutes of inactivity. Please log in again.</div>';
+      }
+    }
+  </script>
   <script src="dark-mode.js"></script>
 </body>
 </html>

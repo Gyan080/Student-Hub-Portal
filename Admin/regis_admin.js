@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const nameRegex = /^[A-Za-z]{2,50}$/;
     const adminIdRegex = /^ADM\d{5}$/i;
-    const emailRegex = /^[\w.-]+@[\w-]+\.[a-z]{2,}$/i;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@([a-zA-Z0-9.-]+)\.[a-zA-Z]{2,}$/i;
     const phoneRegex = /^[6-9]\d{9}$/;
 
     if (!nameRegex.test(firstname)) {
@@ -79,7 +79,22 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    if (!fileInput.files || fileInput.files.length === 0) {
+    const password = document.getElementById("password") ? document.getElementById("password").value : "";
+    const confirmPassword = document.getElementById("confirm_password") ? document.getElementById("confirm_password").value : "";
+
+    if (password.length < 6) {
+      showBrutalistModal("Validation Error", "Password must be at least 6 characters long.", "error");
+      document.getElementById("password").focus();
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      showBrutalistModal("Validation Error", "Password and Confirm Password do not match.", "error");
+      document.getElementById("confirm_password").focus();
+      return;
+    }
+
+    if (fileInput && (!fileInput.files || fileInput.files.length === 0)) {
       showBrutalistModal("Validation Error", "Please select your Institutional ID proof document.", "error");
       fileInput.focus();
       return;
@@ -101,17 +116,28 @@ document.addEventListener("DOMContentLoaded", function () {
       gender: gender,
       department: department,
       address: address,
+      password: password,
       loginTime: new Date().toLocaleTimeString()
     };
 
     localStorage.setItem("adminUser", JSON.stringify(adminUser));
 
+    // Save to MySQL database table 'admins'
+    fetch("save_admin.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(adminUser)
+    }).catch(function (err) {
+      console.log("DB sync error:", err);
+    });
+
     showBrutalistModal(
       "Admin Profile Registered!",
-      `Welcome ${fullName}! Your official administrative account has been registered successfully.`,
+      `Welcome ${fullName}! Your official administrative account (${admin_id.toUpperCase()}) has been saved to the database. Default login password is 'admin123'.`,
       "success",
       function () {
         regForm.reset();
+        window.location.href = "Admin_login.html";
       }
     );
   });
