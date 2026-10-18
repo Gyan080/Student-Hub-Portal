@@ -14,6 +14,5 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    // Allow standard POST submission to Admin_login.php for session processing
   });
 });

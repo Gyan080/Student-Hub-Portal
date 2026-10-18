@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// 1. Session Inactivity Timeout (15 minutes = 900 seconds)
 if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > 900)) {
     $_SESSION = array();
     session_destroy();
@@ -10,13 +9,11 @@ if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > 
 }
 $_SESSION['last_activity'] = time();
 
-// 2. Authentication Protection
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     header("Location: ../Admin_login.html?error=unauthorized");
     exit();
 }
 
-// 3. Role-Based Access Control (RBAC)
 if ($_SESSION['role'] !== 'admin') {
     header("Location: ../../Student/DashBoard/student_dashboard.php?error=forbidden");
     exit();
@@ -47,6 +44,8 @@ $adminId   = htmlspecialchars($_SESSION['username'] ?? 'ADM10025', ENT_QUOTES, '
         </a>
       </div>
       <nav class="n-links">
+        <a href="admin_dashboard.php" class="nav-link active">Dashboard</a>
+        <a href="students_manage.php" class="nav-link">Manage Students</a>
         <a href="../../about.html">About</a>
         <a href="../../faqs.html">FAQs</a>
         <a href="../../contact.html">Contact</a>
@@ -54,8 +53,19 @@ $adminId   = htmlspecialchars($_SESSION['username'] ?? 'ADM10025', ENT_QUOTES, '
       </nav>
     </header>
 
-    <main>
-      <section id="profile" style="max-width:960px;margin:30px auto;padding:20px;">
+    <div class="d-layout" style="display:flex;gap:20px;flex:1;">
+      <aside class="d-sidebar" style="width:240px;flex-shrink:0;padding:20px;">
+        <div style="font-size:0.75rem;font-weight:800;color:#64748b;text-transform:uppercase;margin-bottom:14px;letter-spacing:0.05em;">Admin Menu</div>
+        <nav class="s-nav">
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+            <li><a href="admin_dashboard.php" class="nav-link active" style="display:block;">Dashboard</a></li>
+            <li><a href="students_manage.php" class="nav-link" style="display:block;">Manage Students</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="d-main" style="flex:1;">
+        <section id="profile" style="max-width:960px;margin:0 auto;padding:20px;">
         <header style="margin-bottom:20px;">
           <span style="display:inline-block;padding:3px 8px;font-size:0.75rem;font-weight:800;border:1.5px solid #1A1A1A;border-radius:4px;background:#D1FAE5;color:#065F46;margin-bottom:8px;">AUTHENTICATED SESSION: ADMIN</span>
           <h2>Admin Dashboard</h2>
@@ -91,8 +101,9 @@ $adminId   = htmlspecialchars($_SESSION['username'] ?? 'ADM10025', ENT_QUOTES, '
         </article>
       </section>
     </main>
+  </div>
 
-    <footer class="f-bar">
+  <footer class="f-bar">
       <p class="f-note">Admin Dashboard · CHARUSAT Portal</p>
       <p class="f-note"><a href="../../logout.php" style="color:#B91C1C;font-weight:700;">Click here to Logout</a></p>
     </footer>

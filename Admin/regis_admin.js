@@ -122,7 +122,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     localStorage.setItem("adminUser", JSON.stringify(adminUser));
 
-    // Save to MySQL database table 'admins'
     fetch("save_admin.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

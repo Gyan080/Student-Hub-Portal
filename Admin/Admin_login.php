@@ -6,7 +6,6 @@ function renderAdminLoginError($heading, $message) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
     <title>Login Failed - Admin Portal</title>
     <link rel="stylesheet" href="adminStyle.css">
 </head>
@@ -42,8 +41,8 @@ if (empty($password)) {
 
 try {
     require_once __DIR__ . '/db_connect.php';
+    $password = trim($_POST['password'] ?? '');
 
-    // Auto-create admins table if it does not exist yet to guarantee Practical 10 runs smoothly
     $mysqli->query("CREATE TABLE IF NOT EXISTS admins (
         id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         admin_id VARCHAR(8) UNIQUE NOT NULL,
@@ -54,7 +53,6 @@ try {
         department VARCHAR(100) DEFAULT 'Information Technology'
     )");
 
-    // Ensure at least one default admin account exists for lab demonstration and viva evaluation
     $checkAdmin = $mysqli->query("SELECT 1 FROM admins LIMIT 1");
     if ($checkAdmin && $checkAdmin->num_rows === 0) {
         $defaultPassHash = password_hash('admin123', PASSWORD_DEFAULT);
@@ -68,7 +66,6 @@ try {
         $stmtSeed->execute();
     }
 
-    // Search for admin by email or admin_id
     $stmt = $mysqli->prepare('SELECT admin_id, name, email, department, role, password_hash FROM admins WHERE email = ? OR admin_id = ? LIMIT 1');
     $stmt->bind_param('ss', $email, $adminId);
     $stmt->execute();
@@ -78,7 +75,6 @@ try {
     if ($admin) {
         $authenticated = false;
 
-        // Verify password using password_verify() (with plain-text fallback for legacy/manual entries)
         if (password_verify($password, $admin['password_hash'])) {
             $authenticated = true;
         } elseif ($password === $admin['password_hash']) {
@@ -86,10 +82,8 @@ try {
         }
 
         if ($authenticated) {
-            // Regenerate session ID to prevent session fixation attacks
             session_regenerate_id(true);
 
-            // Store session attributes
             $_SESSION['username'] = $admin['admin_id'];
             $_SESSION['name'] = $admin['name'];
             $_SESSION['email'] = $admin['email'];

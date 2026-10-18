@@ -173,7 +173,6 @@ try {
     renderPage('Database Error', 'Registration Could Not Be Completed', 'A database error occurred. Please try again later.');
 }
 
-// Create data folder if it does not exist
 $folder = dirname(__DIR__) . '/data';
 if (!file_exists($folder)) {
     mkdir($folder, 0755, true);
@@ -181,56 +180,41 @@ if (!file_exists($folder)) {
 
 $csvFile = $folder . '/students.csv';
 
-// Write header row if file does not exist
-if (!file_exists($csvFile)) {
-    $file = fopen($csvFile, 'w');
-    if ($file === false) {
-        renderPage('CSV Error', 'File Error', 'Saved to database, but the CSV backup could not be written.');
-    }
-    $headers = [
-        'student_uid',
-        'name',
-        'email',
-        'dob',
-        'gender',
-        'phone',
-        'address',
-        'course',
-        'study_year',
-        'created_at'
-    ];
-    fputcsv($file, $headers);
-    fclose($file);
-}
-
-// Prepare row data without password
-$row = [
-    $collegeId,
-    $fullName,
-    $email,
-    $dob,
-    $gender,
-    $phone,
-    $address,
-    $course,
-    $year,
-    date('Y-m-d H:i:s')
-];
-
-// Prevent formula injection
-foreach ($row as $key => $value) {
-    if ($value != '' && ($value[0] == '=' || $value[0] == '+' || $value[0] == '-' || $value[0] == '@')) {
-        $row[$key] = "'" . $value;
-    }
-}
-
-// Append student record to CSV
-$file = fopen($csvFile, 'a');
+$file = fopen($csvFile, 'w');
 if ($file === false) {
-    renderPage('CSV Error', 'File Error', 'Saved to database, but the CSV backup could not be written.');
+    renderPage('CSV Error', 'File Error', 'Saved to database, but the CSV could not be updated. Please contact the admin.');
 }
-fputcsv($file, $row);
+
+$headers = [
+    'student_id',
+    'student_uid',
+    'name',
+    'email',
+    'dob',
+    'gender',
+    'phone',
+    'address',
+    'course',
+    'study_year',
+    'created_at'
+];
+fputcsv($file, $headers);
+
+$query = 'SELECT student_id, student_uid, name, email, dob, gender, phone, address, course, study_year, created_at FROM students ORDER BY student_id';
+$result = $mysqli->query($query);
+
+while ($row = $result->fetch_assoc()) {
+    foreach ($row as $key => $value) {
+        $value = (string)$value;
+        if ($value != '' && ($value[0] == '=' || $value[0] == '+' || $value[0] == '-' || $value[0] == '@')) {
+            $row[$key] = "'" . $value;
+        }
+    }
+    fputcsv($file, $row);
+}
+
 fclose($file);
+
 
 $safeFullName = htmlspecialchars($fullName, ENT_QUOTES, 'UTF-8');
 $safeCollegeId = htmlspecialchars($collegeId, ENT_QUOTES, 'UTF-8');
