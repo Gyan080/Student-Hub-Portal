@@ -23,9 +23,9 @@
       </nav>
     </header>
 
-    <section class="banner-notice">
-      <div class="notice-badge" style="background-color:#D97706;color:#FFFFFF;margin-bottom:0;">CAMPUS NOTICE</div>
-      <p class="notice-text" style="font-size:0.95rem;font-weight:600;color:#92400E;">Semester examinations schedule released. Check your exam timetables and fee receipts in the student dashboard.</p>
+    <section id="noticeBanner" role="status" class="banner-notice" style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
+      <p class="notice-text" style="margin:0;font-size:0.95rem;font-weight:600;color:#92400E;">&#127881; Event registrations for Cognizance 2026 are now open &mdash; <a href="Student/Event/event.html" style="color:#92400E;text-decoration:underline;">Register here</a>.</p>
+      <button id="bannerCloseBtn" type="button" aria-label="Close notification" style="background:none;border:none;font-size:1.2rem;cursor:pointer;color:#92400E;line-height:1;padding:4px 8px;">&times;</button>
     </section>
 
     <main class="main-content">
@@ -111,6 +111,7 @@
     </footer>
   </div>
   <script src="index.js"></script>
+  <script src="banner.js"></script>
   <script src="dark-mode.js"></script>
 </body>
 </html>
