@@ -62,6 +62,78 @@ $result = $stmt->get_result();
       color: #dc2626;
       font-weight: 700;
     }
+    .event-description {
+      color: #64748b;
+      font-size: 0.92rem;
+    }
+    .event-notice {
+      padding: 12px 16px;
+      background: #d1fae5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+      border-radius: 6px;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+    .event-empty {
+      text-align: center;
+      padding: 24px;
+      color: #64748b;
+      font-weight: 600;
+    }
+    .no-poster {
+      color: #64748b;
+      font-size: 0.8rem;
+    }
+    .event-action {
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .event-edit {
+      color: #1f4e79;
+      margin-right: 12px;
+    }
+    .event-delete {
+      color: #dc2626;
+    }
+    body.dark-mode .event-table {
+      background: #1e1e1e;
+      border-color: #3a3a3a;
+    }
+    body.dark-mode .event-table th {
+      background-color: #292929;
+      color: #f5f5f5;
+      border-color: #3a3a3a;
+    }
+    body.dark-mode .event-table td {
+      color: #e5e5e5;
+      border-color: #3a3a3a;
+    }
+    body.dark-mode .event-table tr:hover {
+      background-color: #272727;
+    }
+    body.dark-mode .event-table .status-open {
+      color: #86efac;
+    }
+    body.dark-mode .event-table .status-closed {
+      color: #fca5a5;
+    }
+    body.dark-mode .event-description,
+    body.dark-mode .no-poster,
+    body.dark-mode .event-empty {
+      color: #b3b3b3;
+    }
+    body.dark-mode .event-notice {
+      background: #163323;
+      color: #bbf7d0;
+      border-color: #276749;
+    }
+    body.dark-mode .event-edit {
+      color: #93c5fd;
+    }
+    body.dark-mode .event-delete {
+      color: #fca5a5;
+    }
   </style>
 </head>
 <body>
@@ -88,13 +160,13 @@ $result = $stmt->get_result();
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:12px;">
           <div>
             <h2>Event Management</h2>
-            <p style="color:#64748b;font-size:0.92rem;">View, add, edit, and delete campus events</p>
+            <p class="event-description">View, add, edit, and delete campus events</p>
           </div>
           <a href="event_form.php" class="btn btn-primary" style="padding:10px 20px;font-size:0.95rem;">+ Add New Event</a>
         </div>
 
         <?php if ($msg !== ''): ?>
-          <div style="padding:12px 16px;background:#d1fae5;color:#065f46;border:1px solid #a7f3d0;border-radius:6px;margin-bottom:16px;font-weight:600;">
+          <div class="event-notice">
             <?php echo htmlspecialchars($msg, ENT_QUOTES, 'UTF-8'); ?>
           </div>
         <?php endif; ?>
@@ -115,7 +187,7 @@ $result = $stmt->get_result();
             <tbody>
               <?php if ($result->num_rows === 0): ?>
                 <tr>
-                  <td colspan="7" style="text-align:center;padding:24px;color:#64748b;font-weight:600;">No events found</td>
+                  <td colspan="7" class="event-empty">No events found</td>
                 </tr>
               <?php else: ?>
                 <?php while ($row = $result->fetch_assoc()): ?>
@@ -125,7 +197,7 @@ $result = $stmt->get_result();
                         <img src="../../Uploads/posters/<?php echo htmlspecialchars($row['poster'], ENT_QUOTES, 'UTF-8'); ?>"
                              alt="Poster" class="poster-thumb">
                       <?php else: ?>
-                        <span style="color:#94a3b8;font-size:0.8rem;">No image</span>
+                        <span class="no-poster">No image</span>
                       <?php endif; ?>
                     </td>
                     <td><strong><?php echo htmlspecialchars($row['title'], ENT_QUOTES, 'UTF-8'); ?></strong></td>
@@ -138,11 +210,10 @@ $result = $stmt->get_result();
                       </span>
                     </td>
                     <td style="text-align:center;white-space:nowrap;">
-                      <a href="event_form.php?id=<?php echo (int)$row['event_id']; ?>"
-                         style="color:#1f4e79;font-weight:700;text-decoration:none;margin-right:12px;">Edit</a>
+                      <a class="event-action event-edit" href="event_form.php?id=<?php echo (int)$row['event_id']; ?>">Edit</a>
                       <a href="event_delete.php?id=<?php echo (int)$row['event_id']; ?>"
                          onclick="return confirm('Are you sure you want to delete this event?');"
-                         style="color:#dc2626;font-weight:700;text-decoration:none;">Delete</a>
+                         class="event-action event-delete">Delete</a>
                     </td>
                   </tr>
                 <?php endwhile; ?>

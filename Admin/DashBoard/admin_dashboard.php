@@ -47,6 +47,7 @@ $adminId   = htmlspecialchars($_SESSION['username'] ?? 'ADM10025', ENT_QUOTES, '
         <a href="admin_dashboard.php" class="nav-link active">Dashboard</a>
         <a href="students_manage.php" class="nav-link">Manage Students</a>
         <a href="events_list.php" class="nav-link">Events</a>
+        <a href="events_ajax.php" class="nav-link">Events (AJAX)</a>
         <a href="../../about.html">About</a>
         <a href="../../faqs.html">FAQs</a>
         <a href="../../contact.html">Contact</a>
@@ -62,6 +63,7 @@ $adminId   = htmlspecialchars($_SESSION['username'] ?? 'ADM10025', ENT_QUOTES, '
             <li><a href="admin_dashboard.php" class="nav-link active" style="display:block;">Dashboard</a></li>
             <li><a href="students_manage.php" class="nav-link" style="display:block;">Manage Students</a></li>
             <li><a href="events_list.php" class="nav-link" style="display:block;">Events</a></li>
+            <li><a href="events_ajax.php" class="nav-link" style="display:block;">Events (AJAX)</a></li>
           </ul>
         </nav>
       </aside>
