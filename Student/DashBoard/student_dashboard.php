@@ -4,6 +4,15 @@ session_start();
 // 1. Session Inactivity Timeout (15 minutes = 900 seconds)
 if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > 900)) {
     $_SESSION = array();
+
+    if (ini_get('session.use_cookies')) {
+        $params = session_get_cookie_params();
+        setcookie(session_name(), '', time() - 42000,
+            $params['path'], $params['domain'],
+            $params['secure'], $params['httponly']
+        );
+    }
+
     session_destroy();
     header("Location: ../../Login.html?timeout=1");
     exit();
@@ -17,8 +26,12 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 }
 
 // 3. Role-Based Access Control (RBAC)
-if ($_SESSION['role'] !== 'student') {
-    header("Location: ../../Admin/DashBoard/admin_dashboard.php?error=forbidden");
+if (($_SESSION['role'] ?? null) !== 'student') {
+    if (($_SESSION['role'] ?? null) === 'admin') {
+        header("Location: ../../Admin/DashBoard/admin_dashboard.php?error=forbidden");
+    } else {
+        header("Location: ../Stud_login.html?error=unauthorized");
+    }
     exit();
 }
 

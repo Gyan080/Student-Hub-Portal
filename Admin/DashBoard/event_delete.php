@@ -1,12 +1,7 @@
 <?php
-session_start();
-
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-    header('Location: ../Admin_login.html');
-    exit;
-}
-
+require_once __DIR__ . '/auth_check.php';
 require '../db_connect.php';
+require_once __DIR__ . '/audit_helper.php';
 
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
@@ -37,5 +32,6 @@ $stmt = $mysqli->prepare("DELETE FROM events WHERE event_id = ?");
 $stmt->bind_param("i", $id);
 $stmt->execute();
 
+write_log($mysqli, $_SESSION['admin_id'], 'delete_event', 'events', $id, 'Deleted event');
 header('Location: events_list.php?msg=Event+deleted+successfully');
 exit;

@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 $studentId     = trim($_POST['student_id'] ?? '');
-$typedPassword = trim($_POST['password'] ?? '');
+$typedPassword = $_POST['password'] ?? '';
 
 if (empty($studentId)) {
     $error = "Please enter your Enrollment ID or Email.";
@@ -35,14 +35,7 @@ if (!$user) {
     exit;
 }
 
-$authenticated = false;
-if (password_verify($typedPassword, $user['password_hash'])) {
-    $authenticated = true;
-} elseif ($typedPassword === $user['password_hash']) {
-    $authenticated = true;
-}
-
-if (!$authenticated) {
+if (!password_verify($typedPassword, $user['password_hash'])) {
     $error = "Incorrect password. Please try again.";
     include 'login_error.php';
     exit;

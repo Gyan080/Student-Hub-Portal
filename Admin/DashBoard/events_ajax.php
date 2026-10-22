@@ -1,23 +1,5 @@
 <?php
-session_start();
-
-if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > 900)) {
-    $_SESSION = array();
-    session_destroy();
-    header("Location: ../../Login.html?timeout=1");
-    exit();
-}
-$_SESSION['last_activity'] = time();
-
-if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    header("Location: ../Admin_login.html?error=unauthorized");
-    exit();
-}
-
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-    header("Location: ../../Student/DashBoard/student_dashboard.php?error=forbidden");
-    exit;
-}
+require_once __DIR__ . '/auth_check.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -164,13 +146,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
           <span class="b-name">Student Portal</span>
         </a>
       </div>
-      <nav class="n-links">
-        <a href="admin_dashboard.php" class="nav-link">Dashboard</a>
-        <a href="students_manage.php" class="nav-link">Manage Students</a>
-        <a href="events_list.php" class="nav-link">Events</a>
-        <a href="events_ajax.php" class="nav-link active">Events (AJAX)</a>
-        <a href="../../logout.php" class="nav-btn" style="background:#B91C1C;color:#fff;border:2px solid #1A1A1A;padding:8px 16px;text-decoration:none;font-weight:700;border-radius:4px;">Logout</a>
-      </nav>
+      <?php require __DIR__ . '/menu.php'; ?>
     </header>
 
     <main>

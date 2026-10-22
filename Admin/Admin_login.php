@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $email = strtolower(trim($_POST['email'] ?? ''));
 $adminId = strtoupper(trim($_POST['admin_id'] ?? ''));
 $fullname = trim($_POST['fullname'] ?? '');
-$password = trim($_POST['password'] ?? '');
+$password = $_POST['password'] ?? '';
 
 if (empty($email) && empty($adminId)) {
     renderAdminLoginError('Missing Credentials', 'Please enter your Official University Email or Staff / Admin ID.');
@@ -41,8 +41,6 @@ if (empty($password)) {
 
 try {
     require_once __DIR__ . '/db_connect.php';
-    $password = trim($_POST['password'] ?? '');
-
     $mysqli->query("CREATE TABLE IF NOT EXISTS admins (
         id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         admin_id VARCHAR(8) UNIQUE NOT NULL,
@@ -66,24 +64,22 @@ try {
         $stmtSeed->execute();
     }
 
-    $stmt = $mysqli->prepare('SELECT admin_id, name, email, department, role, password_hash FROM admins WHERE email = ? OR admin_id = ? LIMIT 1');
+    $stmt = $mysqli->prepare('SELECT id, admin_id, name, email, department, role, password_hash, status FROM admins WHERE email = ? OR admin_id = ? LIMIT 1');
     $stmt->bind_param('ss', $email, $adminId);
     $stmt->execute();
     $result = $stmt->get_result();
     $admin = $result->fetch_assoc();
 
     if ($admin) {
-        $authenticated = false;
-
         if (password_verify($password, $admin['password_hash'])) {
-            $authenticated = true;
-        } elseif ($password === $admin['password_hash']) {
-            $authenticated = true;
-        }
+            if ($admin['status'] === 'inactive') {
+                renderAdminLoginError('Account is inactive', 'This administrator account is inactive. Please contact a super admin.');
+            }
 
-        if ($authenticated) {
             session_regenerate_id(true);
 
+            $_SESSION['admin_id'] = (int)$admin['id'];
+            $_SESSION['admin_role'] = $admin['role'];
             $_SESSION['username'] = $admin['admin_id'];
             $_SESSION['name'] = $admin['name'];
             $_SESSION['email'] = $admin['email'];

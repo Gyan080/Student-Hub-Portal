@@ -1,29 +1,29 @@
 <?php
-session_start();
-
-if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > 900)) {
-    $_SESSION = array();
-    session_destroy();
-    header("Location: ../../Login.html?timeout=1");
-    exit();
-}
-$_SESSION['last_activity'] = time();
-
-if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    header("Location: ../Admin_login.html?error=unauthorized");
-    exit();
-}
-
-if ($_SESSION['role'] !== 'admin') {
-    header("Location: ../../Student/DashBoard/student_dashboard.php?error=forbidden");
-    exit();
-}
+require_once __DIR__ . '/auth_check.php';
+require_once __DIR__ . '/../db_connect.php';
 
 $adminName = htmlspecialchars($_SESSION['name'] ?? 'Administrator', ENT_QUOTES, 'UTF-8');
-$adminRole = htmlspecialchars($_SESSION['campus_role'] ?? 'Department Head', ENT_QUOTES, 'UTF-8');
-$adminEmail = htmlspecialchars($_SESSION['email'] ?? 'admin@charusat.ac.in', ENT_QUOTES, 'UTF-8');
-$adminDept = htmlspecialchars($_SESSION['department'] ?? 'Information Technology', ENT_QUOTES, 'UTF-8');
-$adminId   = htmlspecialchars($_SESSION['username'] ?? 'ADM10025', ENT_QUOTES, 'UTF-8');
+$adminRole = htmlspecialchars($_SESSION['campus_role'] ?? $_SESSION['admin_role'], ENT_QUOTES, 'UTF-8');
+$adminEmail = htmlspecialchars($_SESSION['email'] ?? '', ENT_QUOTES, 'UTF-8');
+$adminDept = htmlspecialchars($_SESSION['department'] ?? '', ENT_QUOTES, 'UTF-8');
+$adminUsername = htmlspecialchars($_SESSION['username'] ?? '', ENT_QUOTES, 'UTF-8');
+
+// Load the dashboard totals.
+$studentCount = (int)$mysqli->query("SELECT COUNT(*) FROM students")->fetch_row()[0];
+$eventCount = (int)$mysqli->query("SELECT COUNT(*) FROM events")->fetch_row()[0];
+$openEventCount = (int)$mysqli->query("SELECT COUNT(*) FROM events WHERE status = 'open'")->fetch_row()[0];
+$registrationCount = (int)$mysqli->query("SELECT COUNT(*) FROM registrations")->fetch_row()[0];
+$adminCount = (int)$mysqli->query("SELECT COUNT(*) FROM admins")->fetch_row()[0];
+
+// Load the latest registrations with their student and event names.
+$stmt = $mysqli->prepare("SELECT r.registration_date, s.name AS student_name, s.student_uid, e.title AS event_title
+                          FROM registrations r
+                          JOIN students s ON r.student_id = s.student_id
+                          JOIN events e ON r.event_id = e.event_id
+                          ORDER BY r.registration_date DESC
+                          LIMIT 5");
+$stmt->execute();
+$registrations = $stmt->get_result();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,6 +33,33 @@ $adminId   = htmlspecialchars($_SESSION['username'] ?? 'ADM10025', ENT_QUOTES, '
   <link rel="stylesheet" href="../../Fonts/local-fonts.css">
   <link rel="stylesheet" href="../adminStyle.css">
   <link rel="stylesheet" href="../admin-dark-mode.css">
+  <style>
+    .dashboard-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      background: #fff;
+    }
+    .dashboard-table th, .dashboard-table td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .dashboard-table th {
+      background: #f8fafc;
+    }
+    body.dark-mode .dashboard-table {
+      background: #1e1e1e;
+    }
+    body.dark-mode .dashboard-table th,
+    body.dark-mode .dashboard-table td {
+      color: #e5e5e5;
+      border-color: #3a3a3a;
+    }
+    body.dark-mode .dashboard-table th {
+      background: #292929;
+    }
+  </style>
 </head>
 <body>
   <div class="page-wrapper">
@@ -43,73 +70,62 @@ $adminId   = htmlspecialchars($_SESSION['username'] ?? 'ADM10025', ENT_QUOTES, '
           <span class="b-name">Student Portal</span>
         </a>
       </div>
-      <nav class="n-links">
-        <a href="admin_dashboard.php" class="nav-link active">Dashboard</a>
-        <a href="students_manage.php" class="nav-link">Manage Students</a>
-        <a href="events_list.php" class="nav-link">Events</a>
-        <a href="events_ajax.php" class="nav-link">Events (AJAX)</a>
-        <a href="../../about.html">About</a>
-        <a href="../../faqs.html">FAQs</a>
-        <a href="../../contact.html">Contact</a>
-        <a href="../../logout.php" class="nav-btn" style="background:#B91C1C;color:#fff;border:2px solid #1A1A1A;padding:8px 16px;text-decoration:none;font-weight:700;border-radius:4px;">Logout (<?php echo $adminId; ?>)</a>
-      </nav>
+      <?php require __DIR__ . '/menu.php'; ?>
     </header>
 
-    <div class="d-layout" style="display:flex;gap:20px;flex:1;">
-      <aside class="d-sidebar" style="width:240px;flex-shrink:0;padding:20px;">
-        <div style="font-size:0.75rem;font-weight:800;color:#64748b;text-transform:uppercase;margin-bottom:14px;letter-spacing:0.05em;">Admin Menu</div>
-        <nav class="s-nav">
-          <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
-            <li><a href="admin_dashboard.php" class="nav-link active" style="display:block;">Dashboard</a></li>
-            <li><a href="students_manage.php" class="nav-link" style="display:block;">Manage Students</a></li>
-            <li><a href="events_list.php" class="nav-link" style="display:block;">Events</a></li>
-            <li><a href="events_ajax.php" class="nav-link" style="display:block;">Events (AJAX)</a></li>
-          </ul>
-        </nav>
-      </aside>
-
-      <main class="d-main" style="flex:1;">
-        <section id="profile" style="max-width:960px;margin:0 auto;padding:20px;">
+    <main>
+      <section style="margin-top:20px;">
         <header style="margin-bottom:20px;">
-          <span style="display:inline-block;padding:3px 8px;font-size:0.75rem;font-weight:800;border:1.5px solid #1A1A1A;border-radius:4px;background:#D1FAE5;color:#065F46;margin-bottom:8px;">AUTHENTICATED SESSION: ADMIN</span>
           <h2>Admin Dashboard</h2>
-          <p>Current administrator session and institutional profile</p>
+          <p>Current administrator session and portal activity</p>
         </header>
-        <article>
+
+        <div class="profile-grid">
+          <div class="profile-box"><div class="box-label">Total Students</div><div class="box-detail"><?php echo $studentCount; ?></div></div>
+          <div class="profile-box"><div class="box-label">Total Events</div><div class="box-detail"><?php echo $eventCount; ?></div></div>
+          <div class="profile-box"><div class="box-label">Open Events</div><div class="box-detail"><?php echo $openEventCount; ?></div></div>
+          <div class="profile-box"><div class="box-label">Total Registrations</div><div class="box-detail"><?php echo $registrationCount; ?></div></div>
+          <div class="profile-box"><div class="box-label">Total Admins</div><div class="box-detail"><?php echo $adminCount; ?></div></div>
+        </div>
+
+        <article class="profile-box" style="margin-top:20px;">
+          <h3>Latest Registrations</h3>
+          <?php if ($registrations->num_rows === 0): ?>
+            <p style="margin-top:12px;">No registrations yet</p>
+          <?php else: ?>
+            <div style="overflow-x:auto;">
+              <table class="dashboard-table">
+                <thead><tr><th>Date</th><th>Student</th><th>Enrollment ID</th><th>Event</th></tr></thead>
+                <tbody>
+                  <?php while ($registration = $registrations->fetch_assoc()): ?>
+                    <tr>
+                      <td><?php echo htmlspecialchars($registration['registration_date'], ENT_QUOTES, 'UTF-8'); ?></td>
+                      <td><?php echo htmlspecialchars($registration['student_name'], ENT_QUOTES, 'UTF-8'); ?></td>
+                      <td><?php echo htmlspecialchars($registration['student_uid'], ENT_QUOTES, 'UTF-8'); ?></td>
+                      <td><?php echo htmlspecialchars($registration['event_title'], ENT_QUOTES, 'UTF-8'); ?></td>
+                    </tr>
+                  <?php endwhile; ?>
+                </tbody>
+              </table>
+            </div>
+          <?php endif; ?>
+        </article>
+
+        <article class="profile-box" style="margin-top:20px;">
+          <h3>Administrator Profile</h3>
           <div class="profile-grid">
-            <div class="profile-box">
-              <div class="box-label">Administrator Name</div>
-              <div class="box-detail" id="admin-name"><?php echo $adminName; ?></div>
-            </div>
-            <div class="profile-box">
-              <div class="box-label">Staff / Admin ID</div>
-              <div class="box-detail" id="admin-id"><?php echo $adminId; ?></div>
-            </div>
-            <div class="profile-box">
-              <div class="box-label">Campus Role</div>
-              <div class="box-detail" id="admin-role"><?php echo $adminRole; ?></div>
-            </div>
-            <div class="profile-box">
-              <div class="box-label">Official University Email</div>
-              <div class="box-detail" id="admin-email"><?php echo $adminEmail; ?></div>
-            </div>
-            <div class="profile-box">
-              <div class="box-label">Department</div>
-              <div class="box-detail" id="admin-department"><?php echo $adminDept; ?></div>
-            </div>
-            <div class="profile-box">
-              <div class="box-label">Session Status</div>
-              <div class="box-detail" style="color:#059669;font-weight:700;">Active (Expires after 15m inactivity)</div>
-            </div>
+            <div><div class="box-label">Name</div><div class="box-detail"><?php echo $adminName; ?></div></div>
+            <div><div class="box-label">Admin ID</div><div class="box-detail"><?php echo $adminUsername; ?></div></div>
+            <div><div class="box-label">Role</div><div class="box-detail"><?php echo $adminRole; ?></div></div>
+            <div><div class="box-label">Email</div><div class="box-detail"><?php echo $adminEmail; ?></div></div>
+            <div><div class="box-label">Department</div><div class="box-detail"><?php echo $adminDept; ?></div></div>
           </div>
         </article>
       </section>
     </main>
-  </div>
 
-  <footer class="f-bar">
+    <footer class="f-bar">
       <p class="f-note">Admin Dashboard · CHARUSAT Portal</p>
-      <p class="f-note"><a href="../../logout.php" style="color:#B91C1C;font-weight:700;">Click here to Logout</a></p>
     </footer>
   </div>
   <script src="../../dark-mode.js"></script>

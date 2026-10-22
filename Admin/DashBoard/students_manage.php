@@ -1,10 +1,5 @@
 <?php
-session_start();
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-    header('Location: ../Admin_login.html');
-    exit;
-}
-
+require_once __DIR__ . '/auth_check.php';
 require '../db_connect.php';
 
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
@@ -116,11 +111,7 @@ $courseResult = $mysqli->query($courseQuery);
           <span class="b-name">Student Portal</span>
         </a>
       </div>
-      <nav class="n-links">
-        <a href="admin_dashboard.php" class="nav-link">Dashboard</a>
-        <a href="students_manage.php" class="nav-link active">Manage Students</a>
-        <a href="../../logout.php" class="nav-btn" style="background:#B91C1C;color:#fff;border:2px solid #1A1A1A;padding:8px 16px;text-decoration:none;font-weight:700;border-radius:4px;">Logout</a>
-      </nav>
+      <?php require __DIR__ . '/menu.php'; ?>
     </header>
 
     <main>

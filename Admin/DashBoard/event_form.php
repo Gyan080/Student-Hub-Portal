@@ -1,12 +1,7 @@
 <?php
-session_start();
-
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-    header('Location: ../Admin_login.html');
-    exit;
-}
-
+require_once __DIR__ . '/auth_check.php';
 require '../db_connect.php';
+require_once __DIR__ . '/audit_helper.php';
 
 $edit_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 $is_edit = ($edit_id > 0);
@@ -139,12 +134,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt = $mysqli->prepare("UPDATE events SET title=?, description=?, event_date=?, location=?, fee=?, category=?, status=?, poster=? WHERE event_id=?");
             $stmt->bind_param("ssssdsssi", $title, $description, $event_date, $location, $fee_val, $category, $status, $poster_filename, $edit_id);
             $stmt->execute();
+            write_log($mysqli, $_SESSION['admin_id'], 'update_event', 'events', $edit_id, 'Updated event: ' . $title);
             header("Location: events_list.php?msg=Event+updated+successfully");
             exit;
         } else {
             $stmt = $mysqli->prepare("INSERT INTO events (title, description, event_date, location, fee, category, status, poster) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
             $stmt->bind_param("ssssdsss", $title, $description, $event_date, $location, $fee_val, $category, $status, $poster_filename);
             $stmt->execute();
+            write_log($mysqli, $_SESSION['admin_id'], 'add_event', 'events', $mysqli->insert_id, 'Added event: ' . $title);
             header("Location: events_list.php?msg=Event+added+successfully");
             exit;
         }
@@ -208,12 +205,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <span class="b-name">Student Portal</span>
         </a>
       </div>
-      <nav class="n-links">
-        <a href="admin_dashboard.php" class="nav-link">Dashboard</a>
-        <a href="students_manage.php" class="nav-link">Manage Students</a>
-        <a href="events_list.php" class="nav-link active">Events</a>
-        <a href="../../logout.php" class="nav-btn" style="background:#B91C1C;color:#fff;border:2px solid #1A1A1A;padding:8px 16px;text-decoration:none;font-weight:700;border-radius:4px;">Logout</a>
-      </nav>
+      <?php require __DIR__ . '/menu.php'; ?>
     </header>
 
     <main>

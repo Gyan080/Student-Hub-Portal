@@ -1,11 +1,7 @@
 <?php
-session_start();
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-    header('Location: ../Admin_login.html');
-    exit;
-}
-
+require_once __DIR__ . '/auth_check.php';
 require '../db_connect.php';
+require_once __DIR__ . '/audit_helper.php';
 
 $error = '';
 $uid = '';
@@ -60,6 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param('ssssssssss', $uid, $name, $email, $hash, $dob, $gender, $phone, $address, $course, $year);
 
         if ($stmt->execute()) {
+            write_log($mysqli, $_SESSION['admin_id'], 'add_student', 'students', $mysqli->insert_id, 'Added student: ' . $uid);
             header('Location: students_manage.php?msg=Student+added');
             exit;
         } else {
@@ -85,11 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <span class="b-name">Student Portal</span>
         </a>
       </div>
-      <nav class="n-links">
-        <a href="admin_dashboard.php" class="nav-link">Dashboard</a>
-        <a href="students_manage.php" class="nav-link active">Manage Students</a>
-        <a href="../../logout.php" class="nav-btn" style="background:#B91C1C;color:#fff;border:2px solid #1A1A1A;padding:8px 16px;text-decoration:none;font-weight:700;border-radius:4px;">Logout</a>
-      </nav>
+      <?php require __DIR__ . '/menu.php'; ?>
     </header>
 
     <main>
