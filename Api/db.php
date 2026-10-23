@@ -1,13 +1,13 @@
 <?php
 header('Content-Type: application/json');
-
-$host = 'localhost';
-$database = 'studenthub';
-$username = 'root';
-$password = '';
-$charset = 'utf8mb4';
+$databaseConfig = require __DIR__ . '/../config/database.php';
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-$conn = new mysqli($host, $username, $password, $database);
-$conn->set_charset($charset);
+$conn = new mysqli(
+    $databaseConfig['host'],
+    $databaseConfig['user'],
+    $databaseConfig['password'],
+    $databaseConfig['database']
+);
+$conn->set_charset($databaseConfig['charset']);

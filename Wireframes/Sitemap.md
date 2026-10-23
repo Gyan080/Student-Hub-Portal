@@ -1,43 +1,59 @@
-## Site Map
+# Site Map
 
-Student Portal (Site Structure)
-│                   <!-- navigation to about, faq, contact, login -->
-├── index.html                      (Home Page - Public)<!--DONE-->
+```text
+Student Hub Portal
+├── Public Pages
+│   ├── index.html                         Home
+│   ├── about.html                         About
+│   ├── faqs.html                          FAQs
+│   └── contact.html                       Contact
 │
-├── About Page                      (About Page - Public)<!--DONE-->
-│       ├── Campus                  (Campus overview - everyone)<!--DONE-->
-│       └── Academics               (Placement data, Offered Courses)<!--DONE-->
+├── Authentication and Registration
+│   ├── Login.html                         Login and registration choices
+│   ├── Student/Stud_login.html            Student login
+│   ├── Admin/Admin_login.html             Admin login
+│   ├── Student/regis_stud.html            Student registration
+│   └── Admin/regis_admin.html             Admin registration
 │
-├── FAQ Page                        (FAQ Page - Public)<!--DONE-->
+├── Student Area
+│   ├── Student/DashBoard/
+│   │   ├── student_dashboard.php          Student dashboard (session-backed)
+│   │   └── student_dashboard.html         Student dashboard (static)
+│   ├── Student/Profile/profile.html       Student profile
+│   ├── Student/Event/event.html           Campus events and registration
+│   ├── Student/Exam_Result/exam_result.html Exam results
+│   └── logout.php                         Logout
 │
-├── Contact Page                    (For Every User - Public)<!--DONE-->
+├── Admin Area
+│   ├── Admin/DashBoard/
+│   │   ├── admin_dashboard.php            Admin dashboard (session-backed)
+│   │   ├── admin_dashboard.html           Admin dashboard (static)
+│   │   ├── students_manage.php            Manage students
+│   │   │   ├── student_add.php            Add a student
+│   │   │   ├── student_edit.php           Edit a student
+│   │   │   └── student_delete.php         Delete a student
+│   │   ├── events_list.php                Manage events
+│   │   │   ├── event_form.php             Add or edit an event
+│   │   │   ├── event_delete.php           Delete an event
+│   │   │   └── events_ajax.php            Event data route
+│   │   ├── admins_manage.php              Manage administrators (super-admin)
+│   │   └── audit_log.php                  Audit log (super-admin)
 │
-│               <!-- Registration for new user -->
-│
-├── Register Page (if new user)     (Registration Choice - Public)<!--DONE-->
-│   ├── Student Registration Page   (Student Registration - Public)<!--DONE-->
-│   └── Admin Registration Page     (Admin Registration - Public)<!--DONE-->
-│
-│               <!-- Login Page of Student -->
-│
-├── Login Page                            (User Login - Public)<!--DONE-->
-│   ├── Student Login Page                (Student Login - Student)
-│   │   └── Student Dashboard Page        (Student Dashboard - Student)
-│   │       ├── Profile Page              (Profile Management (Editable) - Student)
-│   │       ├── Events Page               (Event Directory - Student)
-│   │       ├── Calendar                  (For Students to schedule events)
-│   │       ├── Attendance Tracker        (View attendance records - Student)
-│   │       ├── Fee Information           (View fee status, dues, payment history - Student)
-│   │       ├── Exam Result               (View exam results/marksheets - Student)
-│   │       └── Logout
-│   │
-│   └── Admin Login Page                  (Admin Login - Admin)<!--DONE-->
-│       └── Admin Dashboard Page          (Admin Dashboard - Admin)
-│           ├── Manage Events             (Create, edit, delete, and track all events - Admin)
-│           ├── Manage Students           (View, update, and manage student data - Admin)
-│           ├── Attendance Overview       (Monitor student attendance - Admin)
-│           └── Logout
-│
-├── Feedback Page                         (Feedback can be given by public - everyone)
-│
-└── 404 Page                              (Error - Public)
+└── Server-side Routes and Helpers
+    ├── Student/
+    │   ├── Stud_login.php                 Student login handler
+    │   ├── student_registration.php       Student registration handler
+    │   └── login_error.php                Student login error
+    ├── Admin/
+    │   ├── Admin_login.php                Admin login handler
+    │   └── save_admin.php                 Admin registration handler
+    ├── Api/
+    │   ├── events.php                     Events API
+    │   ├── student_events.php             Student events and registration API
+    │   └── db.php                         API database connection
+    └── Admin/DashBoard/
+        ├── auth_check.php                 Admin authentication helper
+        └── audit_helper.php               Audit logging helper
+```
+
+Calendar, attendance, fee information, feedback, and a custom 404 page are not currently implemented.

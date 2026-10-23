@@ -82,8 +82,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const password = document.getElementById("password") ? document.getElementById("password").value : "";
     const confirmPassword = document.getElementById("confirm_password") ? document.getElementById("confirm_password").value : "";
 
-    if (password.length < 6) {
-      showBrutalistModal("Validation Error", "Password must be at least 6 characters long.", "error");
+    if (password.length < 8) {
+      showBrutalistModal("Validation Error", "Password must be at least 8 characters long.", "error");
       document.getElementById("password").focus();
       return;
     }
@@ -120,25 +120,34 @@ document.addEventListener("DOMContentLoaded", function () {
       loginTime: new Date().toLocaleTimeString()
     };
 
-    localStorage.setItem("adminUser", JSON.stringify(adminUser));
-
     fetch("save_admin.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(adminUser)
-    }).catch(function (err) {
-      console.log("DB sync error:", err);
-    });
-
-    showBrutalistModal(
-      "Admin Profile Registered!",
-      `Welcome ${fullName}! Your official administrative account (${admin_id.toUpperCase()}) has been saved to the database. Default login password is 'admin123'.`,
-      "success",
-      function () {
-        regForm.reset();
-        window.location.href = "Admin_login.html";
-      }
-    );
+    })
+      .then(function (response) {
+        return response.json().then(function (result) {
+          if (!response.ok || !result.success) {
+            throw new Error(result.error || "Could not save the administrator account.");
+          }
+          return result;
+        });
+      })
+      .then(function () {
+        localStorage.setItem("adminUser", JSON.stringify(adminUser));
+        showBrutalistModal(
+          "Admin Profile Registered!",
+          `Welcome ${fullName}! Your official administrative account (${admin_id.toUpperCase()}) has been saved to the database.`,
+          "success",
+          function () {
+            regForm.reset();
+            window.location.href = "Admin_login.html";
+          }
+        );
+      })
+      .catch(function (error) {
+        showBrutalistModal("Registration Failed", error.message, "error");
+      });
   });
 });
 

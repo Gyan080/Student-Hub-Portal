@@ -41,29 +41,6 @@ if (empty($submittedPassword)) {
 
 try {
     require_once __DIR__ . '/db_connect.php';
-    $mysqli->query("CREATE TABLE IF NOT EXISTS admins (
-        id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        admin_id VARCHAR(8) UNIQUE NOT NULL,
-        name VARCHAR(150) NOT NULL,
-        email VARCHAR(255) UNIQUE NOT NULL,
-        password_hash VARCHAR(255) NOT NULL,
-        role VARCHAR(100) DEFAULT 'Department Head / Principal',
-        department VARCHAR(100) DEFAULT 'Information Technology'
-    )");
-
-    $checkAdmin = $mysqli->query("SELECT 1 FROM admins LIMIT 1");
-    if ($checkAdmin && $checkAdmin->num_rows === 0) {
-        $defaultPassHash = password_hash('admin123', PASSWORD_DEFAULT);
-        $stmtSeed = $mysqli->prepare("INSERT INTO admins (admin_id, name, email, password_hash, department, role) VALUES (?, ?, ?, ?, ?, ?)");
-        $defaultId = 'ADM10025';
-        $defaultName = 'Dr. Mrugendra Patel';
-        $defaultEmail = 'admin@charusat.ac.in';
-        $defaultDept = 'Information Technology';
-        $defaultRole = 'Department Head / Principal';
-        $stmtSeed->bind_param('ssssss', $defaultId, $defaultName, $defaultEmail, $defaultPassHash, $defaultDept, $defaultRole);
-        $stmtSeed->execute();
-    }
-
     $stmt = $mysqli->prepare('SELECT id, admin_id, name, email, department, role, password_hash, status FROM admins WHERE email = ? OR admin_id = ? LIMIT 1');
     $stmt->bind_param('ss', $email, $adminId);
     $stmt->execute();
@@ -95,7 +72,7 @@ try {
             renderAdminLoginError('Authentication Failed', 'The password entered is incorrect for this administrator account.');
         }
     } else {
-        renderAdminLoginError('Admin Not Found', 'No administrator profile was found with that email or ID. Default demo account: admin@charusat.ac.in (pass: admin123).');
+        renderAdminLoginError('Admin Not Found', 'No administrator profile was found with that email or ID.');
     }
 } catch (mysqli_sql_exception $e) {
     renderAdminLoginError('Database Error', 'Could not connect to the database. Please ensure Apache and MySQL are running in XAMPP.');

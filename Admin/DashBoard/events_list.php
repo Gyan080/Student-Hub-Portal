@@ -2,6 +2,10 @@
 require_once __DIR__ . '/auth_check.php';
 require '../db_connect.php';
 
+if (!isset($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
 $msg = isset($_GET['msg']) ? trim($_GET['msg']) : '';
 
 $sql = "SELECT event_id, title, event_date, location, category, status, poster FROM events ORDER BY event_date DESC";
@@ -199,9 +203,12 @@ $result = $stmt->get_result();
                     </td>
                     <td style="text-align:center;white-space:nowrap;">
                       <a class="event-action event-edit" href="event_form.php?id=<?php echo (int)$row['event_id']; ?>">Edit</a>
-                      <a href="event_delete.php?id=<?php echo (int)$row['event_id']; ?>"
-                         onclick="return confirm('Are you sure you want to delete this event?');"
-                         class="event-action event-delete">Delete</a>
+                      <form method="post" action="event_delete.php" style="display:inline;"
+                            onsubmit="return confirm('Are you sure you want to delete this event?');">
+                        <input type="hidden" name="id" value="<?php echo (int)$row['event_id']; ?>">
+                        <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8'); ?>">
+                        <button type="submit" class="event-action event-delete" style="background:none;border:0;padding:0;cursor:pointer;font:inherit;">Delete</button>
+                      </form>
                     </td>
                   </tr>
                 <?php endwhile; ?>
