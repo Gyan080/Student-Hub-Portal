@@ -6,10 +6,10 @@ if (!is_super_admin()) {
 
 require_once __DIR__ . '/../db_connect.php';
 
-// Load the latest audit entries with the admin login ID.
-$stmt = $mysqli->prepare("SELECT l.created_at, a.admin_id AS username, l.action, l.target_table, l.target_id, l.details
+// Load the latest audit entries with their admin or student actor.
+$stmt = $mysqli->prepare("SELECT l.created_at, COALESCE(a.admin_id, 'Student') AS username, l.action, l.target_table, l.target_id, l.details
                           FROM audit_logs l
-                          JOIN admins a ON l.admin_id = a.id
+                          LEFT JOIN admins a ON l.admin_id = a.id
                           ORDER BY l.created_at DESC
                           LIMIT 100");
 $stmt->execute();
@@ -47,7 +47,7 @@ $logs = $stmt->get_result();
         <h2>Audit Log</h2>
         <div style="overflow-x:auto;">
           <table class="audit-table">
-            <thead><tr><th>Time</th><th>Admin</th><th>Action</th><th>Target table</th><th>Target ID</th><th>Details</th></tr></thead>
+            <thead><tr><th>Time</th><th>Actor</th><th>Action</th><th>Target table</th><th>Target ID</th><th>Details</th></tr></thead>
             <tbody>
               <?php if ($logs->num_rows === 0): ?>
                 <tr><td colspan="6">No audit entries yet</td></tr>

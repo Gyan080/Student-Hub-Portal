@@ -24,6 +24,11 @@ $stmt = $mysqli->prepare("SELECT r.registration_date, s.name AS student_name, s.
                           LIMIT 5");
 $stmt->execute();
 $registrations = $stmt->get_result();
+
+// Load registration totals grouped by month.
+$monthlyStmt = $mysqli->prepare("SELECT DATE_FORMAT(registration_date, '%Y-%m') AS month, COUNT(*) AS total FROM registrations GROUP BY month ORDER BY month");
+$monthlyStmt->execute();
+$monthlyRegistrations = $monthlyStmt->get_result();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -87,6 +92,29 @@ $registrations = $stmt->get_result();
           <div class="profile-box"><div class="box-label">Total Registrations</div><div class="box-detail"><?php echo $registrationCount; ?></div></div>
           <div class="profile-box"><div class="box-label">Total Admins</div><div class="box-detail"><?php echo $adminCount; ?></div></div>
         </div>
+
+        <!-- Show registration totals for each month. -->
+        <article class="profile-box" style="margin-top:20px;">
+          <h3>Registrations per month</h3>
+          <?php if ($monthlyRegistrations->num_rows === 0): ?>
+            <p style="margin-top:12px;">No registrations yet</p>
+          <?php else: ?>
+            <div style="overflow-x:auto;">
+              <table class="dashboard-table">
+                <thead><tr><th>Month</th><th>Total</th><th>Registrations</th></tr></thead>
+                <tbody>
+                  <?php while ($monthlyRegistration = $monthlyRegistrations->fetch_assoc()): ?>
+                    <tr>
+                      <td><?php echo htmlspecialchars($monthlyRegistration['month'], ENT_QUOTES, 'UTF-8'); ?></td>
+                      <td><?php echo (int)$monthlyRegistration['total']; ?></td>
+                      <td><div style="width: <?php echo (int)$monthlyRegistration['total'] * 20; ?>px; height: 12px; background: #1f4e79;"></div></td>
+                    </tr>
+                  <?php endwhile; ?>
+                </tbody>
+              </table>
+            </div>
+          <?php endif; ?>
+        </article>
 
         <article class="profile-box" style="margin-top:20px;">
           <h3>Latest Registrations</h3>

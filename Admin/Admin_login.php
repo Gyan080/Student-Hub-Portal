@@ -29,13 +29,13 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $email = strtolower(trim($_POST['email'] ?? ''));
 $adminId = strtoupper(trim($_POST['admin_id'] ?? ''));
 $fullname = trim($_POST['fullname'] ?? '');
-$password = $_POST['password'] ?? '';
+$submittedPassword = $_POST['password'] ?? '';
 
 if (empty($email) && empty($adminId)) {
     renderAdminLoginError('Missing Credentials', 'Please enter your Official University Email or Staff / Admin ID.');
 }
 
-if (empty($password)) {
+if (empty($submittedPassword)) {
     renderAdminLoginError('Missing Password', 'Please enter your password.');
 }
 
@@ -71,7 +71,7 @@ try {
     $admin = $result->fetch_assoc();
 
     if ($admin) {
-        if (password_verify($password, $admin['password_hash'])) {
+        if (password_verify($submittedPassword, $admin['password_hash'])) {
             if ($admin['status'] === 'inactive') {
                 renderAdminLoginError('Account is inactive', 'This administrator account is inactive. Please contact a super admin.');
             }

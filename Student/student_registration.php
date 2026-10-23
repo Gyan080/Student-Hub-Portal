@@ -129,6 +129,7 @@ if ($password !== $confirmPassword) {
 
 $fullName = "{$firstname} {$middlename} {$lastname}";
 $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+$transactionStarted = false;
 
 try {
     require_once __DIR__ . '/db_connect.php';
@@ -144,6 +145,8 @@ try {
         renderPage('Registration Error', 'Duplicate Entry', 'A student with this Enrollment ID or Email is already registered.');
     }
 
+    $mysqli->begin_transaction();
+    $transactionStarted = true;
     $insertStatement = $mysqli->prepare(
         'INSERT INTO students
             (student_uid, name, email, password_hash, dob, gender, phone, address, course, study_year)
@@ -164,7 +167,24 @@ try {
         $year
     );
     $insertStatement->execute();
+    $studentId = (int)$insertStatement->insert_id;
+
+    // Record the new student account in the admin audit log.
+    $auditDetails = 'Student registered: ' . $fullName . ' (' . $collegeId . ')';
+    $auditStatement = $mysqli->prepare(
+        'INSERT INTO audit_logs (admin_id, action, target_table, target_id, details)
+         VALUES (NULL, ?, ?, ?, ?)'
+    );
+    $auditAction = 'student_register';
+    $auditTable = 'students';
+    $auditStatement->bind_param('ssis', $auditAction, $auditTable, $studentId, $auditDetails);
+    $auditStatement->execute();
+    $mysqli->commit();
+    $transactionStarted = false;
 } catch (mysqli_sql_exception $exception) {
+    if ($transactionStarted) {
+        $mysqli->rollback();
+    }
     if ($exception->getCode() === 1062) {
         renderPage('Registration Error', 'Duplicate Entry', 'A student with this Enrollment ID or Email is already registered.');
     }

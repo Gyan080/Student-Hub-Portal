@@ -1,8 +1,17 @@
 <?php
 header('Content-Type: application/json');
 
+// Check for an active admin session.
+session_start();
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true || ($_SESSION['role'] ?? '') !== 'admin') {
+    http_response_code(401);
+    echo json_encode(['success' => false, 'message' => 'Please log in as admin', 'data' => null]);
+    exit;
+}
+
 try {
     require __DIR__ . '/db.php';
+    require_once __DIR__ . '/../Admin/DashBoard/audit_helper.php';
     http_response_code(200);
 
     $method = $_SERVER['REQUEST_METHOD'];
@@ -85,6 +94,11 @@ try {
             $result = $stmt->get_result();
             $event = $result->fetch_assoc();
 
+            // Remove registrations before deleting the event.
+            $stmt = $conn->prepare("DELETE FROM registrations WHERE event_id = ?");
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+
             $stmt = $conn->prepare("DELETE FROM events WHERE event_id = ?");
             $stmt->bind_param("i", $id);
             $stmt->execute();
@@ -99,6 +113,8 @@ try {
                 }
             }
 
+            // Record the successful event deletion.
+            write_log($conn, $_SESSION['admin_id'], 'delete_event', 'events', $id, 'Deleted event');
             echo json_encode(['success' => true, 'message' => 'Event deleted', 'data' => null]);
             exit;
         }
@@ -151,6 +167,8 @@ try {
             $stmt->execute();
             $new_id = $conn->insert_id;
 
+            // Record the successful event addition.
+            write_log($conn, $_SESSION['admin_id'], 'add_event', 'events', $new_id, 'Added event: ' . $title);
             echo json_encode(['success' => true, 'message' => 'Event added', 'data' => ['event_id' => $new_id]]);
             exit;
         }
@@ -159,6 +177,8 @@ try {
         $stmt->bind_param("ssssdssi", $title, $description, $event_date, $location, $fee_value, $category, $status, $id);
         $stmt->execute();
 
+        // Record the successful event update.
+        write_log($conn, $_SESSION['admin_id'], 'update_event', 'events', $id, 'Updated event: ' . $title);
         echo json_encode(['success' => true, 'message' => 'Event updated', 'data' => ['event_id' => $id]]);
         exit;
     }

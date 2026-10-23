@@ -17,14 +17,15 @@ function getTagLabel(category) {
   if (category === "tech") return "TECHNICAL";
   if (category === "cultural") return "CULTURAL";
   if (category === "sports") return "SPORTS";
-  return "WORKSHOP";
+  if (category === "workshop") return "WORKSHOP";
+  return "OTHER";
 }
 
 function buildCard(ev) {
-  var parts = ev.date.split("-");
-  var day   = parts[2];
-  var mon   = monthNames[parseInt(parts[1], 10) - 1];
-  var year  = parts[0];
+  var parts = ev.date ? ev.date.split("-") : [];
+  var day   = parts.length === 3 ? parts[2] : "TBA";
+  var mon   = parts.length === 3 ? monthNames[parseInt(parts[1], 10) - 1] : "";
+  var year  = parts.length === 3 ? parts[0] : "";
 
   var article = document.createElement("article");
   article.className = "ev-card";
@@ -79,24 +80,41 @@ function buildCard(ev) {
 
   var time = document.createElement("span");
   time.className = "ev-tm";
-  time.textContent = ev.time;
+  time.textContent = Number(ev.fee) > 0 ? "Fee: ₹" + ev.fee : "Free";
 
   var btn = document.createElement("button");
   btn.type = "button";
   btn.className = "btn btn-primary register-event-btn";
-  btn.setAttribute("data-event", ev.title);
+  btn.setAttribute("data-event-id", ev.id);
   btn.textContent = "Register Now \u2192";
+  if (Number(ev.registered) === 1) {
+    btn.textContent = "Registered \u2713";
+    btn.classList.add("registered-btn");
+    btn.disabled = true;
+  }
 
   btn.addEventListener("click", function () {
-    if (btn.textContent.indexOf("Registered") !== -1) {
-      btn.textContent = "Register Now \u2192";
-      btn.classList.remove("registered-btn");
-      alert("Cancelled registration for " + ev.title);
-    } else {
-      btn.textContent = "Registered \u2713";
-      btn.classList.add("registered-btn");
-      alert("Successfully registered for " + ev.title + "! Check your email for event passes.");
-    }
+    if (btn.disabled) { return; }
+    btn.disabled = true;
+    var formData = new FormData();
+    formData.append("event_id", ev.id);
+
+    fetch("../../Api/student_events.php", { method: "POST", body: formData })
+      .then(function (response) {
+        return response.json().then(function (data) {
+          if (!response.ok) { throw new Error(data.message || "Registration failed."); }
+          return data;
+        });
+      })
+      .then(function (data) {
+        btn.textContent = "Registered \u2713";
+        btn.classList.add("registered-btn");
+        alert(data.message);
+      })
+      .catch(function (error) {
+        btn.disabled = false;
+        alert(error.message);
+      });
   });
 
   foot.appendChild(time);
@@ -213,7 +231,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var statusEl = document.getElementById("eventStatus");
   statusEl.textContent = "Loading events...";
 
-  fetch("../../JSON/events.json")
+  fetch("../../Api/student_events.php")
     .then(function (response) {
       if (!response.ok) { throw new Error("Network error"); }
       return response.json();

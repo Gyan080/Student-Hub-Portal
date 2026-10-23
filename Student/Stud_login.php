@@ -23,7 +23,7 @@ if (empty($typedPassword)) {
 
 require_once __DIR__ . '/db_connect.php';
 
-$stmt = $mysqli->prepare('SELECT student_uid, name, email, course, password_hash FROM students WHERE student_uid = ? OR email = ? LIMIT 1');
+$stmt = $mysqli->prepare('SELECT student_id, student_uid, name, email, course, password_hash FROM students WHERE student_uid = ? OR email = ? LIMIT 1');
 $stmt->bind_param('ss', $studentId, $studentId);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -42,6 +42,7 @@ if (!password_verify($typedPassword, $user['password_hash'])) {
 }
 
 session_regenerate_id(true);
+$_SESSION['student_id']    = (int)$user['student_id'];
 $_SESSION['username']      = $user['student_uid'];
 $_SESSION['name']          = $user['name'];
 $_SESSION['email']         = $user['email'];
